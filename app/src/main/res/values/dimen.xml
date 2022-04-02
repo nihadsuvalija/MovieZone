@@ -3,7 +3,10 @@
     <dimen name="h1_text_size">38sp</dimen>
     <dimen name="h2_text_size">24sp</dimen>
 
-    <dimen name="button_margin">20sp</dimen>
+    <dimen name="button_margin_top">20sp</dimen>
+    <dimen name="button_margin_side">40sp</dimen>
     <dimen name="button_padding">8sp</dimen>
     <dimen name="button_text_size">18sp</dimen>
+
+    <dimen name="divider_s">1dp</dimen>
 </resources>

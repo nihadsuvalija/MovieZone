@@ -5,4 +5,8 @@
     <string name="movie_title_txt_home">Movie\nTitle</string>
     <string name="genre_txt_home">Genre, Subgenre</string>
     <string name="watch_trailer_btn_txt_home">Watch trailer</string>
+
+    <!-- SIGN IN SCREEN -->
+    <string name="sign_up_txt">Sign up</string>
+    <string name="sign_in_txt">Sign in</string>
 </resources>

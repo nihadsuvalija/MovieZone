@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.moviezone.screen.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/navigateFromSplashToWelcome"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.moviezone.screen.welcome.WelcomeFragment"
+        android:label="WelcomeFragment" />
+</navigation>
