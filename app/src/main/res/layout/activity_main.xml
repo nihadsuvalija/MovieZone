@@ -13,7 +13,9 @@
         tools:context=".screen.main.MainActivity">
 
         <fragment
-            android:id="@+id/initialFragment"
+            android:id="@+id/baseFragment"
+            android:name="com.example.moviezone.screen.home.HomeFragment"
+            tools:layout="@layout/home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"

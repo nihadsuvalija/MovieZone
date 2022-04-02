@@ -16,4 +16,3 @@ Things used for the project:
     - Glide (plugin for loading pictures into ImageView)
     - Firebase (Realtime Database, Firestore) - POTENTIAL UPDATE IN THE FUTURE TO PERSONALLY HOSTED DATABASE
     - OMDB (OpenAPI with all the movies)
-    

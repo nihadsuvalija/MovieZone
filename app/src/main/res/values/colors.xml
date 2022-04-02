@@ -8,4 +8,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- CUSTOM COLORS -->
+    <color name="primary_theme_color">#17082A</color>
+    <color name="secondary_theme_color">#6644B8</color>
+    <color name="primary_text_color">#FFFFFF</color>
+    <color name="primary_buttom_color"></color>
+    <color name="secondary_button_color"></color>
 </resources>

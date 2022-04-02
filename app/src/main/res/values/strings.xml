@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MovieZone</string>
+
+    <!-- HOME SCREEN -->
+    <string name="movie_title_txt_home">Movie\nTitle</string>
+    <string name="genre_txt_home">Genre, Subgenre</string>
+    <string name="watch_trailer_btn_txt_home">Watch trailer</string>
 </resources>

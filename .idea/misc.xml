@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nihad/git_workspace/nihad-personal/MovieZone/app/src/main/res/drawable/default_button_design.xml" value="0.2985" />
+        <entry key="..\:/Users/Nihad/git_workspace/nihad-personal/MovieZone/app/src/main/res/drawable/home_default_image.xml" value="0.14" />
+        <entry key="..\:/Users/Nihad/git_workspace/nihad-personal/MovieZone/app/src/main/res/drawable/shadow_effect.xml" value="0.2985" />
         <entry key="..\:/Users/Nihad/git_workspace/nihad-personal/MovieZone/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Nihad/git_workspace/nihad-personal/MovieZone/app/src/main/res/layout/home.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>
