@@ -15,4 +15,5 @@
     <color name="primary_text_color">#FFFFFF</color>
     <color name="primary_buttom_color"></color>
     <color name="secondary_button_color"></color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

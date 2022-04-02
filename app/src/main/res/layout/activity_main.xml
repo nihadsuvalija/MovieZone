@@ -14,8 +14,8 @@
 
         <fragment
             android:id="@+id/baseFragment"
-            android:name="com.example.moviezone.screen.home.HomeFragment"
-            tools:layout="@layout/home"
+            android:name="com.example.moviezone.screen.movie_detail.MovieDetailFragment"
+            tools:layout="@layout/movie_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"

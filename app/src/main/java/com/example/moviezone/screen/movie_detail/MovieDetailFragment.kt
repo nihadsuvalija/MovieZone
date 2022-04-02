@@ -1,4 +1,4 @@
-package com.example.moviezone.screen.home
+package com.example.moviezone.screen.movie_detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviezone.R
-import com.example.moviezone.databinding.HomeBinding
+import com.example.moviezone.databinding.MovieDetailBinding
 
-class HomeFragment: Fragment() {
+class MovieDetailFragment: Fragment() {
 
-    private lateinit var binding: HomeBinding
-    private lateinit var viewModel: HomeViewModel
+    private lateinit var binding: MovieDetailBinding
+    private lateinit var viewModel: MovieDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,8 +21,8 @@ class HomeFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.home, container, false)
-        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        binding = DataBindingUtil.inflate(inflater, R.layout.movie_detail, container, false)
+        viewModel = ViewModelProvider(this)[MovieDetailViewModel::class.java]
 
         return binding.root
     }
