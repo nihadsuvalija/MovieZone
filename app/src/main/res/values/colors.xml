@@ -16,4 +16,6 @@
     <color name="primary_buttom_color"></color>
     <color name="secondary_button_color"></color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="light_gray">#92929D</color>
+    <color name="default_elements_background">#252836</color>
 </resources>

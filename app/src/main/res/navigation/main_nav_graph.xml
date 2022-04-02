@@ -15,5 +15,13 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.moviezone.screen.welcome.WelcomeFragment"
-        android:label="WelcomeFragment" />
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/navigateFromWelcomeToSignUp"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.moviezone.screen.sign_up.SignUpFragment"
+        android:label="SignUpFragment" />
 </navigation>

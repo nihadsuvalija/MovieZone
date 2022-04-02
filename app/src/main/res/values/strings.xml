@@ -6,7 +6,14 @@
     <string name="genre_txt_home">Genre, Subgenre</string>
     <string name="watch_trailer_btn_txt_home">Watch trailer</string>
 
-    <!-- SIGN IN SCREEN -->
+    <!-- WELCOME SCREEN -->
     <string name="sign_up_txt">Sign up</string>
     <string name="sign_in_txt">Sign in</string>
+
+    <!-- SIGN UP SCREEN -->
+    <string name="lets_get_started_txt">"Let's get started"</string>
+    <string name="setup_account_txt">"First, let's create your account"</string>
+    <string name="full_name_txt">Full name</string>
+    <string name="email_txt">Email address</string>
+    <string name="password_txt">Password</string>
 </resources>
