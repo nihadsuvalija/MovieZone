@@ -6,7 +6,7 @@
             </solid>
             <stroke android:color="@color/element_stroke_color" android:width="1sp">
             </stroke>
-            <corners android:radius="100sp"/>
+            <corners android:radius="10sp"/>
         </shape>
     </item>
 </selector>

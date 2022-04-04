@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -8,11 +9,13 @@
 
         <ImageView
             android:id="@+id/iv_background_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.1"
             android:background="@drawable/movie_collage"
             android:src="@drawable/shadow_effect"
-            android:alpha="0.1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            tools:layout_editor_absoluteX="52dp"
+            tools:layout_editor_absoluteY="-118dp" />
 
         <ImageView
             android:id="@+id/iv_logo_welcome"
@@ -43,7 +46,7 @@
         <Button
             android:id="@+id/btn_sign_up_welcome"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_default_height"
             android:layout_marginTop="@dimen/button_margin_top"
             android:layout_marginBottom="@dimen/button_margin_top"
             android:layout_marginLeft="@dimen/button_margin_side"

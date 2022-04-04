@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452378750265",
+    "project_id": "moviezone-3a43b",
+    "storage_bucket": "moviezone-3a43b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452378750265:android:47d7474ffa50cfb2fd8ce8",
+        "android_client_info": {
+          "package_name": "com.example.moviezone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452378750265-4aivom3u2gj91t3qa6nv9qakmd8nr7te.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7_TgOtbXqqHpzFTNmjqhURo5ggqCQSsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452378750265-4aivom3u2gj91t3qa6nv9qakmd8nr7te.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

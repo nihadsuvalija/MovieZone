@@ -20,12 +20,22 @@ class SignUpFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_up, container, false)
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
 
         binding.ivBackButton.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromSignUpToWelcome)
+        }
+
+        binding.btnSignUpSignup.setOnClickListener {
+            viewModel.registerUser(binding.etFullNameSignup.text.toString(),
+                binding.etEmailSignup.text.toString(),
+                binding.etPasswordSignup.text.toString())
+
+            binding.etFullNameSignup.text.clear()
+            binding.etEmailSignup.text.clear()
+            binding.etPasswordSignup.text.clear()
         }
 
         return binding.root
