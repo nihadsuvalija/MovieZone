@@ -11,6 +11,7 @@
             android:background="@drawable/back_button_background"
             android:src="@drawable/ic_back"
             android:scaleType="center"
+            android:clickable="true"
             app:layout_constraintTop_toTopOf="@id/tv_sign_up_signup"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/tv_sign_up_signup"

@@ -23,5 +23,9 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.moviezone.screen.sign_up.SignUpFragment"
-        android:label="SignUpFragment" />
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/navigateFromSignUpToWelcome"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
 </navigation>
