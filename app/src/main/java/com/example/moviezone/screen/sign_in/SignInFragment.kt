@@ -41,8 +41,10 @@ class SignInFragment: Fragment(), SignInViewInteractor{
         }
 
         binding.btnSignInSignin.setOnClickListener {
-            viewModel.signInWithEmailAndPassword(binding.etEmailSignin.text.toString(),
-                                                 binding.etPasswordSignin.text.toString())
+            viewModel.signInWithEmailAndPassword(
+                binding.etEmailSignin.text.toString(),
+                binding.etPasswordSignin.text.toString()
+            )
 
         }
 
@@ -55,7 +57,6 @@ class SignInFragment: Fragment(), SignInViewInteractor{
     }
 
     /* SignInViewInteractor METHODS */
-
     override fun setEmailError(error: String) {
         binding.etEmailSignin.error = error
     }

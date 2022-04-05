@@ -31,9 +31,11 @@ class SignUpFragment: Fragment(), SignUpViewInteractor {
         }
 
         binding.btnSignUpSignup.setOnClickListener {
-            viewModel.registerUser(binding.etFullNameSignup.text.toString(),
+            viewModel.registerUser(
+                binding.etFullNameSignup.text.toString(),
                 binding.etEmailSignup.text.toString(),
-                binding.etPasswordSignup.text.toString())
+                binding.etPasswordSignup.text.toString()
+            )
         }
 
         return binding.root
