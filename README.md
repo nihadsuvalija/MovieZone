@@ -19,6 +19,6 @@ Things used for the project:
     - Data Binding
     - Glide (plugin for loading pictures into ImageView)
     - Firebase (Realtime Database, Firestore) - POTENTIAL UPDATE IN THE FUTURE TO PERSONALLY HOSTED DATABASE
-    - OMDB (OpenAPI with all the movies)
+    - TMDB (OpenAPI with all the movies)
     - Retrofit (for API calls)
     - Coroutines
