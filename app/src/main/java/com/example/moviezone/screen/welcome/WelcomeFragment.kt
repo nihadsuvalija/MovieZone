@@ -20,18 +20,23 @@ class WelcomeFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.welcome, container, false)
         viewModel = ViewModelProvider(this)[WelcomeViewModel::class.java]
 
         binding.btnSignUpWelcome.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.navigateFromWelcomeToSignUp)
+            viewModel.onSignUpClicked()
         }
 
         binding.signInTxtWelcome.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.navigateFromWelcomeToSignIn)
+            viewModel.onSignInClicked()
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setNavController(Navigation.findNavController(binding.root))
     }
 }
