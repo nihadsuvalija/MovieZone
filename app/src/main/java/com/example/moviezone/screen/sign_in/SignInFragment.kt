@@ -1,6 +1,8 @@
 package com.example.moviezone.screen.sign_in
 
 import android.os.Bundle
+import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +17,9 @@ import com.example.moviezone.databinding.SignInBinding
 * REMINDER: FIX THE SPACE AFTER AUTOFILLING THE INFORMATION
 */
 
-class SignInFragment: Fragment() {
+class SignInFragment: Fragment(), SignInViewInteractor{
+
+    val TAG = "SignInFragment"
 
     private lateinit var binding: SignInBinding
     private lateinit var viewModel: SignInViewModel
@@ -24,10 +28,11 @@ class SignInFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_in, container, false)
         viewModel = ViewModelProvider(this)[SignInViewModel::class.java]
+        viewModel.setViewInteractor(this)
 
         binding.ivBackButton.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.navigateFromSignInToWelcome)
@@ -37,10 +42,18 @@ class SignInFragment: Fragment() {
             viewModel.signInWithEmailAndPassword(binding.etEmailSignin.text.toString(),
                                                  binding.etPasswordSignin.text.toString())
 
-            binding.etEmailSignin.text.clear()
-            binding.etPasswordSignin.text.clear()
         }
 
         return binding.root
+    }
+
+    /* SignInViewInteractor METHODS */
+
+    override fun setEmailError(error: String) {
+        binding.etEmailSignin.error = error
+    }
+
+    override fun setPasswordError(error: String) {
+        binding.etPasswordSignin.error = error
     }
 }

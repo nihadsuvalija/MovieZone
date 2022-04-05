@@ -19,4 +19,7 @@
     <string name="welcome_txt">Welcome!</string>
     <string name="enter_details_txt">Please, enter your details.</string>
     <string name="forgot_password_txt"><u>Forgot Password?</u></string>
+
+    <!-- ERRORS -->
+    <string name="email_format_error">Email format is not correct.</string>
 </resources>
