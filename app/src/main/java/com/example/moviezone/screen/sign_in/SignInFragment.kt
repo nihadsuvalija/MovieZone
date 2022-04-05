@@ -33,9 +33,10 @@ class SignInFragment: Fragment(), SignInViewInteractor{
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_in, container, false)
         viewModel = ViewModelProvider(this)[SignInViewModel::class.java]
         viewModel.setViewInteractor(this)
+        viewModel.setNavController(Navigation.findNavController(binding.root))
 
         binding.ivBackButton.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.navigateFromSignInToWelcome)
+            viewModel.onBackPressed()
         }
 
         binding.btnSignInSignin.setOnClickListener {
@@ -55,5 +56,10 @@ class SignInFragment: Fragment(), SignInViewInteractor{
 
     override fun setPasswordError(error: String) {
         binding.etPasswordSignin.error = error
+    }
+
+    override fun clearInputFields() {
+        binding.etEmailSignin.text.clear()
+        binding.etPasswordSignin.text.clear()
     }
 }
