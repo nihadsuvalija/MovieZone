@@ -22,6 +22,7 @@ class SignInViewModel: ViewModel() {
                 .addOnSuccessListener {
                     // TO DO: Navigate to the next screen
                     viewInteractor?.clearInputFields()
+                    navController?.navigate(R.id.navigateFromSignInToBase)
                 }.addOnFailureListener {
                     viewInteractor?.setEmailError(Const.USER_DOESNT_EXIST_ERROR)
             }

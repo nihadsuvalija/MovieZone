@@ -25,7 +25,6 @@ class SignUpFragment: Fragment(), SignUpViewInteractor {
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_up, container, false)
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
         viewModel.setViewInteractor(this)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
 
         binding.ivBackButton.setOnClickListener {
             viewModel.onBackPressed()
@@ -38,6 +37,11 @@ class SignUpFragment: Fragment(), SignUpViewInteractor {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setNavController(Navigation.findNavController(binding.root))
     }
 
     override fun setFullNameError(error: String) {

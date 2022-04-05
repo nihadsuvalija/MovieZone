@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SignInBinding
@@ -33,7 +34,7 @@ class SignInFragment: Fragment(), SignInViewInteractor{
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_in, container, false)
         viewModel = ViewModelProvider(this)[SignInViewModel::class.java]
         viewModel.setViewInteractor(this)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
+        //viewModel.setNavController(Navigation.findNavController(binding.root))
 
         binding.ivBackButton.setOnClickListener {
             viewModel.onBackPressed()
@@ -46,6 +47,11 @@ class SignInFragment: Fragment(), SignInViewInteractor{
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setNavController(Navigation.findNavController(binding.root))
     }
 
     /* SignInViewInteractor METHODS */

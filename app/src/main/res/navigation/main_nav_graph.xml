@@ -47,5 +47,14 @@
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/main_nav_graph"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/navigateFromSignInToBase"
+            app:destination="@id/baseFragment"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
+    <fragment
+        android:id="@+id/baseFragment"
+        android:name="com.example.moviezone.screen.base.BaseFragment"
+        android:label="BaseFragment" />
 </navigation>
