@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SplashBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashFragment: Fragment() {
 
@@ -25,10 +26,20 @@ class SplashFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.splash, container, false)
         viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
 
-        Handler().postDelayed(Runnable {
-            Navigation.findNavController(binding.root).navigate(R.id.navigateFromSplashToWelcome)
+        // TO DO: Fix deprecated handler.
+        Handler().postDelayed({
+            if (FirebaseAuth.getInstance().currentUser != null) {
+                viewModel.navigateToBase()
+            } else {
+                viewModel.navigateToWelcome()
+            }
         }, 2000)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setNavController(Navigation.findNavController(binding.root))
     }
 }

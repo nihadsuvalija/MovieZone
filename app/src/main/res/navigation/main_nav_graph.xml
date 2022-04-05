@@ -13,6 +13,9 @@
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/main_nav_graph"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/navigateFromSplashToBase"
+            app:destination="@id/baseFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
