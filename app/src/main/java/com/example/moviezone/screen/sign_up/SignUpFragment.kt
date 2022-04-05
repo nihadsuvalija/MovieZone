@@ -36,6 +36,8 @@ class SignUpFragment: Fragment() {
             binding.etFullNameSignup.text.clear()
             binding.etEmailSignup.text.clear()
             binding.etPasswordSignup.text.clear()
+
+            Navigation.findNavController(binding.root).navigate(R.id.navigateFromSignUpToSignIn)
         }
 
         return binding.root
