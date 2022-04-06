@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home_menu_item"
-        android:title="@string/menu_home_title"/>
+        android:icon="@drawable/home_indicator"
+        android:title=""
+        app:showAsAction="always"
+        />
     <item
         android:id="@+id/search_menu_item"
-        android:title="@string/menu_search_title"/>
+        android:title=""
+        android:icon="@drawable/search_indicator"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/profile_menu_item"
-        android:title="@string/menu_profile_title"/>
+        android:title=""
+        android:icon="@drawable/profile_indicator"
+        app:showAsAction="always"/>
 </menu>
