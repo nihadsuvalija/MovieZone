@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
 
@@ -35,6 +36,16 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             }
         }
 
+        setupTopRatedMovies()
+
         return binding.root
+    }
+
+    private fun setupTopRatedMovies() {
+        val adapter = TopRatedMoviesAdapter()
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvTopRatedMovies.layoutManager = layoutManager
+        viewModel.getTopRatedMovies(adapter)
+        binding.rvTopRatedMovies.adapter = adapter
     }
 }

@@ -3,6 +3,7 @@ package com.example.moviezone.screen.base
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -42,6 +43,13 @@ class BaseFragment: Fragment(), BaseViewInteractor {
             }
             true
         }
+
+        binding.vpBase.setOnTouchListener(object: View.OnTouchListener {
+            override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                return true
+            }
+
+        })
 
         binding.vpBase.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
