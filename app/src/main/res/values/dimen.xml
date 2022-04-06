@@ -4,6 +4,12 @@
     <dimen name="h2_text_size">24sp</dimen>
     <dimen name="h3_text_size">20sp</dimen>
 
+    <dimen name="margin_s">4sp</dimen>
+    <dimen name="margin_m">10sp</dimen>
+    <dimen name="margin_l">20sp</dimen>
+    <dimen name="margin_xl">40sp</dimen>
+    <dimen name="margin_xxl">60sp</dimen>
+
     <dimen name="button_margin_top">20sp</dimen>
     <dimen name="button_margin_side">40sp</dimen>
     <dimen name="button_padding">8sp</dimen>
@@ -19,6 +25,11 @@
     <dimen name="profile_image_home_size">50sp</dimen>
     <dimen name="profile_image_home_margin">20sp</dimen>
 
+    <dimen name="search_bar_height">40sp</dimen>
+    <dimen name="rv_latest_movies_height">200sp</dimen>
+
+    <dimen name="movie_item_height">190sp</dimen>
+    <dimen name="movie_item_width">120sp</dimen>
     <dimen name="bottom_navigation_view_height">70sp</dimen>
 
     <dimen name="divider_s">1dp</dimen>

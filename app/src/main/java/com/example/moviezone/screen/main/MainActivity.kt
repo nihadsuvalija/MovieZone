@@ -31,7 +31,5 @@ class MainActivity : AppCompatActivity() {
                 imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             }
         }
-
-        binding.viewModel = viewModel
     }
 }

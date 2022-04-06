@@ -19,4 +19,5 @@
     <color name="light_gray">#92929D</color>
     <color name="default_elements_background">#252836</color>
     <color name="element_stroke_color">#696974</color>
+    <color name="rating_color">#FF8700</color>
 </resources>

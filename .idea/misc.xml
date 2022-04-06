@@ -23,9 +23,13 @@
         <entry key="..\:/Users/Nihad/git_workspace/nihad-personal/MovieZone/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2985" />
         <entry key="app/src/main/res/drawable/back_button_background.xml" value="0.2455" />
         <entry key="app/src/main/res/drawable/custom_edit_text.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/ic_star.xml" value="0.2455" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/base.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/home.xml" value="0.48019457956914524" />
+        <entry key="app/src/main/res/layout/movie_item.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/profile.xml" value="0.35989583333333336" />
+        <entry key="app/src/main/res/layout/search.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/sign_in.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sign_up.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.2930253623188406" />

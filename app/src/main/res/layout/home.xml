@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -36,12 +37,15 @@
         <EditText
             android:id="@+id/ev_search_text_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/search_bar_height"
             android:background="@drawable/custom_edit_text"
             android:layout_marginTop="@dimen/edit_text_margin"
             android:layout_marginStart="@dimen/edit_text_margin"
             android:layout_marginEnd="@dimen/edit_text_margin"
-            android:paddingLeft="20sp"
+            android:paddingLeft="40sp"
+            android:hint="Search a title"
+            android:textColor="@color/light_gray"
+            android:textColorHint="@color/light_gray"
             app:layout_constraintStart_toEndOf="@id/iv_search_icon_home"
             app:layout_constraintTop_toBottomOf="@id/iv_profile_image_home"/>
 
@@ -54,6 +58,32 @@
             app:layout_constraintBottom_toBottomOf="@id/ev_search_text_home"
             app:layout_constraintStart_toStartOf="@id/ev_search_text_home"
             android:layout_marginStart="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_latest_movies_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latest movies"
+            android:layout_marginTop="@dimen/margin_xl"
+            android:layout_marginLeft="@dimen/margin_l"
+            android:textSize="@dimen/h2_text_size"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:alpha="0.5"
+            app:layout_constraintTop_toBottomOf="@id/ev_search_text_home"
+            app:layout_constraintBottom_toTopOf="@id/rv_latest_movies_home"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_latest_movies_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rv_latest_movies_height"
+            android:layout_marginTop="@dimen/margin_m"
+            tools:listitem="@layout/movie_item"
+
+            app:layout_constraintTop_toBottomOf="@id/tv_latest_movies_home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scrollbars="horizontal"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
