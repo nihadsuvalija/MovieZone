@@ -34,4 +34,20 @@ class HomeViewModel: ViewModel() {
             }
         })
     }
+
+    fun getPopularMovies(adapter: PopularMoviesAdapter) {
+        RetrofitInstance.api.getPopularMovies().enqueue(object: Callback<MoviesResponse> {
+            override fun onResponse(
+                call: Call<MoviesResponse>,
+                response: Response<MoviesResponse>
+            ) {
+                response.body()?.movies?.let { adapter.setPopularMovies(it) }
+            }
+
+            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
 }

@@ -3,7 +3,7 @@ package com.example.moviezone.utils
 import androidx.recyclerview.widget.DiffUtil
 import com.example.moviezone.model.Movie
 
-class TopRatedMoviesDiffUtil(
+class MoviesDiffUtil(
     private val oldList: List<Movie>,
     private val newList: List<Movie>
 ): DiffUtil.Callback() {

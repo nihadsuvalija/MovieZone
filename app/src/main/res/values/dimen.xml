@@ -23,7 +23,7 @@
     <dimen name="forgot_password_margin_top">10sp</dimen>
 
     <dimen name="profile_image_home_size">50sp</dimen>
-    <dimen name="profile_image_home_margin">20sp</dimen>
+    <dimen name="profile_image_home_margin">32sp</dimen>
 
     <dimen name="search_bar_height">40sp</dimen>
     <dimen name="rv_latest_movies_height">200sp</dimen>
