@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -75,55 +80,56 @@
             app:layout_constraintTop_toBottomOf="@id/ev_search_text_home"
             app:layout_constraintBottom_toTopOf="@id/tv_top_rated_movies"/>
 
-        <TextView
-            android:id="@+id/tv_top_rated_movies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Top rated movies"
-            android:layout_marginTop="@dimen/margin_l"
-            android:layout_marginLeft="@dimen/margin_l"
-            android:textSize="@dimen/h2_text_size"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:alpha="0.5"
-            app:layout_constraintTop_toBottomOf="@id/tv_click_on_movie"
-            app:layout_constraintBottom_toTopOf="@id/rv_top_rated_movies"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/tv_top_rated_movies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top rated movies"
+                android:layout_marginTop="@dimen/margin_l"
+                android:layout_marginLeft="@dimen/margin_l"
+                android:textSize="@dimen/h2_text_size"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:alpha="0.5"
+                app:layout_constraintTop_toBottomOf="@id/tv_click_on_movie"
+                app:layout_constraintBottom_toTopOf="@id/rv_top_rated_movies"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_top_rated_movies"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/rv_latest_movies_height"
-            android:layout_marginTop="@dimen/margin_m"
-            tools:listitem="@layout/movie_item"
-            android:background="@color/default_elements_background"
-            app:layout_constraintTop_toBottomOf="@id/tv_top_rated_movies"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:scrollbars="horizontal"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_top_rated_movies"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rv_latest_movies_height"
+                android:layout_marginTop="@dimen/margin_m"
+                tools:listitem="@layout/movie_item"
+                android:background="@color/default_elements_background"
+                app:layout_constraintTop_toBottomOf="@id/tv_top_rated_movies"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:scrollbars="horizontal"/>
 
-        <TextView
-            android:id="@+id/tv_popular_movies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Popular movies"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:textSize="24sp"
-            android:layout_marginTop="@dimen/margin_l"
-            android:layout_marginLeft="@dimen/margin_l"
-            android:alpha="0.5"
-            app:layout_constraintTop_toBottomOf="@id/rv_top_rated_movies"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/tv_popular_movies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular movies"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:textSize="24sp"
+                android:layout_marginTop="@dimen/margin_l"
+                android:layout_marginLeft="@dimen/margin_l"
+                android:alpha="0.5"
+                app:layout_constraintTop_toBottomOf="@id/rv_top_rated_movies"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_popular_movies"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/rv_latest_movies_height"
-            android:layout_marginTop="10sp"
-            tools:listitem="@layout/movie_item"
-            android:background="@color/default_elements_background"
-            app:layout_constraintTop_toBottomOf="@id/tv_popular_movies"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular_movies"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rv_latest_movies_height"
+                android:layout_marginTop="10sp"
+                tools:listitem="@layout/movie_item"
+                android:background="@color/default_elements_background"
+                app:layout_constraintTop_toBottomOf="@id/tv_popular_movies"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
