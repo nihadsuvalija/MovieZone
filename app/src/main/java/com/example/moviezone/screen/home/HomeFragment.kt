@@ -46,7 +46,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 return false
             }
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-                viewModel.onMovieClick()
+                //viewModel.onMovieClick()
             }
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
 
