@@ -2,8 +2,10 @@ package com.example.moviezone.screen.home
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.moviezone.R
 import com.example.moviezone.api.RetrofitInstance
 import com.example.moviezone.model.MoviesResponse
+import com.example.moviezone.screen.base.BaseFragmentDirections
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,6 +20,10 @@ class HomeViewModel: ViewModel() {
 
     fun setNavController(navController: NavController) {
         this.navController = navController
+    }
+
+    fun onMovieClicked() {
+        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails())
     }
 
     fun getTopRatedMovies(adapter: TopRatedMoviesAdapter) {

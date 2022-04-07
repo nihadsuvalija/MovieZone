@@ -23,11 +23,11 @@ class SplashViewModel: ViewModel(){
     }
 
     fun navigateToWelcome() {
-        navController?.navigate(R.id.navigateFromSplashToWelcome)
+        navController?.navigate(SplashFragmentDirections.navigateFromSplashToWelcome())
     }
 
     fun navigateToBase() {
-        navController?.navigate(R.id.navigateFromSplashToBase)
+        navController?.navigate(SplashFragmentDirections.navigateFromSplashToBase())
     }
 
     fun updateCurrentUser() {

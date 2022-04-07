@@ -31,6 +31,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel.setViewInteractor(this)
 
+
         binding.root.setOnClickListener {
             if(!binding.root.isFocused) {
                 val imm: InputMethodManager =
@@ -44,7 +45,9 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 binding.rvTopRatedMovies.parent.requestDisallowInterceptTouchEvent(true)
                 return false
             }
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+                viewModel.onMovieClick()
+            }
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
 
         })
@@ -80,5 +83,10 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel.getPopularMovies(popularMoviesAdapter)
         binding.rvPopularMovies.layoutManager = layoutManager
         binding.rvPopularMovies.adapter = popularMoviesAdapter
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
     }
 }

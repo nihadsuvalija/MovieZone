@@ -13,10 +13,10 @@ class WelcomeViewModel: ViewModel() {
     }
 
     fun onSignUpClicked() {
-        navController?.navigate(R.id.navigateFromWelcomeToSignUp)
+        navController?.navigate(WelcomeFragmentDirections.navigateFromWelcomeToSignUp())
     }
 
     fun onSignInClicked() {
-        navController?.navigate(R.id.navigateFromWelcomeToSignIn)
+        navController?.navigate(WelcomeFragmentDirections.navigateFromWelcomeToSignIn())
     }
 }

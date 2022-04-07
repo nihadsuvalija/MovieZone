@@ -57,7 +57,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
                 }
             }
         })
-        
+
         return binding.root
     }
 

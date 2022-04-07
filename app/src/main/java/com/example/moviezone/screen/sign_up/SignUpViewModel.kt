@@ -28,7 +28,7 @@ class SignUpViewModel: ViewModel() {
                         }
                     )
                     viewInteractor?.clearInputFields()
-                    navController?.navigate(R.id.navigateFromSignUpToSignIn)
+                    navController?.navigate(SignUpFragmentDirections.navigateFromSignUpToSignIn())
                 }.addOnFailureListener {
                     viewInteractor?.setFullNameError(it.message.toString())
                     viewInteractor?.setEmailError(it.message.toString())
@@ -42,7 +42,7 @@ class SignUpViewModel: ViewModel() {
     }
 
     fun onBackPressed() {
-        navController?.navigate(R.id.navigateFromSignUpToWelcome)
+        navController?.navigate(SignUpFragmentDirections.navigateFromSignUpToWelcome())
     }
 
     /* SETTER METHODS: */

@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import com.example.moviezone.R
 import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.utils.Const
@@ -25,7 +26,7 @@ class SignInViewModel: ViewModel() {
                     // TO DO: Navigate to the next screen
                     viewInteractor?.clearInputFields()
                     CurrentUser.update(FirebaseAuth.getInstance().currentUser?.displayName.toString(), email)
-                    navController?.navigate(R.id.navigateFromSignInToBase)
+                    navController?.navigate(SignInFragmentDirections.navigateFromSignInToBase())
                 }.addOnFailureListener {
                     viewInteractor?.setEmailError(Const.USER_DOESNT_EXIST_ERROR)
             }
@@ -36,7 +37,7 @@ class SignInViewModel: ViewModel() {
     }
 
     fun onBackPressed() {
-        navController?.navigate(R.id.navigateFromSignInToWelcome)
+        navController?.navigate(SignInFragmentDirections.navigateFromSignInToWelcome())
     }
 
     /* SETTER METHODS: */
