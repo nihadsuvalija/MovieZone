@@ -1,11 +1,17 @@
 package com.example.moviezone.screen.home
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.R
 import com.example.moviezone.api.RetrofitInstance
 import com.example.moviezone.model.MoviesResponse
+import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.base.BaseFragmentDirections
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,6 +19,7 @@ import retrofit2.Response
 class HomeViewModel: ViewModel() {
     private var viewInteractor: HomeViewInteractor? = null
     private var navController: NavController? = null
+    private var movieRepository = MovieRepository()
 
     fun setViewInteractor(viewInteractor: HomeViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -27,33 +34,18 @@ class HomeViewModel: ViewModel() {
     }
 
     fun getTopRatedMovies(adapter: TopRatedMoviesAdapter) {
-        RetrofitInstance.api.getTopRatedMovies().enqueue(object: Callback<MoviesResponse> {
-            override fun onResponse(
-                call: Call<MoviesResponse>,
-                response: Response<MoviesResponse>
-            ) {
-                response.body()?.movies?.let { adapter.setTopRatedMovies(it) }
+        viewModelScope.launch {
+            movieRepository.getTopRatedMovies().collect {
+                it.movies?.let { it1 -> adapter.setTopRatedMovies(it1) }
             }
-
-            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
+        }
     }
 
     fun getPopularMovies(adapter: PopularMoviesAdapter) {
-        RetrofitInstance.api.getPopularMovies().enqueue(object: Callback<MoviesResponse> {
-            override fun onResponse(
-                call: Call<MoviesResponse>,
-                response: Response<MoviesResponse>
-            ) {
-                response.body()?.movies?.let { adapter.setPopularMovies(it) }
+        viewModelScope.launch {
+            movieRepository.getPopularMovies().collect {
+                it.movies?.let { it1 -> adapter.setPopularMovies(it1) }
             }
-
-            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
+        }
     }
 }

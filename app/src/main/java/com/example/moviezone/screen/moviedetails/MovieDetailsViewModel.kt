@@ -1,10 +1,14 @@
 package com.example.moviezone.screen.moviedetails
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.api.RetrofitInstance
 import com.example.moviezone.model.DetailedMovie
+import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.utils.Const
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,6 +16,7 @@ import retrofit2.Response
 class MovieDetailsViewModel: ViewModel() {
     private var viewInteractor: MovieDetailsViewInteractor? = null
     private var navController: NavController? = null
+    private var movieRepository = MovieRepository()
 
     fun setViewInteractor(viewInteractor: MovieDetailsViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -26,10 +31,9 @@ class MovieDetailsViewModel: ViewModel() {
     }
 
     fun getMovieById(movieId: Int) {
-        RetrofitInstance.api.getMovieById(movieId).enqueue(object: Callback<DetailedMovie> {
-            override fun onResponse(call: Call<DetailedMovie>, response: Response<DetailedMovie>) {
-                println(response.body())
-                response.body()?.let {
+        viewModelScope.launch {
+            movieRepository.getMovieById(movieId).collect {
+                it.let {
                     viewInteractor?.setMovieTitle(it.originalTitle)
                     viewInteractor?.setMoviePoster(Const.TMDB_IMAGE_URL + it.posterPath)
                     viewInteractor?.setReleaseDate(it.releaseDate)
@@ -38,11 +42,6 @@ class MovieDetailsViewModel: ViewModel() {
                     viewInteractor?.setGenre(it.genres[0].name.toString())
                 }
             }
-
-            override fun onFailure(call: Call<DetailedMovie>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
+        }
     }
 }
