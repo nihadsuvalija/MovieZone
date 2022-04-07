@@ -48,7 +48,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
             true
         }
 
-        /*binding.vpBase.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+        binding.vpBase.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when(position) {
                     0 -> binding.bnvBase.selectedItemId = R.id.home_menu_item
@@ -56,9 +56,8 @@ class BaseFragment: Fragment(), BaseViewInteractor {
                     2 -> binding.bnvBase.selectedItemId = R.id.profile_menu_item
                 }
             }
-        })*/
-
-
+        })
+        
         return binding.root
     }
 
