@@ -1,8 +1,5 @@
 package com.example.moviezone.model
 
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-
 object CurrentUser {
     var fullName: String = "";
     var email: String = "";

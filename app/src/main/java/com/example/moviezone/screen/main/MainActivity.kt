@@ -1,13 +1,7 @@
 package com.example.moviezone.screen.main
 
 import android.content.Context
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat

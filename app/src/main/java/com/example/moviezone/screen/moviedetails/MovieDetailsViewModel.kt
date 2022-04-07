@@ -3,15 +3,10 @@ package com.example.moviezone.screen.moviedetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.example.moviezone.api.RetrofitInstance
-import com.example.moviezone.model.DetailedMovie
 import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.utils.Const
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MovieDetailsViewModel: ViewModel() {
     private var viewInteractor: MovieDetailsViewInteractor? = null

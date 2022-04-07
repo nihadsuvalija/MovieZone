@@ -2,7 +2,6 @@ package com.example.moviezone.repository
 
 import com.example.moviezone.api.RetrofitInstance
 import com.example.moviezone.model.DetailedMovie
-import com.example.moviezone.model.Movie
 import com.example.moviezone.model.MoviesResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

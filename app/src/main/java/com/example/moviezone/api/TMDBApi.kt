@@ -1,11 +1,8 @@
 package com.example.moviezone.api
 
 import com.example.moviezone.model.DetailedMovie
-import com.example.moviezone.model.Genre
-import com.example.moviezone.model.Movie
 import com.example.moviezone.model.MoviesResponse
 import com.example.moviezone.utils.Const
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 

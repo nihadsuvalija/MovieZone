@@ -1,6 +1,5 @@
 package com.example.moviezone.screen.base
 
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 

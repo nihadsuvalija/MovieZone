@@ -1,17 +1,11 @@
 package com.example.moviezone.screen.sign_in
 
-import android.content.pm.SigningInfo
-import android.util.Log
 import android.util.Patterns
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavDirections
-import com.example.moviezone.R
 import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 
 class SignInViewModel: ViewModel() {
 

@@ -13,7 +13,6 @@ import com.example.moviezone.databinding.MovieItemBinding
 import com.example.moviezone.model.Movie
 import com.example.moviezone.utils.Const
 import com.example.moviezone.utils.MoviesDiffUtil
-import com.google.firebase.database.DatabaseReference
 
 class PopularMoviesAdapter: RecyclerView.Adapter<PopularMoviesAdapter.ViewHolder>() {
 

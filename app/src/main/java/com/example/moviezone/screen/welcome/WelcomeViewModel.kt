@@ -2,7 +2,6 @@ package com.example.moviezone.screen.welcome
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.moviezone.R
 
 class WelcomeViewModel: ViewModel() {
 

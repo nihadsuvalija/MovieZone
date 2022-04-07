@@ -1,13 +1,8 @@
 package com.example.moviezone.screen.sign_up
 
-import android.util.Log
 import android.util.Patterns
-import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.example.moviezone.R
-import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
