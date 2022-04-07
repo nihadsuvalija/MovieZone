@@ -69,5 +69,15 @@
     <fragment
         android:id="@+id/movieDetailsFragment"
         android:name="com.example.moviezone.screen.moviedetails.MovieDetailsFragment"
-        android:label="MovieDetailsFragment" />
+        android:label="MovieDetailsFragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/navigateFromMovieDetailsToBase"
+            app:destination="@id/baseFragment"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

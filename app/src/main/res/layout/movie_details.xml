@@ -14,12 +14,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="600sp"
                 android:alpha="0.2"
-                android:background="@drawable/movie_collage"
-                android:scaleType="centerCrop"
-                android:src="@drawable/shadow_effect"
+                android:src="@drawable/movie_collage"
+                android:scaleType="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="600sp"
+                android:background="@drawable/shadow_effect"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <ImageView
                 android:id="@+id/iv_back_button"
@@ -30,14 +37,19 @@
                 android:scaleType="center"
                 android:src="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_movie_title_moviedetails"/>
 
             <TextView
                 android:id="@+id/tv_movie_title_moviedetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200sp"
+                android:layout_height="50sp"
                 android:text="Movie Title"
                 android:textSize="@dimen/h1_text_size"
+                android:textAlignment="center"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="@dimen/h1_text_size"
+                android:autoSizeMinTextSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/iv_back_button" />
@@ -69,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1982"
-                android:layout_marginTop="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_xl"
                 app:layout_constraintEnd_toStartOf="@id/divider1_moviedetails"
                 app:layout_constraintStart_toEndOf="@id/iv_release_date_moviedetails"
                 app:layout_constraintTop_toBottomOf="@id/iv_movie_poster_moviedetails" />

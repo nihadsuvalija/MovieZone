@@ -22,8 +22,8 @@ class HomeViewModel: ViewModel() {
         this.navController = navController
     }
 
-    fun onMovieClicked() {
-        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails())
+    fun onMovieClick(movieId: Int) {
+        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId))
     }
 
     fun getTopRatedMovies(adapter: TopRatedMoviesAdapter) {

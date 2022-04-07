@@ -6,14 +6,8 @@ import androidx.navigation.NavController
 
 class BaseViewModel: ViewModel() {
 
-    private val TAG = "BaseViewModel"
-
     private var viewInteractor: BaseViewInteractor? = null
     private var navController: NavController? = null
-
-    fun setFragments(fragments: List<Fragment>) {
-
-    }
 
     fun setViewInteractor(viewInteractor: BaseViewInteractor) {
         this.viewInteractor = viewInteractor

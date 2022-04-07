@@ -45,9 +45,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 binding.rvTopRatedMovies.parent.requestDisallowInterceptTouchEvent(true)
                 return false
             }
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-                //viewModel.onMovieClick()
-            }
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
 
         })
