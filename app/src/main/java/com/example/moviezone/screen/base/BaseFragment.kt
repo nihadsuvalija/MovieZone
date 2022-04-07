@@ -1,5 +1,6 @@
 package com.example.moviezone.screen.base
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +26,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
     private lateinit var viewModel: BaseViewModel
     private var fragments = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,20 +39,13 @@ class BaseFragment: Fragment(), BaseViewInteractor {
         setupViewPager()
 
         binding.bnvBase.setOnItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.home_menu_item -> binding.vpBase.currentItem = 0
                 R.id.search_menu_item -> binding.vpBase.currentItem = 1
                 R.id.profile_menu_item -> binding.vpBase.currentItem = 2
             }
             true
         }
-
-        binding.vpBase.setOnTouchListener(object: View.OnTouchListener {
-            override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-                return true
-            }
-
-        })
 
         binding.vpBase.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

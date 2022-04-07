@@ -29,6 +29,7 @@ class TopRatedMoviesAdapter: RecyclerView.Adapter<TopRatedMoviesAdapter.TopRated
         val movieTitle = binding.tvMovieTitleMovieitem
         val moviePoster = binding.ivMoviePosterMovieitem
         val rating = binding.tvRatingMovieitem
+        val genre = binding.tvGenreMovieitem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopRatedMoviesViewHolder {
@@ -41,11 +42,11 @@ class TopRatedMoviesAdapter: RecyclerView.Adapter<TopRatedMoviesAdapter.TopRated
     override fun onBindViewHolder(holder: TopRatedMoviesViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
             .load(Const.TMDB_IMAGE_URL + topRatedMovies[position].posterPath)
-            .into(binding.ivMoviePosterMovieitem)
+            .into(holder.moviePoster)
         
-        binding.tvMovieTitleMovieitem.text = topRatedMovies[position].originalTitle
-        binding.tvGenreMovieitem.text = "Temporary genre"
-        binding.tvRatingMovieitem.text = topRatedMovies[position].voteAverage.toString()
+        holder.movieTitle.text = topRatedMovies[position].originalTitle
+        holder.genre.text = "Temporary genre"
+        holder.rating.text = topRatedMovies[position].voteAverage.toString()
     }
 
     override fun getItemCount(): Int {

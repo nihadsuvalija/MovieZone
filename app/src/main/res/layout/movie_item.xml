@@ -12,9 +12,9 @@
 
         <ImageView
             android:id="@+id/iv_movie_poster_movieitem"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movie_item_poster_height"
+            android:scaleType="center"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toTopOf="@id/tv_movie_title_movieitem"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,11 +23,15 @@
 
         <TextView
             android:id="@+id/tv_movie_title_movieitem"
-            android:layout_width="wrap_content"
+            android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
             android:fontFamily="@font/sf_pro_display_bold"
             android:text="Movie Title"
+            android:textSize="10sp"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeMinTextSize="6sp"
             app:layout_constraintBottom_toTopOf="@id/tv_genre_movieitem"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_movie_poster_movieitem"/>
@@ -62,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10sp"
             android:text="Genre"
-            android:textSize="12sp"
+            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_movie_title_movieitem"
             app:layout_constraintStart_toStartOf="@id/tv_movie_title_movieitem"

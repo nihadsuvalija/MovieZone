@@ -30,6 +30,7 @@
 
     <dimen name="movie_item_height">190sp</dimen>
     <dimen name="movie_item_width">120sp</dimen>
+    <dimen name="movie_item_poster_height">130sp</dimen>
     <dimen name="bottom_navigation_view_height">70sp</dimen>
 
     <dimen name="divider_s">1dp</dimen>

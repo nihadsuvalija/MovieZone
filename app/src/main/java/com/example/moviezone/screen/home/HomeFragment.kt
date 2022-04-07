@@ -35,17 +35,17 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             }
         }
+        val adapter = TopRatedMoviesAdapter()
+        viewModel.getTopRatedMovies(adapter)
 
-        setupTopRatedMovies()
+        setupTopRatedMovies(adapter)
 
         return binding.root
     }
 
-    private fun setupTopRatedMovies() {
-        val adapter = TopRatedMoviesAdapter()
+    private fun setupTopRatedMovies(adapter: TopRatedMoviesAdapter) {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvTopRatedMovies.layoutManager = layoutManager
-        viewModel.getTopRatedMovies(adapter)
         binding.rvTopRatedMovies.adapter = adapter
     }
 }
