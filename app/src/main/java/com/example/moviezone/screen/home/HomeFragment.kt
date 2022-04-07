@@ -3,6 +3,7 @@ package com.example.moviezone.screen.home
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
 import com.example.moviezone.model.CurrentUser
@@ -36,6 +38,25 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             }
         }
+
+        binding.rvTopRatedMovies.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                binding.rvTopRatedMovies.parent.requestDisallowInterceptTouchEvent(true)
+                return false
+            }
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+
+        })
+
+        binding.rvPopularMovies.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                binding.rvPopularMovies.parent.requestDisallowInterceptTouchEvent(true)
+                return false
+            }
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
 
         binding.tvHelloHome.text = "Hello, " + CurrentUser.fullName
 

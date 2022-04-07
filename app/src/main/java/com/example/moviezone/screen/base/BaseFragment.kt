@@ -2,6 +2,7 @@ package com.example.moviezone.screen.base
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -47,7 +48,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
             true
         }
 
-        binding.vpBase.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+        /*binding.vpBase.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when(position) {
                     0 -> binding.bnvBase.selectedItemId = R.id.home_menu_item
@@ -55,7 +56,8 @@ class BaseFragment: Fragment(), BaseViewInteractor {
                     2 -> binding.bnvBase.selectedItemId = R.id.profile_menu_item
                 }
             }
-        })
+        })*/
+
 
         return binding.root
     }
