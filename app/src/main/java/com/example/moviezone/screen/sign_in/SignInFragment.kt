@@ -45,7 +45,6 @@ class SignInFragment: Fragment(), SignInViewInteractor{
                 binding.etEmailSignin.text.toString(),
                 binding.etPasswordSignin.text.toString()
             )
-
         }
 
         return binding.root

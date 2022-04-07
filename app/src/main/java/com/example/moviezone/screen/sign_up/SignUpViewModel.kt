@@ -10,6 +10,7 @@ import com.example.moviezone.R
 import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 
 class SignUpViewModel: ViewModel() {
 
@@ -18,14 +19,14 @@ class SignUpViewModel: ViewModel() {
     private var navController: NavController? = null
 
     fun registerUser(fullName: String, email: String, password: String) {
-        CurrentUser.fullName = fullName
-        CurrentUser.email = email
-        CurrentUser.password = password
-
         if (isFullNameValid(fullName) && isEmailValid(email) && isPasswordValid(password)) {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
-                    Log.i(TAG, "User successfully registered")
+                    FirebaseAuth.getInstance().currentUser?.updateProfile(
+                        userProfileChangeRequest {
+                            displayName = fullName
+                        }
+                    )
                     viewInteractor?.clearInputFields()
                     navController?.navigate(R.id.navigateFromSignUpToSignIn)
                 }.addOnFailureListener {

@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
+import com.example.moviezone.model.CurrentUser
 
 class HomeFragment: Fragment(), HomeViewInteractor {
 
@@ -35,6 +36,8 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
             }
         }
+
+        binding.tvHelloHome.text = "Hello, " + CurrentUser.fullName
 
         setupTopRatedMovies()
         setupPopularMovies()

@@ -35,6 +35,8 @@ class SearchFragment: Fragment(), SearchViewInteractor {
             }
         }
 
+        viewModel.logOut()
+
         return binding.root
     }
 

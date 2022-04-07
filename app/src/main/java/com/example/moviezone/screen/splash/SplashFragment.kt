@@ -26,6 +26,7 @@ class SplashFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.splash, container, false)
         viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
 
+        viewModel.updateCurrentUser()
         // TO DO: Fix deprecated handler.
         Handler().postDelayed({
             if (FirebaseAuth.getInstance().currentUser != null) {
@@ -34,7 +35,6 @@ class SplashFragment: Fragment() {
                 viewModel.navigateToWelcome()
             }
         }, 2000)
-
         return binding.root
     }
 

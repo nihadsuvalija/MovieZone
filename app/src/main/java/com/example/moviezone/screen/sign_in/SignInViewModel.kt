@@ -7,8 +7,10 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.R
+import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class SignInViewModel: ViewModel() {
 
@@ -22,6 +24,7 @@ class SignInViewModel: ViewModel() {
                 .addOnSuccessListener {
                     // TO DO: Navigate to the next screen
                     viewInteractor?.clearInputFields()
+                    CurrentUser.update(FirebaseAuth.getInstance().currentUser?.displayName.toString(), email)
                     navController?.navigate(R.id.navigateFromSignInToBase)
                 }.addOnFailureListener {
                     viewInteractor?.setEmailError(Const.USER_DOESNT_EXIST_ERROR)

@@ -2,6 +2,8 @@ package com.example.moviezone.screen.search
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class SearchViewModel: ViewModel() {
     private var navController: NavController? = null
@@ -13,5 +15,9 @@ class SearchViewModel: ViewModel() {
 
     fun setViewInteractor(viewInteractor: SearchViewInteractor) {
         this.viewInteractor = viewInteractor
+    }
+
+    fun logOut() {
+        FirebaseAuth.getInstance().signOut()
     }
 }
