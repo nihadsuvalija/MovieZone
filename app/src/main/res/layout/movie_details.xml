@@ -39,7 +39,7 @@
                 android:src="@drawable/ic_back"
                 app:layout_constraintEnd_toStartOf="@id/tv_movie_title_moviedetails"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/tv_movie_title_moviedetails"
@@ -236,6 +236,7 @@
                 android:id="@+id/rv_cast_and_crew_moviedetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_s"
                 app:layout_constraintTop_toBottomOf="@id/tv_cast_and_crew_title_moviedetails"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

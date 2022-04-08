@@ -13,9 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
 import com.example.moviezone.model.CurrentUser
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class HomeFragment: Fragment(), HomeViewInteractor {
 
@@ -60,6 +63,16 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         })
 
         binding.tvHelloHome.text = "Hello, " + CurrentUser.fullName
+
+        if (FirebaseAuth.getInstance().currentUser?.photoUrl != null) {
+            Glide.with(requireContext())
+                .load(FirebaseAuth.getInstance().currentUser?.photoUrl)
+                .into(binding.ivProfileImageHome)
+        } else {
+            Glide.with(requireContext())
+                .load(R.drawable.ic_person)
+                .into(binding.ivProfileImageHome)
+        }
 
         setupTopRatedMovies()
         setupPopularMovies()
