@@ -1,22 +1,17 @@
 package com.example.moviezone.screen.moviedetails
 
-import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.PersonCreditsBinding
 import com.example.moviezone.model.Cast
-import com.example.moviezone.model.Crew
-import com.example.moviezone.model.Movie
 import com.example.moviezone.model.MovieCredits
 import com.example.moviezone.utils.Const
 
-class CreditsAdapter: RecyclerView.Adapter<CreditsAdapter.CreditsViewHolder>() {
+class CastAdapter: RecyclerView.Adapter<CastAdapter.CreditsViewHolder>() {
 
     private lateinit var binding: PersonCreditsBinding
     private var cast: List<Cast> = listOf()

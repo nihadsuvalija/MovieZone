@@ -84,7 +84,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setMovieCredits(credits: MovieCredits) {
-        val adapter = CreditsAdapter()
+        val adapter = CastAdapter()
         adapter.setCredits(credits)
         binding.rvCastAndCrewMoviedetails.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvCastAndCrewMoviedetails.adapter = adapter
