@@ -1,6 +1,7 @@
 package com.example.moviezone.api
 
 import com.example.moviezone.model.DetailedMovie
+import com.example.moviezone.model.MovieCredits
 import com.example.moviezone.model.MoviesResponse
 import com.example.moviezone.utils.Const
 import retrofit2.http.GET
@@ -17,4 +18,8 @@ interface TMDBApi {
 
     @GET("movie/{movie_id}?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getMovieById(@Path("movie_id") id: Int): DetailedMovie
+
+    // https://api.themoviedb.org/3/movie/123/credits?api_key=dea192f1a4b8334963672850dcddf227&language=en-US
+    @GET("movie/{movie_id}}/credits?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getCreditsByMovieId(@Path("movie_id") id: Int): MovieCredits
 }

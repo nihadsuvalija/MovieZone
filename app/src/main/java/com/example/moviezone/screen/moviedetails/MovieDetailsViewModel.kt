@@ -35,7 +35,18 @@ class MovieDetailsViewModel: ViewModel() {
                     viewInteractor?.setRuntime(it.runtime.toString() + " minutes")
                     viewInteractor?.setBackdrop(Const.TMDB_IMAGE_URL + it.backdropPath)
                     viewInteractor?.setGenre(it.genres[0].name.toString())
+                    viewInteractor?.setRating(it.voteAverage.toString())
+                    viewInteractor?.setStoryLine(it.overview)
                 }
+            }
+        }
+    }
+
+    fun getCreditsByMovieId(movieId: Int) {
+        viewModelScope.launch {
+            movieRepository.getCreditsByMovieId(movieId).collect {
+                // Set the cast and crew of movies
+                viewInteractor?.setMovieCredits(it)
             }
         }
     }

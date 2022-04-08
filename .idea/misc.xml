@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/back_button_background.xml" value="0.2455" />
         <entry key="app/src/main/res/drawable/bottom_bar_background.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/custom_edit_text.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/default_profile_image.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/home_indicator.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_home_selected.xml" value="0.1925" />
@@ -39,6 +40,7 @@
         <entry key="app/src/main/res/layout/home.xml" value="0.38436482084690554" />
         <entry key="app/src/main/res/layout/movie_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/movie_item.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/person_credits.xml" value="0.2954253954681488" />
         <entry key="app/src/main/res/layout/profile.xml" value="0.35989583333333336" />
         <entry key="app/src/main/res/layout/search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/sign_in.xml" value="0.33" />

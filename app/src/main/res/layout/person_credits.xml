@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:background="@drawable/back_button_background"
+        android:layout_margin="@dimen/margin_s">
+
+        <ImageView
+            android:id="@+id/iv_profile_image_personcredits"
+            android:layout_width="@dimen/profile_image_home_size"
+            android:layout_height="@dimen/profile_image_home_size"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_name_personcredits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Firstname\nLastname"
+            android:layout_marginTop="10sp"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile_image_personcredits"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
