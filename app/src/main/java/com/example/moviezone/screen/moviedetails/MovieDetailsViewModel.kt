@@ -50,4 +50,12 @@ class MovieDetailsViewModel: ViewModel() {
             }
         }
     }
+
+    fun getReviewsByMovieId(movieId: Int) {
+        viewModelScope.launch {
+            movieRepository.getReviewsByMovieId(movieId).collect {
+                viewInteractor?.setMovieReviews(it.reviews)
+            }
+        }
+    }
 }

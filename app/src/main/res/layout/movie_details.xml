@@ -239,9 +239,33 @@
                 android:layout_marginTop="@dimen/margin_s"
                 app:layout_constraintTop_toBottomOf="@id/tv_cast_and_crew_title_moviedetails"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:listitem="@layout/person_credits"/>
+                app:layout_constraintEnd_toEndOf="parent"/>
 
+            <TextView
+                android:id="@+id/tv_reviews_moviedetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back_button_background"
+                android:text="Reviews"
+                android:textSize="@dimen/h2_text_size"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingTop="5sp"
+                android:paddingBottom="5sp"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_l"
+                app:layout_constraintTop_toBottomOf="@id/rv_cast_and_crew_moviedetails"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_reviews_moviedetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_s"
+                app:layout_constraintTop_toBottomOf="@id/tv_reviews_moviedetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

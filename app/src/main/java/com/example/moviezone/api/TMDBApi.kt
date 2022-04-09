@@ -1,5 +1,6 @@
 package com.example.moviezone.api
 
+import com.example.moviezone.api.response.ReviewResponse
 import com.example.moviezone.model.DetailedMovie
 import com.example.moviezone.model.MovieCredits
 import com.example.moviezone.model.MoviesResponse
@@ -22,4 +23,8 @@ interface TMDBApi {
     // https://api.themoviedb.org/3/movie/123/credits?api_key=dea192f1a4b8334963672850dcddf227&language=en-US
     @GET("movie/{movie_id}}/credits?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getCreditsByMovieId(@Path("movie_id") id: Int): MovieCredits
+
+    // https://api.themoviedb.org/3/movie/150/reviews?api_key=dea192f1a4b8334963672850dcddf227&language=en-US&page=1
+    @GET("3/movie/{movie_id}}/reviews?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getReviewsByMovieId(@Path("movie_id") id: Int): ReviewResponse
 }

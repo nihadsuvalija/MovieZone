@@ -12,8 +12,10 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
+import com.example.moviezone.api.response.ReviewResponse
 import com.example.moviezone.databinding.MovieDetailsBinding
 import com.example.moviezone.model.MovieCredits
+import com.example.moviezone.model.Review
 
 
 class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
@@ -34,6 +36,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
         viewModel.getMovieById(args.movieId)
         viewModel.getCreditsByMovieId(args.movieId)
+        viewModel.getReviewsByMovieId(args.movieId)
 
         binding.ivBackButton.setOnClickListener {
             viewModel.navigateBack()
@@ -88,5 +91,12 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         adapter.setCredits(credits)
         binding.rvCastAndCrewMoviedetails.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvCastAndCrewMoviedetails.adapter = adapter
+    }
+
+    override fun setMovieReviews(reviews: List<Review>) {
+        val adapter = ReviewAdapter()
+        adapter.setReviews(reviews)
+        binding.rvReviewsMoviedetails.layoutManager = LinearLayoutManager(context)
+        binding.rvReviewsMoviedetails.adapter = adapter
     }
 }

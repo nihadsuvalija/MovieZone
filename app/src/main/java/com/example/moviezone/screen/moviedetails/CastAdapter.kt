@@ -3,12 +3,14 @@ package com.example.moviezone.screen.moviedetails
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.PersonCreditsBinding
 import com.example.moviezone.model.Cast
 import com.example.moviezone.model.MovieCredits
+import com.example.moviezone.utils.CastDiffUtil
 import com.example.moviezone.utils.Const
 
 class CastAdapter: RecyclerView.Adapter<CastAdapter.CreditsViewHolder>() {
@@ -17,7 +19,10 @@ class CastAdapter: RecyclerView.Adapter<CastAdapter.CreditsViewHolder>() {
     private var cast: List<Cast> = listOf()
 
     fun setCredits(movieCredits: MovieCredits) {
+        val diffUtil = CastDiffUtil(this.cast, movieCredits.cast)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
         this.cast = movieCredits.cast
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class CreditsViewHolder(binding: PersonCreditsBinding): RecyclerView.ViewHolder(binding.root) {
