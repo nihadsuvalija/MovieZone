@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.moviezone.R
 import com.example.moviezone.databinding.ProfileBinding
 
@@ -34,6 +35,27 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
             }
         }
 
+        binding.btnSignOutProfile.setOnClickListener {
+            viewModel.signOut()
+        }
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
+    }
+
+    override fun setProfilePicture(imagePath: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setFullName(name: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setEmail(email: String) {
+        TODO("Not yet implemented")
     }
 }

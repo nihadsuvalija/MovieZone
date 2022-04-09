@@ -219,7 +219,7 @@
                 android:id="@+id/tv_cast_and_crew_title_moviedetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cast and Crew"
+                android:text="@string/cast_text"
                 android:textSize="@dimen/h2_text_size"
                 android:fontFamily="@font/sf_pro_display_bold"
                 android:paddingStart="20sp"
