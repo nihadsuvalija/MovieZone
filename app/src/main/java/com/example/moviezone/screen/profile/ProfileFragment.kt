@@ -32,6 +32,7 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
 
         viewModel.setProfileData()
         setupAccountSettings()
+        setupMoreSettings()
 
         binding.root.setOnClickListener {
             if(!binding.root.isFocused) {
@@ -81,5 +82,11 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
         val accountSettingsAdapter = AccountSettingsAdapter()
         binding.rvAccountOptionsProfile.layoutManager = LinearLayoutManager(context)
         binding.rvAccountOptionsProfile.adapter = accountSettingsAdapter
+    }
+
+    private fun setupMoreSettings() {
+        val moreSettingsAdapter = MoreSettingsAdapter()
+        binding.rvMoreOptionsProfile.layoutManager = LinearLayoutManager(context)
+        binding.rvMoreOptionsProfile.adapter = moreSettingsAdapter
     }
 }

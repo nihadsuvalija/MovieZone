@@ -22,7 +22,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
     private lateinit var viewModel: BaseViewModel
     private var fragments = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
-    @SuppressLint("ClickableViewAccessibility")
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

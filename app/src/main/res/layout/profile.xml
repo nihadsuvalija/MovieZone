@@ -74,7 +74,7 @@
                 app:layout_constraintTop_toBottomOf="@id/v_profile_info_container_profile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/btn_sign_out_profile"/>
+                app:layout_constraintBottom_toTopOf="@id/v_more_container_profile"/>
 
             <TextView
                 android:id="@+id/tv_account_title_profile"
@@ -93,12 +93,47 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_m"
-                tools:listitem="@layout/option_item"
                 android:overScrollMode="never"
                 app:layout_constraintTop_toBottomOf="@id/tv_account_title_profile"
                 app:layout_constraintStart_toStartOf="@id/v_account_container_profile"
                 app:layout_constraintEnd_toEndOf="@id/v_account_container_profile"
                 app:layout_constraintBottom_toBottomOf="@id/v_account_container_profile"/>
+
+            <View
+                android:id="@+id/v_more_container_profile"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_s"
+                android:background="@drawable/profile_element_background"
+                app:layout_constraintTop_toBottomOf="@id/v_account_container_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btn_sign_out_profile"/>
+
+            <TextView
+                android:id="@+id/tv_more_title_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/more_txt"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_m"
+                android:textSize="@dimen/h3_text_size"
+                android:fontFamily="@font/sf_pro_display_bold"
+                app:layout_constraintTop_toTopOf="@id/v_more_container_profile"
+                app:layout_constraintStart_toStartOf="@id/v_more_container_profile"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_more_options_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_m"
+                android:overScrollMode="never"
+                app:layout_constraintTop_toBottomOf="@id/tv_more_title_profile"
+                app:layout_constraintStart_toStartOf="@id/v_more_container_profile"
+                app:layout_constraintEnd_toEndOf="@id/v_more_container_profile"
+                app:layout_constraintBottom_toBottomOf="@id/v_more_container_profile"/>
 
             <Button
                 android:id="@+id/btn_sign_out_profile"
@@ -107,7 +142,7 @@
                 android:layout_margin="@dimen/margin_xl"
                 android:text="@string/sign_out_txt"
                 android:background="@drawable/custom_edit_text"
-                app:layout_constraintTop_toBottomOf="@id/v_account_container_profile"
+                app:layout_constraintTop_toBottomOf="@id/v_more_container_profile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
