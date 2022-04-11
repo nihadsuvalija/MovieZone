@@ -23,6 +23,8 @@ class ReviewAdapter: RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     }
 
     class ReviewViewHolder(binding: ReviewBinding): RecyclerView.ViewHolder(binding.root) {
+        val author = binding.tvAuthorReview
+        val content = binding.tvContentReview
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,7 +36,8 @@ class ReviewAdapter: RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-
+        holder.author.text = reviews[position].author
+        holder.content.text = reviews[position].content
     }
 
     override fun getItemCount(): Int {

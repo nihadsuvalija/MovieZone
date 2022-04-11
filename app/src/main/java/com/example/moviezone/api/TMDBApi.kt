@@ -25,6 +25,6 @@ interface TMDBApi {
     suspend fun getCreditsByMovieId(@Path("movie_id") id: Int): MovieCredits
 
     // https://api.themoviedb.org/3/movie/150/reviews?api_key=dea192f1a4b8334963672850dcddf227&language=en-US&page=1
-    @GET("3/movie/{movie_id}}/reviews?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    @GET("movie/{movie_id}}/reviews?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getReviewsByMovieId(@Path("movie_id") id: Int): ReviewResponse
 }
