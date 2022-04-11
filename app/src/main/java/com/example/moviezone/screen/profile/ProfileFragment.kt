@@ -2,6 +2,7 @@ package com.example.moviezone.screen.profile
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.ProfileBinding
 
@@ -26,6 +29,9 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
         binding = DataBindingUtil.inflate(inflater, R.layout.profile, container, false)
         viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         viewModel.setViewInteractor(this)
+
+        viewModel.setProfileData()
+        setupAccountSettings()
 
         binding.root.setOnClickListener {
             if(!binding.root.isFocused) {
@@ -48,14 +54,32 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
     }
 
     override fun setProfilePicture(imagePath: String) {
-        TODO("Not yet implemented")
+        if (imagePath == "") {
+            Glide.with(requireContext())
+                .load(imagePath)
+                .circleCrop()
+                .into(binding.ivProfileImageProfile)
+        } else {
+            Glide.with(requireContext())
+                .load(R.drawable.ic_person)
+                .circleCrop()
+                .into(binding.ivProfileImageProfile)
+        }
     }
 
     override fun setFullName(name: String) {
-        TODO("Not yet implemented")
+        binding.tvFullNameProfile.text = name
     }
 
     override fun setEmail(email: String) {
-        TODO("Not yet implemented")
+        binding.tvEmailProfile.text = email
+    }
+
+    // SETUP METHODS:
+
+    private fun setupAccountSettings() {
+        val accountSettingsAdapter = AccountSettingsAdapter()
+        binding.rvAccountOptionsProfile.layoutManager = LinearLayoutManager(context)
+        binding.rvAccountOptionsProfile.adapter = accountSettingsAdapter
     }
 }

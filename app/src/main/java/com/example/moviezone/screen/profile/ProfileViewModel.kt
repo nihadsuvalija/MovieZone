@@ -2,6 +2,7 @@ package com.example.moviezone.screen.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.moviezone.R
 import com.example.moviezone.screen.base.BaseFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 
@@ -20,5 +21,11 @@ class ProfileViewModel: ViewModel() {
     fun signOut() {
         FirebaseAuth.getInstance().signOut()
         navController?.navigate(BaseFragmentDirections.navigateFromBaseToWelcome())
+    }
+
+    fun setProfileData() {
+        viewInteractor?.setProfilePicture(FirebaseAuth.getInstance().currentUser?.photoUrl.toString())
+        viewInteractor?.setEmail(FirebaseAuth.getInstance().currentUser?.email.toString())
+        viewInteractor?.setFullName(FirebaseAuth.getInstance().currentUser?.displayName.toString())
     }
 }

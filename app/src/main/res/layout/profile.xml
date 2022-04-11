@@ -1,20 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btn_sign_out_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_out_txt"
-            android:background="@drawable/default_button_design"
-            android:padding="30sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:id="@+id/tv_profile_heading_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_txt"
+                android:alpha="0.7"
+                android:textSize="@dimen/h2_text_size"
+                android:layout_margin="@dimen/margin_l"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <View
+                android:id="@+id/v_profile_info_container_profile"
+                android:layout_width="match_parent"
+                android:layout_height="80sp"
+                android:background="@drawable/profile_element_background"
+                app:layout_constraintTop_toBottomOf="@id/tv_profile_heading_profile"
+                android:layout_margin="@dimen/margin_l"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            </View>
+
+            <ImageView
+                android:id="@+id/iv_profile_image_profile"
+                android:layout_width="@dimen/profile_image_home_size"
+                android:layout_height="@dimen/profile_image_home_size"
+                android:src="@drawable/ic_person"
+                android:layout_marginStart="@dimen/margin_l"
+                app:layout_constraintTop_toTopOf="@id/v_profile_info_container_profile"
+                app:layout_constraintStart_toStartOf="@id/v_profile_info_container_profile"
+                app:layout_constraintBottom_toBottomOf="@id/v_profile_info_container_profile"/>
+
+            <TextView
+                android:id="@+id/tv_full_name_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:text="@string/full_name_txt"
+                android:fontFamily="@font/sf_pro_display_bold"
+                app:layout_constraintTop_toTopOf="@id/iv_profile_image_profile"
+                app:layout_constraintStart_toEndOf="@id/iv_profile_image_profile"/>
+
+            <TextView
+                android:id="@+id/tv_email_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email_txt"
+                android:alpha="0.5"
+                app:layout_constraintTop_toBottomOf="@id/tv_full_name_profile"
+                app:layout_constraintStart_toStartOf="@id/tv_full_name_profile"
+                app:layout_constraintBottom_toBottomOf="@id/iv_profile_image_profile"/>
+
+            <View
+                android:id="@+id/v_account_container_profile"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/profile_element_background"
+                android:layout_margin="@dimen/margin_l"
+                app:layout_constraintTop_toBottomOf="@id/v_profile_info_container_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btn_sign_out_profile"/>
+
+            <TextView
+                android:id="@+id/tv_account_title_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account_txt"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_m"
+                android:textSize="@dimen/h3_text_size"
+                android:fontFamily="@font/sf_pro_display_bold"
+                app:layout_constraintTop_toTopOf="@id/v_account_container_profile"
+                app:layout_constraintStart_toStartOf="@id/v_account_container_profile"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_account_options_profile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_m"
+                tools:listitem="@layout/option_item"
+                app:layout_constraintTop_toBottomOf="@id/tv_account_title_profile"
+                app:layout_constraintStart_toStartOf="@id/v_account_container_profile"
+                app:layout_constraintEnd_toEndOf="@id/v_account_container_profile"
+                app:layout_constraintBottom_toBottomOf="@id/v_account_container_profile"/>
+
+            <Button
+                android:id="@+id/btn_sign_out_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_xl"
+                android:text="@string/sign_out_txt"
+                android:background="@drawable/default_button_design"
+                app:layout_constraintTop_toBottomOf="@id/v_account_container_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
