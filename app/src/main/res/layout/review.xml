@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:text="Author name"
             android:fontFamily="@font/sf_pro_display_bold"
-            android:textColor="@color/rating_color"
+            android:textColor="@color/secondary_theme_color"
             android:textSize="@dimen/h3_text_size"
             android:autoSizeTextType="uniform"
             android:autoSizeMaxTextSize="@dimen/h3_text_size"
