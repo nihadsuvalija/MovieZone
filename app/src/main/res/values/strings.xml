@@ -11,6 +11,11 @@
     <string name="sign_in_txt">Sign in</string>
     <string name="profile_txt">Profile</string>
     <string name="account_txt">Account</string>
+    <string name="privacy_policy_txt">Privacy policy</string>
+    <string name="terms_txt">Terms</string>
+    <string name="changes_terms_txt">Changes to the Service and/or Terms</string>
+
+    <string name="terms_placeholder_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget ornare quam vel facilisis feugiat amet sagittis arcu, tortor. Sapien, consequat ultrices morbi orci semper sit nulla. Leo auctor ut etiam est, amet aliquet ut vivamus. Odio vulputate est id tincidunt fames.\n \nLorem ipsum dolor sit amet, consectetur adipiscing elit. Eget ornare quam vel facilisis feugiat amet sagittis arcu, tortor. Sapien, consequat ultrices morbi orci semper sit nulla. Leo auctor ut etiam est, amet aliquet ut vivamus. Odio vulputate est id tincidunt fames.</string>
 
     <!-- OPTIONS -->
     <string name="option_txt">Option</string>

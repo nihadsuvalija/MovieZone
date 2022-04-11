@@ -1,5 +1,6 @@
 package com.example.moviezone.screen.profile
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.R
@@ -27,5 +28,10 @@ class ProfileViewModel: ViewModel() {
         viewInteractor?.setProfilePicture(FirebaseAuth.getInstance().currentUser?.photoUrl.toString())
         viewInteractor?.setEmail(FirebaseAuth.getInstance().currentUser?.email.toString())
         viewInteractor?.setFullName(FirebaseAuth.getInstance().currentUser?.displayName.toString())
+    }
+
+    fun privacyClick() {
+        Log.i("TAG", navController.toString())
+        navController?.navigate(BaseFragmentDirections.navigateFromBaseToPrivacyPolicy())
     }
 }
