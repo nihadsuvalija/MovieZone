@@ -3,7 +3,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/movie_item_width"
         android:layout_height="@dimen/movie_item_height"
-        android:layout_margin="5sp">
+        android:layout_margin="5sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/iv_movie_poster_movieitem"
