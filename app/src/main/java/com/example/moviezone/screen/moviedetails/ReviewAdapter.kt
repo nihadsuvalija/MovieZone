@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviezone.R
 import com.example.moviezone.databinding.ReviewBinding
 import com.example.moviezone.model.Review
+import com.example.moviezone.utils.Const
 import com.example.moviezone.utils.ReviewDiffUtil
 import java.text.SimpleDateFormat
 
@@ -29,6 +30,7 @@ class ReviewAdapter: RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
         val author = binding.tvAuthorReview
         val content = binding.tvContentReview
         var createdAt = binding.tvCreatedAtReview
+        var rating = binding.tvRatingReview
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -40,13 +42,20 @@ class ReviewAdapter: RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-        holder.author.text = reviews[position].author
+        var author = reviews[position].author
+        if (author.length >= Const.MAX_TEXT_VIEW_LENGTH) {
+            author = author.subSequence(0, Const.MAX_TEXT_VIEW_LENGTH - 3).toString()
+            author += "..."
+        }
+        holder.author.text = author
 
         // content has HTML in it we don't want, so we remove the tags and any html related characters
         holder.content.text = reviews[position].content.replace("\\<[^>]*>","")
 
         // Example date returned from API: 2020-07-09T14:46:230
-        var date = reviews[position].createdAt.subSequence(0, 10)
+        val date = reviews[position].createdAt.subSequence(0, 10)
+
+        holder.rating.text = reviews[position].authorDetails.rating.toString()
         holder.createdAt.text = date
     }
 

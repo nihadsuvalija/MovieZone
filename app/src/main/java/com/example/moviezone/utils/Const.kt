@@ -13,5 +13,8 @@ class Const {
         const val PASSWORD_LENGTH_ERROR = "Password must be 6 or more characters."
         const val USER_DOESNT_EXIST_ERROR = "User doesn't exist."
         const val FULL_NAME_EMPTY_ERROR = "Full name field can't be empty."
+
+        // LIMITS:
+        const val MAX_TEXT_VIEW_LENGTH = 15
     }
 }

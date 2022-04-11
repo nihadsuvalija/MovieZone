@@ -17,22 +17,47 @@
             android:autoSizeTextType="uniform"
             android:autoSizeMaxTextSize="@dimen/h3_text_size"
             android:autoSizeMinTextSize="10sp"
+            android:maxLength="@integer/max_text_view_length"
             android:layout_margin="@dimen/margin_l"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_rating_review"/>
+
+        <ImageView
+            android:id="@+id/iv_rating_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            android:layout_marginStart="@dimen/margin_m"
+            app:layout_constraintTop_toTopOf="@id/tv_author_review"
+            app:layout_constraintBottom_toBottomOf="@id/tv_author_review"
+            app:layout_constraintStart_toEndOf="@id/tv_author_review"/>
+
+        <TextView
+            android:id="@+id/tv_rating_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9.0"
+            android:textColor="@color/rating_color"
+            android:layout_marginStart="@dimen/margin_s"
+            app:layout_constraintTop_toTopOf="@id/iv_rating_review"
+            app:layout_constraintBottom_toBottomOf="@id/iv_rating_review"
+            app:layout_constraintStart_toEndOf="@id/iv_rating_review"/>
 
         <TextView
             android:id="@+id/tv_created_at_review"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="10.10.2021"
             android:textSize="10sp"
+            android:textAlignment="textEnd"
             android:alpha="0.5"
             android:fontFamily="@font/sf_pro_display_light_italic"
             android:layout_marginStart="@dimen/margin_m"
             app:layout_constraintTop_toTopOf="@id/tv_author_review"
             app:layout_constraintBottom_toBottomOf="@id/tv_author_review"
-            app:layout_constraintEnd_toEndOf="@id/tv_content_review"/>
+            app:layout_constraintEnd_toEndOf="@id/tv_content_review"
+            app:layout_constraintStart_toEndOf="@id/tv_rating_review"/>
 
         <TextView
             android:id="@+id/tv_content_review"
