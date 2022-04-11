@@ -80,6 +80,11 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
+    }
+
     private fun setupTopRatedMovies() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val topRatedMoviesAdapter = TopRatedMoviesAdapter()
@@ -94,10 +99,5 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel.getPopularMovies(popularMoviesAdapter)
         binding.rvPopularMovies.layoutManager = layoutManager
         binding.rvPopularMovies.adapter = popularMoviesAdapter
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
     }
 }

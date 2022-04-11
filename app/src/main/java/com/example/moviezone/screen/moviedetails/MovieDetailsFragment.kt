@@ -23,6 +23,9 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     private lateinit var binding: MovieDetailsBinding
     private lateinit var viewModel: MovieDetailsViewModel
 
+    private val reviewAdapter = ReviewAdapter()
+    private val castAdapter = CastAdapter()
+
     private val args: MovieDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -34,9 +37,13 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         viewModel = ViewModelProvider(this)[MovieDetailsViewModel::class.java]
         viewModel.setViewInteractor(this)
 
+        setupReviews()
+        setupCast()
+
         viewModel.getMovieById(args.movieId)
         viewModel.getCreditsByMovieId(args.movieId)
         viewModel.getReviewsByMovieId(args.movieId)
+
 
         binding.ivBackButton.setOnClickListener {
             viewModel.navigateBack()
@@ -87,16 +94,23 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setMovieCredits(credits: MovieCredits) {
-        val adapter = CastAdapter()
-        adapter.setCredits(credits)
-        binding.rvCastAndCrewMoviedetails.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvCastAndCrewMoviedetails.adapter = adapter
+        castAdapter.setCredits(credits)
+
     }
 
     override fun setMovieReviews(reviews: List<Review>) {
-        val adapter = ReviewAdapter()
-        adapter.setReviews(reviews)
+        reviewAdapter.setReviews(reviews)
+    }
+
+    // SETUP METHODS:
+
+    private fun setupReviews() {
         binding.rvReviewsMoviedetails.layoutManager = LinearLayoutManager(context)
-        binding.rvReviewsMoviedetails.adapter = adapter
+        binding.rvReviewsMoviedetails.adapter = reviewAdapter
+    }
+
+    private fun setupCast() {
+        binding.rvCastAndCrewMoviedetails.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvCastAndCrewMoviedetails.adapter = castAdapter
     }
 }

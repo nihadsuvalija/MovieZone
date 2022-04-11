@@ -52,7 +52,6 @@
             android:textSize="10sp"
             android:textAlignment="textEnd"
             android:alpha="0.5"
-            android:fontFamily="@font/sf_pro_display_light_italic"
             android:layout_marginStart="@dimen/margin_m"
             app:layout_constraintTop_toTopOf="@id/tv_author_review"
             app:layout_constraintBottom_toBottomOf="@id/tv_author_review"
