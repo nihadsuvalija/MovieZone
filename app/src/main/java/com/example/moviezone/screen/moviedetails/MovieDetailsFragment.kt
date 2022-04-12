@@ -9,22 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
-import com.example.moviezone.api.response.ReviewResponse
 import com.example.moviezone.databinding.MovieDetailsBinding
-import com.example.moviezone.model.MovieCredits
-import com.example.moviezone.model.Review
 
 
 class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
     private lateinit var binding: MovieDetailsBinding
     private lateinit var viewModel: MovieDetailsViewModel
-
-    private val reviewAdapter = ReviewAdapter()
-    private val castAdapter = CastAdapter()
 
     private val args: MovieDetailsFragmentArgs by navArgs()
 
@@ -36,14 +29,6 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         binding = DataBindingUtil.inflate(inflater, R.layout.movie_details, container, false)
         viewModel = ViewModelProvider(this)[MovieDetailsViewModel::class.java]
         viewModel.setViewInteractor(this)
-
-        /*setupReviews()
-        setupCast()*/
-
-        viewModel.getMovieById(args.movieId)
-        /*viewModel.getCreditsByMovieId(args.movieId)
-        viewModel.getReviewsByMovieId(args.movieId)*/
-
 
         binding.ivBackButton.setOnClickListener {
             viewModel.navigateBack()
@@ -92,25 +77,4 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     override fun setStoryLine(storyLine: String) {
         binding.tvStoryLineMoviedetails.text = storyLine
     }
-
-    override fun setMovieCredits(credits: MovieCredits) {
-        castAdapter.setCredits(credits)
-
-    }
-
-    override fun setMovieReviews(reviews: List<Review>) {
-        reviewAdapter.setReviews(reviews)
-    }
-
-    // SETUP METHODS:
-
-    /*private fun setupReviews() {
-        binding.rvReviewsMoviedetails.layoutManager = LinearLayoutManager(context)
-        binding.rvReviewsMoviedetails.adapter = reviewAdapter
-    }
-
-    private fun setupCast() {
-        binding.rvCastAndCrewMoviedetails.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvCastAndCrewMoviedetails.adapter = castAdapter
-    }*/
 }

@@ -18,7 +18,6 @@ import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
 import com.example.moviezone.model.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 
 /*
 
@@ -70,7 +69,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 .into(binding.ivProfileImageHome)
         }
 
-        setupInTheatersMovies()
+        setupNowShowing()
 
         return binding.root
     }
@@ -80,10 +79,10 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
     }
 
-    private fun setupInTheatersMovies() {
+    private fun setupNowShowing() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val inTheatersMoviesAdapter = InTheatersMoviesAdapter()
-        viewModel.getInTheaters(inTheatersMoviesAdapter)
+        val inTheatersMoviesAdapter = NowShowingAdapter()
+        viewModel.getNowShowing(inTheatersMoviesAdapter)
         binding.rvInTheatersHome.layoutManager = layoutManager
         binding.rvInTheatersHome.adapter = inTheatersMoviesAdapter
     }

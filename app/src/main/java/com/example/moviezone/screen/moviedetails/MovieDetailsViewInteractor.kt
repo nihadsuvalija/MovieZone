@@ -1,8 +1,5 @@
 package com.example.moviezone.screen.moviedetails
 
-import com.example.moviezone.model.MovieCredits
-import com.example.moviezone.model.Review
-
 interface MovieDetailsViewInteractor {
     fun setMoviePoster(path: String)
     fun setMovieTitle(title: String)
@@ -12,6 +9,4 @@ interface MovieDetailsViewInteractor {
     fun setBackdrop(path: String)
     fun setRating(rating: String)
     fun setStoryLine(storyLine: String)
-    fun setMovieCredits(credits: MovieCredits)
-    fun setMovieReviews(reviews: List<Review>)
 }

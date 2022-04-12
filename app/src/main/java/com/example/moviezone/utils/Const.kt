@@ -11,6 +11,15 @@ class Const {
         const val IMDB_API_KEY = "k_xq3oejz6"
         const val IMDB_BASE_URL = "https://imdb-api.com/en/API/"
 
+        const val MOVIEGLU_CLIENT = "YOPA"
+        const val MOVIEGLUE_API_ENDPOINT = "https://api-gate2.movieglu.com/"
+        const val MOVIEGLU_TEST_API_KEY = "iN8Y2NeiMX4sUCFeUQDXb7o6k3dl6Zjt9sKfBCKn"
+        const val MOVIEGLU_TEST_AUTHORIZATION = "Basic WU9QQV9YWDphY25NQ2dSaHVpQjk="
+        const val MOVIEGLU_TEST_TERRITORY = "XX" // XX - sandbox (allows up to 10000 requests), US (allows for 75)
+        const val MOVIEGLU_API_VERSION = "v200"
+        const val MOVIEGLU_TEST_GEOLOCATION = "-22.0;14.0"
+        const val MOVIEGLU_TEST_DEVICE_DATETIME = "2022-04-12T11:00:02.484Z"
+
         // ERRORS:
         const val EMAIL_FORMAT_ERROR = "Email format is not correct."
         const val PASSWORD_LENGTH_ERROR = "Password must be 6 or more characters."
