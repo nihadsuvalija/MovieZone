@@ -46,5 +46,8 @@
     <string name="cast_text">Cast</string>
     <string name="crew_text">Crew</string>
 
+    <!-- WEB CLIENT -->
+    <string name="web_client_id">452378750265-96ef79hlif2nsuvbt5jl8li7fvnafng1.apps.googleusercontent.com</string>
+
 
 </resources>

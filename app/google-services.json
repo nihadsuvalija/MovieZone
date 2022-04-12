@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "452378750265-96ef79hlif2nsuvbt5jl8li7fvnafng1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moviezone",
+            "certificate_hash": "fdaf463a2090145f2630955bfc41126f21bda82d"
+          }
+        },
+        {
           "client_id": "452378750265-4aivom3u2gj91t3qa6nv9qakmd8nr7te.apps.googleusercontent.com",
           "client_type": 3
         }

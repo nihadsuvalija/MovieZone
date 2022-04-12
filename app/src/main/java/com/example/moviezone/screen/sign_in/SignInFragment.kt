@@ -1,9 +1,14 @@
 package com.example.moviezone.screen.sign_in
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -31,7 +36,6 @@ class SignInFragment: Fragment(), SignInViewInteractor{
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_in, container, false)
         viewModel = ViewModelProvider(this)[SignInViewModel::class.java]
         viewModel.setViewInteractor(this)
-        //viewModel.setNavController(Navigation.findNavController(binding.root))
 
         binding.ivBackButton.setOnClickListener {
             viewModel.onBackPressed()
@@ -64,5 +68,9 @@ class SignInFragment: Fragment(), SignInViewInteractor{
     override fun clearInputFields() {
         binding.etEmailSignin.text.clear()
         binding.etPasswordSignin.text.clear()
+    }
+
+    override fun displayPopUp(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
