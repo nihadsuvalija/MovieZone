@@ -20,6 +20,12 @@ import com.example.moviezone.model.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
+/*
+
+    TO DO: Implement Firebase Realtime Database for LIKED MOVIES!
+
+ */
+
 class HomeFragment: Fragment(), HomeViewInteractor {
 
     private lateinit var binding: HomeBinding
