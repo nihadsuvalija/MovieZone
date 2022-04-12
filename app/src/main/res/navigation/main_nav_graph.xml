@@ -121,8 +121,7 @@
         android:label="MovieDetailsFragment" >
         <argument
             android:name="movieId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            app:argType="string" />
         <action
             android:id="@+id/navigateFromMovieDetailsToBase"
             app:destination="@id/baseFragment"

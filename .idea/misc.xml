@@ -40,7 +40,7 @@
         <entry key="app/src/main/res/layout/base.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/home.xml" value="0.2004641717435451" />
         <entry key="app/src/main/res/layout/movie_details.xml" value="0.3088172043010753" />
-        <entry key="app/src/main/res/layout/movie_item.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/movie_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/option_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/person_credits.xml" value="0.2954253954681488" />
         <entry key="app/src/main/res/layout/privacy_policy.xml" value="0.2954253954681488" />

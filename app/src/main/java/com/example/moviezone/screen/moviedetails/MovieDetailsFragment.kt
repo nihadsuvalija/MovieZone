@@ -37,12 +37,12 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         viewModel = ViewModelProvider(this)[MovieDetailsViewModel::class.java]
         viewModel.setViewInteractor(this)
 
-        setupReviews()
-        setupCast()
+        /*setupReviews()
+        setupCast()*/
 
         viewModel.getMovieById(args.movieId)
-        viewModel.getCreditsByMovieId(args.movieId)
-        viewModel.getReviewsByMovieId(args.movieId)
+        /*viewModel.getCreditsByMovieId(args.movieId)
+        viewModel.getReviewsByMovieId(args.movieId)*/
 
 
         binding.ivBackButton.setOnClickListener {
@@ -104,7 +104,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
     // SETUP METHODS:
 
-    private fun setupReviews() {
+    /*private fun setupReviews() {
         binding.rvReviewsMoviedetails.layoutManager = LinearLayoutManager(context)
         binding.rvReviewsMoviedetails.adapter = reviewAdapter
     }
@@ -112,5 +112,5 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     private fun setupCast() {
         binding.rvCastAndCrewMoviedetails.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvCastAndCrewMoviedetails.adapter = castAdapter
-    }
+    }*/
 }

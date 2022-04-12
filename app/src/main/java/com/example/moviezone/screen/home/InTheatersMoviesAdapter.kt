@@ -49,7 +49,9 @@ class InTheatersMoviesAdapter: RecyclerView.Adapter<InTheatersMoviesAdapter.View
             .load(movies[position].image)
             .into(holder.poster)
 
-        println(movies[position].image)
+        holder.itemView.setOnClickListener {
+            viewModel.onMovieClick(movies[position].id)
+        }
     }
 
     override fun getItemCount(): Int {

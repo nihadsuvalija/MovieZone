@@ -49,19 +49,9 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             }
         }
 
-        binding.rvTopRatedMovies.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+        binding.rvInTheatersHome.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                binding.rvTopRatedMovies.parent.requestDisallowInterceptTouchEvent(true)
-                return false
-            }
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
-
-        })
-
-        binding.rvPopularMovies.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                binding.rvPopularMovies.parent.requestDisallowInterceptTouchEvent(true)
+                binding.rvInTheatersHome.parent.requestDisallowInterceptTouchEvent(true)
                 return false
             }
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
@@ -80,8 +70,6 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 .into(binding.ivProfileImageHome)
         }
 
-        setupTopRatedMovies()
-        setupPopularMovies()
         setupInTheatersMovies()
 
         return binding.root
@@ -90,22 +78,6 @@ class HomeFragment: Fragment(), HomeViewInteractor {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
-    }
-
-    private fun setupTopRatedMovies() {
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val topRatedMoviesAdapter = TopRatedMoviesAdapter()
-        viewModel.getTopRatedMovies(topRatedMoviesAdapter)
-        binding.rvTopRatedMovies.layoutManager = layoutManager
-        binding.rvTopRatedMovies.adapter = topRatedMoviesAdapter
-    }
-
-    private fun setupPopularMovies() {
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val popularMoviesAdapter = PopularMoviesAdapter()
-        viewModel.getPopularMovies(popularMoviesAdapter)
-        binding.rvPopularMovies.layoutManager = layoutManager
-        binding.rvPopularMovies.adapter = popularMoviesAdapter
     }
 
     private fun setupInTheatersMovies() {
