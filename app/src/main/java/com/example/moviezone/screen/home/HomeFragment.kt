@@ -82,6 +82,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
         setupTopRatedMovies()
         setupPopularMovies()
+        setupInTheatersMovies()
 
         return binding.root
     }
@@ -105,5 +106,13 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel.getPopularMovies(popularMoviesAdapter)
         binding.rvPopularMovies.layoutManager = layoutManager
         binding.rvPopularMovies.adapter = popularMoviesAdapter
+    }
+
+    private fun setupInTheatersMovies() {
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val inTheatersMoviesAdapter = InTheatersMoviesAdapter()
+        viewModel.getInTheaters(inTheatersMoviesAdapter)
+        binding.rvInTheatersHome.layoutManager = layoutManager
+        binding.rvInTheatersHome.adapter = inTheatersMoviesAdapter
     }
 }

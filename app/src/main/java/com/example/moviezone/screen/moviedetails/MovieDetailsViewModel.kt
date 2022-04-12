@@ -3,7 +3,7 @@ package com.example.moviezone.screen.moviedetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.example.moviezone.repository.MovieRepository
+import com.example.moviezone.repository.TMDBMovieRepository
 import com.example.moviezone.utils.Const
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class MovieDetailsViewModel: ViewModel() {
     private var viewInteractor: MovieDetailsViewInteractor? = null
     private var navController: NavController? = null
-    private var movieRepository = MovieRepository()
+    private var movieRepository = TMDBMovieRepository()
 
     fun setViewInteractor(viewInteractor: MovieDetailsViewInteractor) {
         this.viewInteractor = viewInteractor

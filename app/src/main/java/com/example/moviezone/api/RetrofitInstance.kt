@@ -12,4 +12,12 @@ object RetrofitInstance {
             .build()
             .create(TMDBApi::class.java)
     }
+
+    val imdbApi: IMDBApi by lazy {
+        Retrofit.Builder()
+            .baseUrl(Const.IMDB_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(IMDBApi::class.java)
+    }
 }
