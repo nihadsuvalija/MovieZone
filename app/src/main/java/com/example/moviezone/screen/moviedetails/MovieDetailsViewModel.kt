@@ -4,12 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.repository.FilmRepository
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel: ViewModel() {
     private var viewInteractor: MovieDetailsViewInteractor? = null
     private var navController: NavController? = null
-    private var movieRepository = FilmRepository()
+    private var filmRepository = FilmRepository()
 
     fun setViewInteractor(viewInteractor: MovieDetailsViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -21,5 +22,20 @@ class MovieDetailsViewModel: ViewModel() {
 
     fun navigateBack(){
         navController?.navigate(MovieDetailsFragmentDirections.navigateFromMovieDetailsToBase())
+    }
+
+    fun getFilmById(filmId: Int) {
+        viewModelScope.launch {
+            filmRepository.getFilmById(filmId).collect {
+                viewInteractor?.setMoviePoster(it.images.poster.x1.medium.filmImage)
+                viewInteractor?.setMovieTitle(it.filmName)
+                println(it.reviewStars)
+                viewInteractor?.setRating(it.reviewStars.toString())
+                viewInteractor?.setReleaseDate(it.releaseDates[0].releaseDate)
+                viewInteractor?.setGenre(it.genres[0].genreName)
+                viewInteractor?.setStoryLine(it.synopsisLong)
+                viewInteractor?.setBackdrop(it.images.poster.x1.medium.filmImage)
+            }
+        }
     }
 }

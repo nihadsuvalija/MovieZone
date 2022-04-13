@@ -120,8 +120,8 @@
         android:name="com.example.moviezone.screen.moviedetails.MovieDetailsFragment"
         android:label="MovieDetailsFragment" >
         <argument
-            android:name="movieId"
-            app:argType="string" />
+            android:name="filmId"
+            app:argType="integer" />
         <action
             android:id="@+id/navigateFromMovieDetailsToBase"
             app:destination="@id/baseFragment"

@@ -21,8 +21,8 @@ class HomeViewModel: ViewModel() {
         this.navController = navController
     }
 
-    fun onMovieClick(movieId: String) {
-        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId))
+    fun onFilmClick(filmId: Int) {
+        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(filmId))
     }
 
     fun getNowShowing(adapter: NowShowingAdapter) {

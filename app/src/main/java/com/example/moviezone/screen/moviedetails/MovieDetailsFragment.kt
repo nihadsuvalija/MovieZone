@@ -30,6 +30,8 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         viewModel = ViewModelProvider(this)[MovieDetailsViewModel::class.java]
         viewModel.setViewInteractor(this)
 
+        viewModel.getFilmById(args.filmId)
+
         binding.ivBackButton.setOnClickListener {
             viewModel.navigateBack()
         }
@@ -61,7 +63,12 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setGenre(genre: String) {
-        binding.tvGenreMoviedetails.text = genre
+        var genreEdited = genre
+        if (genreEdited.length > 10) {
+            genreEdited = genre.subSequence(0,7).toString()
+            genreEdited += "..."
+        }
+        binding.tvGenreMoviedetails.text = genreEdited
     }
 
     override fun setBackdrop(path: String) {
