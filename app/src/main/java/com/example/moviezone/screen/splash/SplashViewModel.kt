@@ -23,8 +23,10 @@ class SplashViewModel: ViewModel(){
     fun updateCurrentUser() {
         if (FirebaseAuth.getInstance().currentUser != null) {
             CurrentUser.update(
+                FirebaseAuth.getInstance().currentUser?.uid.toString(),
                 FirebaseAuth.getInstance().currentUser?.displayName.toString(),
-                FirebaseAuth.getInstance().currentUser?.email.toString()
+                FirebaseAuth.getInstance().currentUser?.email.toString(),
+                FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
             )
         }
     }

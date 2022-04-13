@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SplashBinding
+import com.example.moviezone.model.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashFragment: Fragment() {
@@ -29,7 +30,7 @@ class SplashFragment: Fragment() {
         viewModel.updateCurrentUser()
         // TO DO: Fix deprecated handler.
         Handler().postDelayed({
-            if (FirebaseAuth.getInstance().currentUser != null) {
+            if (CurrentUser.signedIn()) {
                 viewModel.navigateToBase()
             } else {
                 viewModel.navigateToWelcome()

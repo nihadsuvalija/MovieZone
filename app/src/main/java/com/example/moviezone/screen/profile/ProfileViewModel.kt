@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.R
+import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.screen.base.BaseFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 
@@ -26,8 +27,8 @@ class ProfileViewModel: ViewModel() {
 
     fun setProfileData() {
         viewInteractor?.setProfilePicture(FirebaseAuth.getInstance().currentUser?.photoUrl.toString())
-        viewInteractor?.setEmail(FirebaseAuth.getInstance().currentUser?.email.toString())
-        viewInteractor?.setFullName(FirebaseAuth.getInstance().currentUser?.displayName.toString())
+        viewInteractor?.setEmail(CurrentUser.email)
+        viewInteractor?.setFullName(CurrentUser.fullName)
     }
 
     fun privacyClick() {

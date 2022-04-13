@@ -33,7 +33,12 @@ class SignInViewModel: ViewModel() {
                 .addOnSuccessListener {
                     // TO DO: Navigate to the next screen
                     viewInteractor?.clearInputFields()
-                    CurrentUser.update(FirebaseAuth.getInstance().currentUser?.displayName.toString(), email)
+                    CurrentUser.update(
+                        FirebaseAuth.getInstance().currentUser?.uid.toString(),
+                        FirebaseAuth.getInstance().currentUser?.displayName.toString(),
+                        email,
+                        FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+                    )
                     navController?.navigate(SignInFragmentDirections.navigateFromSignInToBase())
                 }.addOnFailureListener {
                     viewInteractor?.setEmailError(Const.USER_DOESNT_EXIST_ERROR)

@@ -5,12 +5,16 @@ import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.moviezone.model.CurrentUser
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
+import javax.xml.parsers.FactoryConfigurationError
 
 class WelcomeViewModel: ViewModel() {
 
@@ -50,6 +54,12 @@ class WelcomeViewModel: ViewModel() {
     fun handleSignInResult(result: Task<GoogleSignInAccount>) {
         try {
             val account: GoogleSignInAccount = result.getResult(ApiException::class.java)
+            CurrentUser.update(
+                account.id.toString(),
+                account.displayName.toString(),
+                account.email.toString(),
+                account.photoUrl.toString()
+            )
             navController?.navigate(WelcomeFragmentDirections.navigateFromWelcomeToBase())
         } catch (e: ApiException) {
             viewInteractor?.displayPopUp(e.message.toString())
