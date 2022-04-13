@@ -66,7 +66,8 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setReleaseDate(date: String) {
-        binding.tvReleaseDateMoviedetails.text = date
+        // Subsequencing date format YYYY-MM-DD to use only YYYY
+        binding.tvReleaseDateMoviedetails.text = date.subSequence(0, 4)
     }
 
     override fun setRuntime(runtime: String) {
