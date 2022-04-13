@@ -25,11 +25,15 @@ class HomeViewModel: ViewModel() {
         navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(filmId))
     }
 
-    fun getNowShowing(adapter: NowShowingAdapter) {
+    fun getNowShowing() {
         viewModelScope.launch {
             filmRepository.getNowShowing().collect {
-                adapter.setNowShowing(it.films)
+                viewInteractor?.setFilms(it.films)
             }
         }
+    }
+
+    fun getComingSoon() {
+
     }
 }

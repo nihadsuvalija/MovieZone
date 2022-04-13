@@ -13,14 +13,14 @@ import com.example.moviezone.databinding.MovieItemBinding
 import com.example.moviezone.model.Film
 import com.example.moviezone.utils.FilmsDiffUtil
 
-class NowShowingAdapter: RecyclerView.Adapter<NowShowingAdapter.ViewHolder>() {
+class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
 
     private lateinit var binding: MovieItemBinding
     private lateinit var viewModel: HomeViewModel
 
     private var films: List<Film> = listOf()
 
-    fun setNowShowing(films: List<Film>) {
+    fun setFilms(films: List<Film>) {
         val diffUtil = FilmsDiffUtil(this.films, films)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         this.films = films
@@ -34,14 +34,14 @@ class NowShowingAdapter: RecyclerView.Adapter<NowShowingAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): NowShowingAdapter.ViewHolder {
+    ): FilmAdapter.ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.movie_item, parent, false)
         viewModel = ViewModelProvider(parent.findFragment())[HomeViewModel::class.java]
 
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: NowShowingAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FilmAdapter.ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
             .load(films[position].images.poster.x1.medium.filmImage)
             .into(holder.poster)
