@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 /*
 
-    TO DO: Implement Firebase Realtime Database for LIKED MOVIES!
+    TO DO: Implement calling API only when the screen is created, not the view!
 
  */
 

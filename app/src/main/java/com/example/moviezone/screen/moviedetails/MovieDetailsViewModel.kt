@@ -34,6 +34,7 @@ class MovieDetailsViewModel: ViewModel() {
                 viewInteractor?.setGenre(it.genres[0].genreName)
                 viewInteractor?.setStoryLine(it.synopsisLong)
                 viewInteractor?.setBackdrop(it.images.poster.x1.medium.filmImage)
+                viewInteractor?.setCast(it.cast)
             }
         }
     }
