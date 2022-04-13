@@ -39,7 +39,6 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel.setViewInteractor(this)
 
-
         binding.root.setOnClickListener {
             if(!binding.root.isFocused) {
                 val imm: InputMethodManager =
@@ -51,6 +50,15 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         binding.rvInTheatersHome.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                 binding.rvInTheatersHome.parent.requestDisallowInterceptTouchEvent(true)
+                return false
+            }
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
+
+        binding.rvCategoriesHome.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                binding.rvCategoriesHome.parent.requestDisallowInterceptTouchEvent(true)
                 return false
             }
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
@@ -70,6 +78,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         }
 
         setupNowShowing()
+        setupCategories(listOf("Favorites", "In Theaters", "Coming Soon"))
 
         return binding.root
     }
@@ -85,5 +94,13 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel.getNowShowing(inTheatersMoviesAdapter)
         binding.rvInTheatersHome.layoutManager = layoutManager
         binding.rvInTheatersHome.adapter = inTheatersMoviesAdapter
+    }
+
+    private fun setupCategories(categories: List<String>) {
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val categoriesAdapter = CategoriesAdapter()
+        categoriesAdapter.setCategories(categories)
+        binding.rvCategoriesHome.layoutManager = layoutManager
+        binding.rvCategoriesHome.adapter = categoriesAdapter
     }
 }
