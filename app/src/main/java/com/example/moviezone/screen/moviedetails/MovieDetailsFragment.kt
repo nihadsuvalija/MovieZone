@@ -1,9 +1,11 @@
 package com.example.moviezone.screen.moviedetails
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -99,5 +101,19 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
     override fun setCast(cast: List<Cast>) {
         castAdapter.setCast(cast)
+    }
+
+    override fun setTrailer(trailer: String) {
+        if (trailer.isNotBlank()) {
+            val mediaController = MediaController(requireContext())
+            mediaController.setAnchorView(binding.vvTrailerMoviedetails)
+            binding.vvTrailerMoviedetails.setMediaController(mediaController)
+            binding.vvTrailerMoviedetails.setVideoURI(Uri.parse(trailer))
+            binding.vvTrailerMoviedetails.start()
+            binding.vvTrailerMoviedetails.setBackgroundResource(R.color.transparent)
+        } else {
+            binding.tvTrailerTitleMoviedetails.visibility = View.GONE
+            binding.vvTrailerMoviedetails.visibility = View.GONE
+        }
     }
 }

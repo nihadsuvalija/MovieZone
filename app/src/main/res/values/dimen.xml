@@ -22,6 +22,9 @@
     <dimen name="forgot_password_margin_side">40sp</dimen>
     <dimen name="forgot_password_margin_top">10sp</dimen>
 
+    <dimen name="video_height">250sp</dimen>
+    <dimen name="video_width">400sp</dimen>
+
     <dimen name="back_button_size">50sp</dimen>
 
     <dimen name="profile_image_home_size">50sp</dimen>

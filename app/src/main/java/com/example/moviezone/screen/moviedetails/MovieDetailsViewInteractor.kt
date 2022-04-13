@@ -12,4 +12,5 @@ interface MovieDetailsViewInteractor {
     fun setRating(rating: String)
     fun setStoryLine(storyLine: String)
     fun setCast(cast: List<Cast>)
+    fun setTrailer(trailer: String)
 }
