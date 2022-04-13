@@ -29,7 +29,6 @@ class MovieDetailsViewModel: ViewModel() {
             filmRepository.getFilmById(filmId).collect {
                 viewInteractor?.setMoviePoster(it.images.poster.x1.medium.filmImage)
                 viewInteractor?.setMovieTitle(it.filmName)
-                println(it.reviewStars)
                 viewInteractor?.setRating(it.reviewStars.toString())
                 viewInteractor?.setReleaseDate(it.releaseDates[0].releaseDate)
                 viewInteractor?.setGenre(it.genres[0].genreName)
