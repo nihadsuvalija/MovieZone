@@ -109,6 +109,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
             mediaController.setAnchorView(binding.vvTrailerMoviedetails)
             binding.vvTrailerMoviedetails.setMediaController(mediaController)
             binding.vvTrailerMoviedetails.setVideoURI(Uri.parse(trailer))
+            binding.vvTrailerMoviedetails.requestFocus()
             binding.vvTrailerMoviedetails.start()
             binding.vvTrailerMoviedetails.setBackgroundResource(R.color.transparent)
         } else {
