@@ -46,9 +46,6 @@ class NowShowingAdapter: RecyclerView.Adapter<NowShowingAdapter.ViewHolder>() {
             .load(films[position].images.poster.x1.medium.filmImage)
             .into(holder.poster)
 
-        println(films[position].images.poster.x1.medium.filmImage)
-        // Add on movie click display details of movie
-
         holder.itemView.setOnClickListener {
             viewModel.onFilmClick(films[position].filmId)
         }
