@@ -11,11 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieDetailsBinding
-import com.example.moviezone.model.Cast
+import com.example.moviezone.utils.Const
 
 
 class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
@@ -24,8 +23,6 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     private lateinit var viewModel: MovieDetailsViewModel
 
     private val args: MovieDetailsFragmentArgs by navArgs()
-
-    private var castAdapter = CastAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +33,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         viewModel = ViewModelProvider(this)[MovieDetailsViewModel::class.java]
         viewModel.setViewInteractor(this)
 
-        viewModel.getFilmById(args.filmId)
-
-        setupCast()
+        viewModel.getMovieById(args.movieId)
 
         binding.ivBackButton.setOnClickListener {
             viewModel.navigateBack()
@@ -50,11 +45,6 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setNavController(Navigation.findNavController(binding.root))
-    }
-
-    private fun setupCast() {
-        binding.rvCastMoviedetails.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvCastMoviedetails.adapter = castAdapter
     }
 
     override fun setMoviePoster(path: String) {
@@ -99,16 +89,13 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         binding.tvStoryLineMoviedetails.text = storyLine
     }
 
-    override fun setCast(cast: List<Cast>) {
-        castAdapter.setCast(cast)
-    }
-
     override fun setTrailer(trailer: String) {
         if (trailer.isNotBlank()) {
+            val fullTrailer = Const.BASE_YOUTUBE_VIDEO_URL + trailer
             val mediaController = MediaController(requireContext())
             mediaController.setAnchorView(binding.vvTrailerMoviedetails)
             binding.vvTrailerMoviedetails.setMediaController(mediaController)
-            binding.vvTrailerMoviedetails.setVideoURI(Uri.parse(trailer))
+            binding.vvTrailerMoviedetails.setVideoURI(Uri.parse(fullTrailer))
             binding.vvTrailerMoviedetails.requestFocus()
             binding.vvTrailerMoviedetails.start()
             binding.vvTrailerMoviedetails.setBackgroundResource(R.color.transparent)

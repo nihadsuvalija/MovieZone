@@ -1,7 +1,7 @@
 package com.example.moviezone.screen.home
 
-import com.example.moviezone.model.Film
+import com.example.moviezone.model.Movie
 
 interface HomeViewInteractor {
-    fun setFilms(films: List<Film>)
+    fun setMovies(movies: List<Movie>)
 }

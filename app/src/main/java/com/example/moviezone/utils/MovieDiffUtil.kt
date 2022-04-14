@@ -1,12 +1,12 @@
 package com.example.moviezone.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.moviezone.model.Film
+import com.example.moviezone.model.Movie
 
-class FilmsDiffUtil(
-    private val oldList: List<Film>,
-    private val newList: List<Film>
-): DiffUtil.Callback() {
+class MovieDiffUtil(
+    private val oldList: List<Movie>,
+    private val newList: List<Movie>
+) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
     }
@@ -16,7 +16,7 @@ class FilmsDiffUtil(
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].filmId == newList[newItemPosition].filmId
+        return oldList[oldItemPosition].id == newList[newItemPosition].id
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

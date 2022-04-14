@@ -5,12 +5,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    val api: MovieGluApi by lazy {
+    val tmdbApi: TMDBApi by lazy {
         Retrofit.Builder()
-            .baseUrl(Const.MOVIEGLUE_API_ENDPOINT)
+            .baseUrl(Const.TMDB_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(MovieGluApi::class.java)
+            .create(TMDBApi::class.java)
     }
 
 }

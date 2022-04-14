@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
 import com.example.moviezone.model.CurrentUser
-import com.example.moviezone.model.Film
+import com.example.moviezone.model.Movie
 import com.google.firebase.auth.FirebaseAuth
 
 /*
@@ -31,7 +31,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
     private lateinit var binding: HomeBinding
     private lateinit var viewModel: HomeViewModel
 
-    private val filmAdapter = FilmAdapter()
+    private val movieAdapter = MovieAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,7 +80,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 .into(binding.ivProfileImageHome)
         }
 
-        setupNowShowing()
+        setupUpcomingMovies()
         setupCategories(listOf("Now Showing", "Coming Soon", "Favorites"))
 
         return binding.root
@@ -91,11 +91,11 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
     }
 
-    private fun setupNowShowing() {
+    private fun setupUpcomingMovies() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        viewModel.getNowShowing()
+        viewModel.getUpcomingMovies()
         binding.rvInTheatersHome.layoutManager = layoutManager
-        binding.rvInTheatersHome.adapter = filmAdapter
+        binding.rvInTheatersHome.adapter = movieAdapter
     }
 
     private fun setupCategories(categories: List<String>) {
@@ -106,7 +106,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         binding.rvCategoriesHome.adapter = categoriesAdapter
     }
 
-    override fun setFilms(films: List<Film>) {
-        filmAdapter.setFilms(films)
+    override fun setMovies(movies: List<Movie>) {
+        movieAdapter.setMovies(movies)
     }
 }

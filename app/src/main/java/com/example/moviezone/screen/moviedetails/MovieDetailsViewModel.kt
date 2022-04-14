@@ -3,14 +3,15 @@ package com.example.moviezone.screen.moviedetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.example.moviezone.repository.FilmRepository
+import com.example.moviezone.repository.MovieRepository
+import com.example.moviezone.utils.Const
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel: ViewModel() {
     private var viewInteractor: MovieDetailsViewInteractor? = null
     private var navController: NavController? = null
-    private var filmRepository = FilmRepository()
+    private var movieRepository = MovieRepository()
 
     fun setViewInteractor(viewInteractor: MovieDetailsViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -24,20 +25,23 @@ class MovieDetailsViewModel: ViewModel() {
         navController?.navigate(MovieDetailsFragmentDirections.navigateFromMovieDetailsToBase())
     }
 
-    fun getFilmById(filmId: Int) {
+    fun getMovieById(movieId: Int) {
         viewModelScope.launch {
-            filmRepository.getFilmById(filmId).collect {
-                viewInteractor?.setMoviePoster(it.images.poster.x1.medium.filmImage)
-                viewInteractor?.setMovieTitle(it.filmName)
-                viewInteractor?.setRating(it.reviewStars.toString())
-                viewInteractor?.setReleaseDate(it.releaseDates[0].releaseDate)
-                viewInteractor?.setGenre(it.genres[0].genreName)
-                viewInteractor?.setStoryLine(it.synopsisLong)
-                viewInteractor?.setBackdrop(it.images.poster.x1.medium.filmImage)
-                viewInteractor?.setCast(it.cast)
-                println(it.trailers != null)
-                if (it.trailers != null) viewInteractor?.setTrailer(it.trailers.high[0].filmTrailer) else viewInteractor?.setTrailer("")
+            movieRepository.getMovieById(movieId).collect {
+                viewInteractor?.setMoviePoster(Const.TMDB_IMAGE_URL + it.posterPath)
+                viewInteractor?.setMovieTitle(it.title)
+                viewInteractor?.setBackdrop(Const.TMDB_IMAGE_URL + it.backdropPath)
+                viewInteractor?.setStoryLine(it.overview)
+                viewInteractor?.setGenre(it.genres[0].name)
+                viewInteractor?.setRuntime(it.runtime.toString() + " minutes")
+                viewInteractor?.setRating(it.voteAverage.toString())
+            }
+
+            movieRepository.getMovieTrailerById(movieId).collect {
+                viewInteractor?.setTrailer(it.results[0].key)
             }
         }
     }
+
+
 }

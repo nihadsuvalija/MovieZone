@@ -10,20 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieItemBinding
-import com.example.moviezone.model.Film
-import com.example.moviezone.utils.FilmsDiffUtil
+import com.example.moviezone.model.Movie
+import com.example.moviezone.utils.Const
+import com.example.moviezone.utils.MovieDiffUtil
 
-class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
+class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private lateinit var binding: MovieItemBinding
     private lateinit var viewModel: HomeViewModel
 
-    private var films: List<Film> = listOf()
+    private var movies: List<Movie> = listOf()
 
-    fun setFilms(films: List<Film>) {
-        val diffUtil = FilmsDiffUtil(this.films, films)
+    fun setMovies(movies: List<Movie>) {
+        val diffUtil = MovieDiffUtil(this.movies, movies)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
-        this.films = films
+        this.movies = movies
         diffResult.dispatchUpdatesTo(this)
     }
 
@@ -31,27 +32,24 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
         val poster = binding.ivMoviePosterMovieitem
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): FilmAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapter.ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.movie_item, parent, false)
         viewModel = ViewModelProvider(parent.findFragment())[HomeViewModel::class.java]
 
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: FilmAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieAdapter.ViewHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(films[position].images.poster.x1.medium.filmImage)
+            .load(Const.TMDB_IMAGE_URL + movies[position].posterPath)
             .into(holder.poster)
 
         holder.itemView.setOnClickListener {
-            viewModel.onFilmClick(films[position].filmId)
+            viewModel.onMovieClick(movies[position].id)
         }
     }
 
     override fun getItemCount(): Int {
-        return films.size
+        return movies.size
     }
 }

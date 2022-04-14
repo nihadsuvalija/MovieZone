@@ -3,9 +3,9 @@ package com.example.moviezone.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Genre(
+data class TrailerResponse(
     @SerializedName("id")
     val id: Int,
-    @SerializedName("name")
-    val name: String
+    @SerializedName("results")
+    val results: List<Result>
 )

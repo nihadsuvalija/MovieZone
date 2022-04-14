@@ -1,0 +1,20 @@
+package com.example.moviezone.api
+
+import com.example.moviezone.model.Movie
+import com.example.moviezone.model.MovieDetails
+import com.example.moviezone.model.TrailerResponse
+import com.example.moviezone.model.UpcomingResponse
+import com.example.moviezone.utils.Const
+import retrofit2.http.GET
+import retrofit2.http.Path
+
+interface TMDBApi {
+    @GET("movie/upcoming?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getUpcomingMovies() : UpcomingResponse
+
+    @GET("movie/{movie_id}?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getMovieById(@Path("movie_id") movieId: Int): MovieDetails
+
+    @GET("movie/{movie_id}/videos?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getMovieTrailerById(@Path("movie_id") movieId: Int): TrailerResponse
+}

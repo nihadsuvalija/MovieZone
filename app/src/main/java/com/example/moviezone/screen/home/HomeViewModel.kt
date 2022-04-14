@@ -3,7 +3,7 @@ package com.example.moviezone.screen.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.example.moviezone.repository.FilmRepository
+import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.base.BaseFragmentDirections
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel: ViewModel() {
     private var viewInteractor: HomeViewInteractor? = null
     private var navController: NavController? = null
-    private var filmRepository = FilmRepository()
+    private var movieRepository = MovieRepository()
 
     fun setViewInteractor(viewInteractor: HomeViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -21,19 +21,15 @@ class HomeViewModel: ViewModel() {
         this.navController = navController
     }
 
-    fun onFilmClick(filmId: Int) {
-        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(filmId))
+    fun onMovieClick(movieId: Int) {
+        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId))
     }
 
-    fun getNowShowing() {
+    fun getUpcomingMovies() {
         viewModelScope.launch {
-            filmRepository.getNowShowing().collect {
-                viewInteractor?.setFilms(it.films)
+            movieRepository.getUpcomingMovies().collect {
+                viewInteractor?.setMovies(it.movies)
             }
         }
-    }
-
-    fun getComingSoon() {
-
     }
 }
