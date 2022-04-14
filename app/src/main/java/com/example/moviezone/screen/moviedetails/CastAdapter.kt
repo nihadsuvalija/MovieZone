@@ -37,10 +37,16 @@ class CastAdapter: RecyclerView.Adapter<CastAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CastAdapter.ViewHolder, position: Int) {
-        Glide.with(holder.itemView.context)
-            .load(Const.Companion.TMDB_IMAGE_URL + cast[position].profilePath)
-            .circleCrop()
-            .into(holder.image)
+        if (!cast[position].profilePath.isNullOrBlank()) {
+            Glide.with(holder.itemView.context)
+                .load(Const.Companion.TMDB_IMAGE_URL + cast[position].profilePath)
+                .circleCrop()
+                .into(holder.image)
+        } else {
+            Glide.with(holder.itemView.context)
+                .load(R.drawable.ic_person)
+                .into(holder.image)
+        }
 
         holder.name.text = cast[position].name
     }
