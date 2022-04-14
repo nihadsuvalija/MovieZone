@@ -40,8 +40,11 @@ class MovieDetailsViewModel: ViewModel() {
             movieRepository.getMovieTrailerById(movieId).collect {
                 viewInteractor?.setTrailer(it.results[0].key)
             }
+
+            movieRepository.getCreditsByMovieId(movieId).collect {
+                viewInteractor?.setCast(it.cast)
+            }
         }
     }
-
 
 }

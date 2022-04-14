@@ -5,15 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.MediaController
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieDetailsBinding
+import com.example.moviezone.model.Cast
 import com.example.moviezone.utils.Const
 
 
@@ -23,6 +26,8 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     private lateinit var viewModel: MovieDetailsViewModel
 
     private val args: MovieDetailsFragmentArgs by navArgs()
+
+    private val castAdapter = CastAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,12 +44,19 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
             viewModel.navigateBack()
         }
 
+        setupCast()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setNavController(Navigation.findNavController(binding.root))
+    }
+
+    private fun setupCast() {
+        binding.rvCastMoviedetails.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvCastMoviedetails.adapter = castAdapter
     }
 
     override fun setMoviePoster(path: String) {
@@ -103,5 +115,9 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
             binding.tvTrailerTitleMoviedetails.visibility = View.GONE
             binding.vvTrailerMoviedetails.visibility = View.GONE
         }
+    }
+
+    override fun setCast(cast: List<Cast>) {
+        castAdapter.setCast(cast)
     }
 }
