@@ -18,6 +18,11 @@ import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieDetailsBinding
 import com.example.moviezone.model.Cast
 import com.example.moviezone.utils.Const
+import com.google.android.youtube.player.YouTubeBaseActivity
+import com.google.android.youtube.player.YouTubeInitializationResult
+import com.google.android.youtube.player.YouTubePlayer
+import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener
+import com.google.android.youtube.player.YouTubePlayerFragment
 
 
 class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
@@ -42,6 +47,11 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
         binding.ivBackButton.setOnClickListener {
             viewModel.navigateBack()
+        }
+
+        binding.btnWatchTrailer.setOnClickListener {
+            // TO DO: Implement play the youtube video
+            viewModel.launchYouTubeActivity(requireContext())
         }
 
         setupCast()
@@ -102,19 +112,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setTrailer(trailer: String) {
-        if (trailer.isNotBlank()) {
-            val fullTrailer = Const.BASE_YOUTUBE_VIDEO_URL + trailer
-            val mediaController = MediaController(requireContext())
-            mediaController.setAnchorView(binding.vvTrailerMoviedetails)
-            binding.vvTrailerMoviedetails.setMediaController(mediaController)
-            binding.vvTrailerMoviedetails.setVideoURI(Uri.parse(fullTrailer))
-            binding.vvTrailerMoviedetails.requestFocus()
-            binding.vvTrailerMoviedetails.start()
-            binding.vvTrailerMoviedetails.setBackgroundResource(R.color.transparent)
-        } else {
-            binding.tvTrailerTitleMoviedetails.visibility = View.GONE
-            binding.vvTrailerMoviedetails.visibility = View.GONE
-        }
+
     }
 
     override fun setCast(cast: List<Cast>) {

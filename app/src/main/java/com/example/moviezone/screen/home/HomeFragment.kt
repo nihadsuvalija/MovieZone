@@ -21,9 +21,7 @@ import com.example.moviezone.model.Movie
 import com.google.firebase.auth.FirebaseAuth
 
 /*
-
     TO DO: Implement calling API only when the screen is created, not the view!
-
  */
 
 class HomeFragment: Fragment(), HomeViewInteractor {

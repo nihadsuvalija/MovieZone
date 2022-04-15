@@ -9,7 +9,7 @@ class Const {
         const val TMDB_API_READ_ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZWExOTJmMWE0YjgzMzQ5NjM2NzI4NTBkY2RkZjIyNyIsInN1YiI6IjYyNGJkOTU1M2M0MzQ0MDA2NjE5Zjc3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sls09NbdiSQmfXeXSe1NvlQsckohJctfX5ZIBS5ereA"
 
         const val BASE_YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v="
-        const val GOOGLE_API_KEY = "AIzaSyAW4zidNs2meUaTJpnfAodU_IhpO-BSOkA"
+        const val YOUTUBE_API_KEY = "AIzaSyAW4zidNs2meUaTJpnfAodU_IhpO-BSOkA"
 
         // ERRORS:
         const val EMAIL_FORMAT_ERROR = "Email format is not correct."

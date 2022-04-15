@@ -1,16 +1,21 @@
 package com.example.moviezone.screen.moviedetails
 
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.repository.MovieRepository
+import com.example.moviezone.screen.youtubevideo.YoutubeActivity
 import com.example.moviezone.utils.Const
+import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel: ViewModel() {
     private var viewInteractor: MovieDetailsViewInteractor? = null
     private var navController: NavController? = null
+    private var trailer: String = ""
     private var movieRepository = MovieRepository()
 
     fun setViewInteractor(viewInteractor: MovieDetailsViewInteractor) {
@@ -19,6 +24,13 @@ class MovieDetailsViewModel: ViewModel() {
 
     fun setNavController(navController: NavController) {
         this.navController = navController
+    }
+
+    fun launchYouTubeActivity(context: Context) {
+        var intent = Intent(context, YoutubeActivity::class.java).apply {
+            putExtra("Trailer", trailer)
+        }
+        context.startActivity(intent)
     }
 
     fun navigateBack(){
@@ -38,7 +50,7 @@ class MovieDetailsViewModel: ViewModel() {
             }
 
             movieRepository.getMovieTrailerById(movieId).collect {
-                viewInteractor?.setTrailer(it.results[0].key)
+                trailer = it.results[0].key
             }
 
             movieRepository.getCreditsByMovieId(movieId).collect {
