@@ -28,8 +28,22 @@ class HomeViewModel: ViewModel() {
     fun getUpcomingMovies() {
         viewModelScope.launch {
             movieRepository.getUpcomingMovies().collect {
+                viewInteractor?.setMovies(listOf())
                 viewInteractor?.setMovies(it.movies)
             }
         }
+    }
+
+    fun getNowPlayingMovies() {
+        viewModelScope.launch {
+            movieRepository.getNowPlayingMovies().collect {
+                viewInteractor?.setMovies(listOf())
+                viewInteractor?.setMovies(it.movies)
+            }
+        }
+    }
+
+    fun getFavoriteMovies() {
+        viewInteractor?.setMovies(listOf())
     }
 }

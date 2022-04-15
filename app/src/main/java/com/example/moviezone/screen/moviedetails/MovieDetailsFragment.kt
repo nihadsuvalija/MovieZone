@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieDetailsBinding
 import com.example.moviezone.model.Cast
+import com.example.moviezone.model.Review
 import com.example.moviezone.utils.Const
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
@@ -33,6 +34,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     private val args: MovieDetailsFragmentArgs by navArgs()
 
     private val castAdapter = CastAdapter()
+    private val reviewAdapter = ReviewAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,6 +57,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         }
 
         setupCast()
+        setupReviews()
 
         return binding.root
     }
@@ -67,6 +70,11 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     private fun setupCast() {
         binding.rvCastMoviedetails.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvCastMoviedetails.adapter = castAdapter
+    }
+
+    private fun setupReviews() {
+        binding.rvReviewsMoviedetails.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvReviewsMoviedetails.adapter = reviewAdapter
     }
 
     override fun setMoviePoster(path: String) {
@@ -111,8 +119,13 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         binding.tvStoryLineMoviedetails.text = storyLine
     }
 
-    override fun setTrailer(trailer: String) {
-
+    override fun setReviews(reviews: List<Review>) {
+        if(reviews.isEmpty()) {
+            binding.rvReviewsMoviedetails.visibility = View.GONE
+            binding.tvReviewsTitleMoviedetails.visibility = View.GONE
+        } else {
+            reviewAdapter.setReviews(reviews)
+        }
     }
 
     override fun setCast(cast: List<Cast>) {

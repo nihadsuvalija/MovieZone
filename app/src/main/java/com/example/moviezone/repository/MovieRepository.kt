@@ -1,10 +1,7 @@
 package com.example.moviezone.repository
 
 import com.example.moviezone.api.RetrofitInstance
-import com.example.moviezone.model.CreditsResponse
-import com.example.moviezone.model.MovieDetails
-import com.example.moviezone.model.TrailerResponse
-import com.example.moviezone.model.UpcomingResponse
+import com.example.moviezone.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -35,6 +32,20 @@ class MovieRepository {
     suspend fun getCreditsByMovieId(movieId: Int): Flow<CreditsResponse> {
         return flow {
             val response = RetrofitInstance.tmdbApi.getCreditsByMovieId(movieId)
+            emit(response)
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getReviewsById(movieId: Int): Flow<ReviewResponse> {
+        return flow {
+            val response = RetrofitInstance.tmdbApi.getReviewsById(movieId)
+            emit(response)
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getNowPlayingMovies(): Flow<NowPlayingResponse> {
+        return flow {
+            val response = RetrofitInstance.tmdbApi.getNowPlayingMovies()
             emit(response)
         }.flowOn(Dispatchers.IO)
     }

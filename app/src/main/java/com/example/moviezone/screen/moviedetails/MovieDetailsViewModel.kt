@@ -47,6 +47,7 @@ class MovieDetailsViewModel: ViewModel() {
                 viewInteractor?.setGenre(it.genres[0].name)
                 viewInteractor?.setRuntime(it.runtime.toString() + " minutes")
                 viewInteractor?.setRating(it.voteAverage.toString())
+                viewInteractor?.setReleaseDate(it.releaseDate)
             }
 
             movieRepository.getMovieTrailerById(movieId).collect {
@@ -55,6 +56,10 @@ class MovieDetailsViewModel: ViewModel() {
 
             movieRepository.getCreditsByMovieId(movieId).collect {
                 viewInteractor?.setCast(it.cast)
+            }
+
+            movieRepository.getReviewsById(movieId).collect {
+                viewInteractor?.setReviews(it.reviews)
             }
         }
     }

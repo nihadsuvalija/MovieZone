@@ -9,6 +9,9 @@ interface TMDBApi {
     @GET("movie/upcoming?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getUpcomingMovies() : UpcomingResponse
 
+    @GET("movie/now_playing?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getNowPlayingMovies() : NowPlayingResponse
+
     @GET("movie/{movie_id}?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getMovieById(@Path("movie_id") movieId: Int): MovieDetails
 
@@ -17,4 +20,7 @@ interface TMDBApi {
 
     @GET("movie/{movie_id}}/credits?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getCreditsByMovieId(@Path("movie_id") movieId: Int): CreditsResponse
+
+    @GET("movie/{movie_id}/reviews?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getReviewsById(@Path("movie_id") movieId: Int): ReviewResponse
 }

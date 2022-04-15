@@ -37,11 +37,14 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
         holder.title.text = categories[position]
         holder.itemView.setOnClickListener {
             when (categories[position]) {
+                "Now Playing" -> {
+                    viewModel.getNowPlayingMovies()
+                }
                 "Upcoming" -> {
                     viewModel.getUpcomingMovies()
                 }
-                "Coming Soon" -> {
-                    viewModel.getUpcomingMovies()
+                "Favorites" -> {
+                    viewModel.getFavoriteMovies()
                 }
             }
         }

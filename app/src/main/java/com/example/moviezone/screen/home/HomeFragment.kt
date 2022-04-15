@@ -48,9 +48,9 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             }
         }
 
-        binding.rvInTheatersHome.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+        binding.rvMoviesHome.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                binding.rvInTheatersHome.parent.requestDisallowInterceptTouchEvent(true)
+                binding.rvMoviesHome.parent.requestDisallowInterceptTouchEvent(true)
                 return false
             }
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
@@ -78,8 +78,9 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                 .into(binding.ivProfileImageHome)
         }
 
-        setupUpcomingMovies()
-        setupCategories(listOf("Now Showing", "Coming Soon", "Favorites"))
+        setupMovies()
+        setupCategories(listOf("Now Playing", "Upcoming", "Favorites"))
+        viewModel.getNowPlayingMovies()
 
         return binding.root
     }
@@ -89,11 +90,10 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
     }
 
-    private fun setupUpcomingMovies() {
+    private fun setupMovies() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        viewModel.getUpcomingMovies()
-        binding.rvInTheatersHome.layoutManager = layoutManager
-        binding.rvInTheatersHome.adapter = movieAdapter
+        binding.rvMoviesHome.layoutManager = layoutManager
+        binding.rvMoviesHome.adapter = movieAdapter
     }
 
     private fun setupCategories(categories: List<String>) {

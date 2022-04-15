@@ -1,6 +1,7 @@
 package com.example.moviezone.screen.moviedetails
 
 import com.example.moviezone.model.Cast
+import com.example.moviezone.model.Review
 
 interface MovieDetailsViewInteractor {
     fun setMoviePoster(path: String)
@@ -11,6 +12,6 @@ interface MovieDetailsViewInteractor {
     fun setBackdrop(path: String)
     fun setRating(rating: String)
     fun setStoryLine(storyLine: String)
-    fun setTrailer(trailer: String)
+    fun setReviews(reviews: List<Review>)
     fun setCast(cast: List<Cast>)
 }
