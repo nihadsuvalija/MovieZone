@@ -50,7 +50,8 @@
         <entry key="app/src/main/res/layout/privacy_policy.xml" value="0.2954253954681488" />
         <entry key="app/src/main/res/layout/profile.xml" value="0.35989583333333336" />
         <entry key="app/src/main/res/layout/review.xml" value="0.6448326055312955" />
-        <entry key="app/src/main/res/layout/search.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/search.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/search_item.xml" value="0.67" />
         <entry key="app/src/main/res/layout/sign_in.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sign_up.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.2930253623188406" />
