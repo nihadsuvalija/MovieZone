@@ -1,12 +1,9 @@
 package com.example.moviezone.screen.moviedetails
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.MediaController
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,12 +15,6 @@ import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieDetailsBinding
 import com.example.moviezone.model.Cast
 import com.example.moviezone.model.Review
-import com.example.moviezone.utils.Const
-import com.google.android.youtube.player.YouTubeBaseActivity
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
-import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener
-import com.google.android.youtube.player.YouTubePlayerFragment
 
 
 class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {

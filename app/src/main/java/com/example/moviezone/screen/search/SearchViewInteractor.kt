@@ -1,6 +1,5 @@
 package com.example.moviezone.screen.search
 
-import com.example.moviezone.model.Movie
 import com.example.moviezone.model.SearchedMovie
 
 interface SearchViewInteractor {

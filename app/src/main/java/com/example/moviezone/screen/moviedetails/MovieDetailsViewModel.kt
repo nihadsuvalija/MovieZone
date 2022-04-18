@@ -8,7 +8,6 @@ import androidx.navigation.NavController
 import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.youtubevideo.YoutubeActivity
 import com.example.moviezone.utils.Const
-import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

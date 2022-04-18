@@ -1,7 +1,5 @@
 package com.example.moviezone.model
 
-import com.google.firebase.auth.FirebaseAuth
-
 object CurrentUser {
     var id = ""
     var fullName = ""

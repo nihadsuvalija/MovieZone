@@ -3,7 +3,6 @@ package com.example.moviezone.screen.profile
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import com.example.moviezone.R
 import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.screen.base.BaseFragmentDirections
 import com.google.firebase.auth.FirebaseAuth

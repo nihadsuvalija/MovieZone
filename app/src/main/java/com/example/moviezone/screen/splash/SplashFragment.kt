@@ -12,7 +12,6 @@ import androidx.navigation.Navigation
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SplashBinding
 import com.example.moviezone.model.CurrentUser
-import com.google.firebase.auth.FirebaseAuth
 
 class SplashFragment: Fragment() {
 

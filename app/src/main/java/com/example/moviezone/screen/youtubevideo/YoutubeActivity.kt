@@ -1,12 +1,8 @@
 package com.example.moviezone.screen.youtubevideo
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.example.moviezone.R
 import com.example.moviezone.databinding.YoutubeVideoBinding

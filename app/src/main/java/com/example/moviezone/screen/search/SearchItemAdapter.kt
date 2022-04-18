@@ -9,10 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SearchItemBinding
-import com.example.moviezone.model.Movie
 import com.example.moviezone.model.SearchedMovie
 import com.example.moviezone.utils.Const
-import com.example.moviezone.utils.MovieDiffUtil
 import com.example.moviezone.utils.SearchedMovieDiffUtil
 
 class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {

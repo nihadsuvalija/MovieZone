@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SearchBinding
-import com.example.moviezone.model.Movie
 import com.example.moviezone.model.SearchedMovie
 
 class SearchFragment: Fragment(), SearchViewInteractor {

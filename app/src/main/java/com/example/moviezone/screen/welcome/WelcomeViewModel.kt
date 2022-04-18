@@ -2,7 +2,6 @@ package com.example.moviezone.screen.welcome
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.model.CurrentUser
@@ -12,9 +11,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import javax.xml.parsers.FactoryConfigurationError
 
 class WelcomeViewModel: ViewModel() {
 
