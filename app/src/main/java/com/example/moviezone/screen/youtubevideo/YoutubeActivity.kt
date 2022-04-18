@@ -13,14 +13,14 @@ import com.google.android.youtube.player.YouTubePlayer
 
 class YoutubeActivity: YouTubeBaseActivity() {
 
-    private lateinit var binding: YoutubeVideoBinding
-    private lateinit var player: YouTubePlayer
+    private var binding: YoutubeVideoBinding? = null
+    private var player: YouTubePlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.youtube_video)
 
-        binding.wvTrailerYoutube.initialize(Const.YOUTUBE_API_KEY, object: YouTubePlayer.OnInitializedListener {
+        binding?.wvTrailerYoutube?.initialize(Const.YOUTUBE_API_KEY, object: YouTubePlayer.OnInitializedListener {
             override fun onInitializationSuccess(
                 p0: YouTubePlayer.Provider?,
                 p1: YouTubePlayer?,
@@ -29,7 +29,7 @@ class YoutubeActivity: YouTubeBaseActivity() {
 
                 if (p1 != null) {
                     player = p1
-                    player.loadVideo(intent.getStringExtra("Trailer"))
+                    player?.loadVideo(intent.getStringExtra("Trailer"))
                 }
             }
 
@@ -42,9 +42,5 @@ class YoutubeActivity: YouTubeBaseActivity() {
             }
 
         })
-    }
-
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
     }
 }

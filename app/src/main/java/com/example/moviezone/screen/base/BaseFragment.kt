@@ -17,8 +17,8 @@ import com.example.moviezone.screen.search.SearchFragment
 
 class BaseFragment: Fragment(), BaseViewInteractor {
 
-    private lateinit var binding: BaseBinding
-    private lateinit var viewModel: BaseViewModel
+    private var binding: BaseBinding? = null
+    private var viewModel: BaseViewModel? = null
     private var fragments = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
 
@@ -26,44 +26,45 @@ class BaseFragment: Fragment(), BaseViewInteractor {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.base, container, false)
         viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
-        viewModel.setViewInteractor(this)
+        viewModel?.setViewInteractor(this)
 
         setupViewPager()
 
-        binding.bnvBase.setOnItemSelectedListener {
+        binding?.bnvBase?.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home_menu_item -> binding.vpBase.currentItem = 0
-                R.id.search_menu_item -> binding.vpBase.currentItem = 1
-                R.id.profile_menu_item -> binding.vpBase.currentItem = 2
+                R.id.home_menu_item -> binding?.vpBase?.currentItem = 0
+                R.id.search_menu_item -> binding?.vpBase?.currentItem = 1
+                R.id.profile_menu_item -> binding?.vpBase?.currentItem = 2
             }
             true
         }
 
-        binding.vpBase.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+        binding?.vpBase?.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when(position) {
-                    0 -> binding.bnvBase.selectedItemId = R.id.home_menu_item
-                    1 -> binding.bnvBase.selectedItemId = R.id.search_menu_item
-                    2 -> binding.bnvBase.selectedItemId = R.id.profile_menu_item
+                    0 -> binding?.bnvBase?.selectedItemId = R.id.home_menu_item
+                    1 -> binding?.bnvBase?.selectedItemId = R.id.search_menu_item
+                    2 -> binding?.bnvBase?.selectedItemId = R.id.profile_menu_item
                 }
             }
         })
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
+        binding?.root?.let { Navigation.findNavController(it) }
+            ?.let { viewModel?.setNavController(it) }
     }
 
     private fun setupViewPager() {
         val adapter = ViewPagerAdapter(this)
         adapter.setFragments(fragments)
-        binding.vpBase.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        binding.vpBase.adapter = adapter
+        binding?.vpBase?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        binding?.vpBase?.adapter = adapter
     }
 }

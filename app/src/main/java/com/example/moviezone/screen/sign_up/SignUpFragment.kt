@@ -13,53 +13,54 @@ import com.example.moviezone.databinding.SignUpBinding
 
 class SignUpFragment: Fragment(), SignUpViewInteractor {
 
-    private lateinit var binding: SignUpBinding
-    private lateinit var viewModel: SignUpViewModel
+    private var binding: SignUpBinding? = null
+    private var viewModel: SignUpViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_up, container, false)
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
-        viewModel.setViewInteractor(this)
+        viewModel?.setViewInteractor(this)
 
-        binding.ivBackButton.setOnClickListener {
-            viewModel.onBackPressed()
+        binding?.ivBackButton?.setOnClickListener {
+            viewModel?.onBackPressed()
         }
 
-        binding.btnSignUpSignup.setOnClickListener {
-            viewModel.registerUser(
-                binding.etFullNameSignup.text.toString(),
-                binding.etEmailSignup.text.toString(),
-                binding.etPasswordSignup.text.toString()
+        binding?.btnSignUpSignup?.setOnClickListener {
+            viewModel?.registerUser(
+                binding?.etFullNameSignup?.text.toString(),
+                binding?.etEmailSignup?.text.toString(),
+                binding?.etPasswordSignup?.text.toString()
             )
         }
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
+        binding?.root?.let { Navigation.findNavController(it) }
+            ?.let { viewModel?.setNavController(it) }
     }
 
     override fun setFullNameError(error: String) {
-        binding.etFullNameSignup.error = error
+        binding?.etFullNameSignup?.error = error
     }
 
     override fun setEmailError(error: String) {
-        binding.etEmailSignup.error = error
+        binding?.etEmailSignup?.error = error
     }
 
     override fun setPasswordError(error: String) {
-        binding.etPasswordSignup.error = error
+        binding?.etPasswordSignup?.error = error
     }
 
     override fun clearInputFields() {
-        binding.etFullNameSignup.text.clear()
-        binding.etEmailSignup.text.clear()
-        binding.etPasswordSignup.text.clear()
+        binding?.etFullNameSignup?.text?.clear()
+        binding?.etEmailSignup?.text?.clear()
+        binding?.etPasswordSignup?.text?.clear()
     }
 }

@@ -23,11 +23,9 @@ import com.google.android.gms.tasks.Task
 
 class WelcomeFragment: Fragment(), WelcomeViewInteractor{
 
-    private lateinit var binding: WelcomeBinding
-    private lateinit var viewModel: WelcomeViewModel
+    private var binding: WelcomeBinding? = null
+    private var viewModel: WelcomeViewModel? = null
     private lateinit var launcher: ActivityResultLauncher<Intent>
-
-    val TAG = "STATUS"
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -35,7 +33,7 @@ class WelcomeFragment: Fragment(), WelcomeViewInteractor{
             if (it.resultCode == Activity.RESULT_OK) {
                 val task: Task<GoogleSignInAccount> =
                     GoogleSignIn.getSignedInAccountFromIntent(it.data)
-                viewModel.handleSignInResult(task)
+                viewModel?.handleSignInResult(task)
             }
         }
     }
@@ -44,30 +42,31 @@ class WelcomeFragment: Fragment(), WelcomeViewInteractor{
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.welcome, container, false)
         viewModel = ViewModelProvider(this)[WelcomeViewModel::class.java]
-        viewModel.setViewInteractor(this)
-        viewModel.setupGoogleSignIn(requireContext())
+        viewModel?.setViewInteractor(this)
+        viewModel?.setupGoogleSignIn(requireContext())
 
-        binding.btnSignUpWelcome.setOnClickListener {
-            viewModel.onSignUpClicked()
+        binding?.btnSignUpWelcome?.setOnClickListener {
+            viewModel?.onSignUpClicked()
         }
 
-        binding.signInTxtWelcome.setOnClickListener {
-            viewModel.onSignInClicked()
+        binding?.signInTxtWelcome?.setOnClickListener {
+            viewModel?.onSignInClicked()
         }
 
-        binding.ivGoogleWelcome.setOnClickListener {
-            launcher.launch(viewModel.setupGoogleSignIn(requireContext()))
+        binding?.ivGoogleWelcome?.setOnClickListener {
+            launcher.launch(viewModel?.setupGoogleSignIn(requireContext()))
         }
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
+        binding?.root?.let { Navigation.findNavController(it) }
+            ?.let { viewModel?.setNavController(it) }
     }
 
     override fun displayPopUp(message: String) {

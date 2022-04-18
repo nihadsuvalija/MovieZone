@@ -14,19 +14,19 @@ import com.example.moviezone.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainActivityViewModel
+    private var binding: ActivityMainBinding? = null
+    private var viewModel: MainActivityViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
-        binding.root.setOnClickListener {
-            if(!binding.root.isFocused) {
+        binding?.root?.setOnClickListener {
+            if(binding?.root?.isFocused == false) {
                 val imm: InputMethodManager =
                     applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                imm.hideSoftInputFromWindow(binding?.root?.windowToken, 0)
             }
         }
 

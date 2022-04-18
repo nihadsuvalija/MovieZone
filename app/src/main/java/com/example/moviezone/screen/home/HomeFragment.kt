@@ -26,8 +26,8 @@ import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment: Fragment(), HomeViewInteractor {
 
-    private lateinit var binding: HomeBinding
-    private lateinit var viewModel: HomeViewModel
+    private var binding: HomeBinding? = null
+    private var viewModel: HomeViewModel? = null
 
     private val movieAdapter = MovieAdapter()
 
@@ -35,73 +35,78 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.home, container, false)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        viewModel.setViewInteractor(this)
+        viewModel?.setViewInteractor(this)
 
-        binding.root.setOnClickListener {
-            if(!binding.root.isFocused) {
+        binding?.root?.setOnClickListener {
+            if(binding?.root?.isFocused == false) {
                 val imm: InputMethodManager =
                     requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+                imm.hideSoftInputFromWindow(binding?.root?.windowToken, 0)
             }
         }
 
-        binding.rvMoviesHome.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+        binding?.rvMoviesHome?.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                binding.rvMoviesHome.parent.requestDisallowInterceptTouchEvent(true)
+                binding?.rvMoviesHome?.parent?.requestDisallowInterceptTouchEvent(true)
                 return false
             }
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
 
-        binding.rvCategoriesHome.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+        binding?.rvCategoriesHome?.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                binding.rvCategoriesHome.parent.requestDisallowInterceptTouchEvent(true)
+                binding?.rvCategoriesHome?.parent?.requestDisallowInterceptTouchEvent(true)
                 return false
             }
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
 
-        binding.tvHelloHome.text = "Hello, " + CurrentUser.fullName
+        binding?.tvHelloHome?.text = "Hello, " + CurrentUser.fullName
 
         if (FirebaseAuth.getInstance().currentUser?.photoUrl != null) {
-            Glide.with(requireContext())
-                .load(FirebaseAuth.getInstance().currentUser?.photoUrl)
-                .into(binding.ivProfileImageHome)
+            binding?.ivProfileImageHome?.let {
+                Glide.with(requireContext())
+                    .load(FirebaseAuth.getInstance().currentUser?.photoUrl)
+                    .into(it)
+            }
         } else {
-            Glide.with(requireContext())
-                .load(R.drawable.ic_person)
-                .into(binding.ivProfileImageHome)
+            binding?.ivProfileImageHome?.let {
+                Glide.with(requireContext())
+                    .load(R.drawable.ic_person)
+                    .into(it)
+            }
         }
 
         setupMovies()
         setupCategories(listOf("Now Playing", "Upcoming", "Favorites"))
-        viewModel.getNowPlayingMovies()
+        viewModel?.getNowPlayingMovies()
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
+        viewModel?.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
     }
 
     private fun setupMovies() {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvMoviesHome.layoutManager = layoutManager
-        binding.rvMoviesHome.adapter = movieAdapter
+        binding?.rvMoviesHome?.layoutManager = layoutManager
+        binding?.rvMoviesHome?.adapter = movieAdapter
     }
 
     private fun setupCategories(categories: List<String>) {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val categoriesAdapter = CategoriesAdapter()
         categoriesAdapter.setCategories(categories)
-        binding.rvCategoriesHome.layoutManager = layoutManager
-        binding.rvCategoriesHome.adapter = categoriesAdapter
+        viewModel?.let { categoriesAdapter.setViewModelInteractor(it) }
+        binding?.rvCategoriesHome?.layoutManager = layoutManager
+        binding?.rvCategoriesHome?.adapter = categoriesAdapter
     }
 
     override fun setMovies(movies: List<Movie>) {

@@ -15,31 +15,33 @@ import com.example.moviezone.model.CurrentUser
 
 class SplashFragment: Fragment() {
 
-    private lateinit var binding: SplashBinding
-    private lateinit var viewModel: SplashViewModel
+    private var binding: SplashBinding? = null
+    private var viewModel: SplashViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.splash, container, false)
         viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
 
-        viewModel.updateCurrentUser()
+        viewModel?.updateCurrentUser()
+
         // TO DO: Fix deprecated handler.
         Handler().postDelayed({
             if (CurrentUser.signedIn()) {
-                viewModel.navigateToBase()
+                viewModel?.navigateToBase()
             } else {
-                viewModel.navigateToWelcome()
+                viewModel?.navigateToWelcome()
             }
         }, 2000)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
+        binding?.root?.let { Navigation.findNavController(it) }
+            ?.let { viewModel?.setNavController(it) }
     }
 }

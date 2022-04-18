@@ -8,7 +8,7 @@ import com.example.moviezone.screen.base.BaseFragmentDirections
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel: ViewModel(), HomeViewModelInteractor {
     private var viewInteractor: HomeViewInteractor? = null
     private var navController: NavController? = null
     private var movieRepository = MovieRepository()
@@ -45,5 +45,17 @@ class HomeViewModel: ViewModel() {
 
     fun getFavoriteMovies() {
         viewInteractor?.setMovies(listOf())
+    }
+
+    override fun showNowPlayingMovies() {
+        getNowPlayingMovies()
+    }
+
+    override fun showUpcomingMovies() {
+        getUpcomingMovies()
+    }
+
+    override fun showFavoriteMovies() {
+        getFavoriteMovies()
     }
 }

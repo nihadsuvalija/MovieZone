@@ -13,10 +13,14 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
 
     private lateinit var binding: CategoryItemBinding
     private var categories: List<String> = listOf()
-    private lateinit var viewModel: HomeViewModel
+    private var viewModelInteractor: HomeViewModelInteractor? = null
 
     fun setCategories(categories: List<String>) {
         this.categories = categories
+    }
+
+    fun setViewModelInteractor(viewModelInteractor: HomeViewModelInteractor) {
+        this.viewModelInteractor = viewModelInteractor
     }
 
     class ViewHolder(binding: CategoryItemBinding): RecyclerView.ViewHolder(binding.root) {
@@ -28,7 +32,6 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
         viewType: Int
     ): CategoriesAdapter.ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.category_item, parent, false)
-        viewModel = ViewModelProvider(parent.findFragment())[HomeViewModel::class.java]
 
         return ViewHolder(binding)
     }
@@ -38,13 +41,13 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
         holder.itemView.setOnClickListener {
             when (categories[position]) {
                 "Now Playing" -> {
-                    viewModel.getNowPlayingMovies()
+                    viewModelInteractor?.showNowPlayingMovies()
                 }
                 "Upcoming" -> {
-                    viewModel.getUpcomingMovies()
+                    viewModelInteractor?.showUpcomingMovies()
                 }
                 "Favorites" -> {
-                    viewModel.getFavoriteMovies()
+                    viewModelInteractor?.showFavoriteMovies()
                 }
             }
         }

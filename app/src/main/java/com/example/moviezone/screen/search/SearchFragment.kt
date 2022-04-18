@@ -20,7 +20,7 @@ import com.example.moviezone.model.SearchedMovie
 class SearchFragment: Fragment(), SearchViewInteractor {
 
     private lateinit var binding: SearchBinding
-    private lateinit var viewModel: SearchViewModel
+    private var viewModel: SearchViewModel? = null
 
     private var searchItemAdapter = SearchItemAdapter()
 
@@ -31,7 +31,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.search, container, false)
         viewModel = ViewModelProvider(this)[SearchViewModel::class.java]
-        viewModel.setViewInteractor(this)
+        viewModel?.setViewInteractor(this)
 
         binding.root.setOnClickListener {
             if(!binding.root.isFocused) {
@@ -52,7 +52,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
                 if (p0.isNullOrBlank()) {
                     setNoResults()
                 } else {
-                    viewModel.searchByTitle(p0.toString())
+                    viewModel?.searchByTitle(p0.toString())
                 }
             }
 

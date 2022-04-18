@@ -19,8 +19,8 @@ import com.example.moviezone.model.Review
 
 class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
-    private lateinit var binding: MovieDetailsBinding
-    private lateinit var viewModel: MovieDetailsViewModel
+    private var binding: MovieDetailsBinding? = null
+    private var viewModel: MovieDetailsViewModel? = null
 
     private val args: MovieDetailsFragmentArgs by navArgs()
 
@@ -31,60 +31,63 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.movie_details, container, false)
         viewModel = ViewModelProvider(this)[MovieDetailsViewModel::class.java]
-        viewModel.setViewInteractor(this)
+        viewModel?.setViewInteractor(this)
 
-        viewModel.getMovieById(args.movieId)
+        viewModel?.getMovieById(args.movieId)
 
-        binding.ivBackButton.setOnClickListener {
-            viewModel.navigateBack()
+        binding?.ivBackButton?.setOnClickListener {
+            viewModel?.navigateBack()
         }
 
-        binding.btnWatchTrailer.setOnClickListener {
+        binding?.btnWatchTrailer?.setOnClickListener {
             // TO DO: Implement play the youtube video
-            viewModel.launchYouTubeActivity(requireContext())
+            viewModel?.launchYouTubeActivity(requireContext())
         }
 
         setupCast()
         setupReviews()
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
+        binding?.root?.let { Navigation.findNavController(it) }
+            ?.let { viewModel?.setNavController(it) }
     }
 
     private fun setupCast() {
-        binding.rvCastMoviedetails.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvCastMoviedetails.adapter = castAdapter
+        binding?.rvCastMoviedetails?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding?.rvCastMoviedetails?.adapter = castAdapter
     }
 
     private fun setupReviews() {
-        binding.rvReviewsMoviedetails.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvReviewsMoviedetails.adapter = reviewAdapter
+        binding?.rvReviewsMoviedetails?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.rvReviewsMoviedetails?.adapter = reviewAdapter
     }
 
     override fun setMoviePoster(path: String) {
-        Glide.with(requireContext())
-            .load(path)
-            .into(binding.ivMoviePosterMoviedetails)
+        binding?.ivMoviePosterMoviedetails?.let {
+            Glide.with(requireContext())
+                .load(path)
+                .into(it)
+        }
     }
 
     override fun setMovieTitle(title: String) {
-        binding.tvMovieTitleMoviedetails.text = title
+        binding?.tvMovieTitleMoviedetails?.text = title
     }
 
     override fun setReleaseDate(date: String) {
         // Subsequencing date format YYYY-MM-DD to use only YYYY
-        binding.tvReleaseDateMoviedetails.text = date.subSequence(0, 4)
+        binding?.tvReleaseDateMoviedetails?.text = date.subSequence(0, 4)
     }
 
     override fun setRuntime(runtime: String) {
-        binding.tvRuntimeMoviedetails.text = runtime
+        binding?.tvRuntimeMoviedetails?.text = runtime
     }
 
     override fun setGenre(genre: String) {
@@ -93,27 +96,29 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
             genreEdited = genre.subSequence(0,7).toString()
             genreEdited += "..."
         }
-        binding.tvGenreMoviedetails.text = genreEdited
+        binding?.tvGenreMoviedetails?.text = genreEdited
     }
 
     override fun setBackdrop(path: String) {
-        Glide.with(requireContext())
-            .load(path)
-            .into(binding.ivBackgroundMoviedetails)
+        binding?.ivBackgroundMoviedetails?.let {
+            Glide.with(requireContext())
+                .load(path)
+                .into(it)
+        }
     }
 
     override fun setRating(rating: String) {
-        binding.tvRatingMoviedetails.text = rating
+        binding?.tvRatingMoviedetails?.text = rating
     }
 
     override fun setStoryLine(storyLine: String) {
-        binding.tvStoryLineMoviedetails.text = storyLine
+        binding?.tvStoryLineMoviedetails?.text = storyLine
     }
 
     override fun setReviews(reviews: List<Review>) {
         if(reviews.isEmpty()) {
-            binding.rvReviewsMoviedetails.visibility = View.GONE
-            binding.tvReviewsTitleMoviedetails.visibility = View.GONE
+            binding?.rvReviewsMoviedetails?.visibility = View.GONE
+            binding?.tvReviewsTitleMoviedetails?.visibility = View.GONE
         } else {
             reviewAdapter.setReviews(reviews)
         }

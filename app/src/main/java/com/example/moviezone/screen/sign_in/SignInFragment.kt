@@ -18,52 +18,51 @@ import com.example.moviezone.databinding.SignInBinding
 
 class SignInFragment: Fragment(), SignInViewInteractor{
 
-    val TAG = "SignInFragment"
-
-    private lateinit var binding: SignInBinding
-    private lateinit var viewModel: SignInViewModel
+    private var binding: SignInBinding? = null
+    private var viewModel: SignInViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.sign_in, container, false)
         viewModel = ViewModelProvider(this)[SignInViewModel::class.java]
-        viewModel.setViewInteractor(this)
+        viewModel?.setViewInteractor(this)
 
-        binding.ivBackButton.setOnClickListener {
-            viewModel.onBackPressed()
+        binding?.ivBackButton?.setOnClickListener {
+            viewModel?.onBackPressed()
         }
 
-        binding.btnSignInSignin.setOnClickListener {
-            viewModel.signInWithEmailAndPassword(
-                binding.etEmailSignin.text.toString(),
-                binding.etPasswordSignin.text.toString()
+        binding?.btnSignInSignin?.setOnClickListener {
+            viewModel?.signInWithEmailAndPassword(
+                binding?.etEmailSignin?.text.toString(),
+                binding?.etPasswordSignin?.text.toString()
             )
         }
 
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setNavController(Navigation.findNavController(binding.root))
+        binding?.root?.let { Navigation.findNavController(it) }
+            ?.let { viewModel?.setNavController(it) }
     }
 
     /* SignInViewInteractor METHODS */
     override fun setEmailError(error: String) {
-        binding.etEmailSignin.error = error
+        binding?.etEmailSignin?.error = error
     }
 
     override fun setPasswordError(error: String) {
-        binding.etPasswordSignin.error = error
+        binding?.etPasswordSignin?.error = error
     }
 
     override fun clearInputFields() {
-        binding.etEmailSignin.text.clear()
-        binding.etPasswordSignin.text.clear()
+        binding?.etEmailSignin?.text?.clear()
+        binding?.etPasswordSignin?.text?.clear()
     }
 
     override fun displayPopUp(message: String) {
