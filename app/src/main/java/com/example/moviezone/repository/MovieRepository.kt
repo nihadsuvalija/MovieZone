@@ -49,4 +49,11 @@ class MovieRepository {
             emit(response)
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun searchMoviesByTitle(title: String): Flow<SearchResponse> {
+        return flow {
+            val response = RetrofitInstance.tmdbApi.searchMoviesByTitle(title)
+            emit(response)
+        }.flowOn(Dispatchers.IO)
+    }
 }

@@ -23,9 +23,9 @@
             android:text="Title"
             android:textSize="@dimen/h2_text_size"
             android:fontFamily="@font/sf_pro_display_bold"
-            android:layout_marginStart="@dimen/margin_m"
-            android:layout_marginTop="@dimen/margin_l"
-            app:layout_constraintTop_toTopOf="@id/iv_poster_searchitem"
+            android:layout_marginStart="@dimen/margin_l"
+            android:layout_marginTop="@dimen/margin_xl"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_poster_searchitem"/>
 
         <ImageView
@@ -78,8 +78,10 @@
             android:layout_marginTop="@dimen/margin_m"
             android:src="@drawable/ic_film"
             android:alpha="0.5"
+            android:layout_marginBottom="@dimen/margin_xl"
             app:layout_constraintTop_toBottomOf="@id/iv_runtime_searchitem"
-            app:layout_constraintStart_toStartOf="@id/iv_runtime_searchitem"/>
+            app:layout_constraintStart_toStartOf="@id/iv_runtime_searchitem"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/tv_genre_searchitem"
@@ -98,8 +100,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_s"
             android:src="@drawable/ic_star"
-            app:layout_constraintTop_toTopOf="@id/iv_poster_searchitem"
-            app:layout_constraintEnd_toStartOf="@id/tv_rating_searchitem"/>
+            app:layout_constraintTop_toTopOf="@id/tv_title_searchitem"
+            app:layout_constraintEnd_toStartOf="@id/tv_rating_searchitem"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title_searchitem"/>
 
         <TextView
             android:id="@+id/tv_rating_searchitem"

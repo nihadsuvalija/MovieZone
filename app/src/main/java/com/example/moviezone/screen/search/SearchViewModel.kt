@@ -1,12 +1,17 @@
 package com.example.moviezone.screen.search
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import com.example.moviezone.repository.MovieRepository
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class SearchViewModel: ViewModel() {
     private var navController: NavController? = null
     private var viewInteractor: SearchViewInteractor? = null
+    private var movieRepository = MovieRepository()
 
     fun setNavController(navController: NavController) {
         this.navController = navController
@@ -16,7 +21,11 @@ class SearchViewModel: ViewModel() {
         this.viewInteractor = viewInteractor
     }
 
-    fun logOut() {
-        FirebaseAuth.getInstance().signOut()
+    fun searchByTitle(title: String) {
+        viewModelScope.launch {
+            movieRepository.searchMoviesByTitle(title).collect {
+                viewInteractor?.setMovies(it.movies)
+            }
+        }
     }
 }
