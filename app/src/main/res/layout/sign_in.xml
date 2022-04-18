@@ -12,6 +12,8 @@
             android:src="@drawable/ic_back"
             android:scaleType="center"
             android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:layout_constraintTop_toTopOf="@id/tv_sign_in_signin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/tv_sign_in_signin"

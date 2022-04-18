@@ -37,6 +37,9 @@
                 android:background="@drawable/back_button_background"
                 android:scaleType="center"
                 android:src="@drawable/ic_back"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
                 app:layout_constraintEnd_toStartOf="@id/tv_movie_title_moviedetails"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
