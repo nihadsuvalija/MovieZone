@@ -26,7 +26,7 @@ interface TMDBApi {
     suspend fun getReviewsById(@Path("movie_id") movieId: Int): ReviewResponse
 
     //https://api.themoviedb.org/3/search/movie?api_key=dea192f1a4b8334963672850dcddf227&language=en-US&query=title%3D%22a%22&page=1&include_adult=false
-    @GET("search/movie?api_key=${Const.TMDB_API_KEY}&language=en-US&include_adult=true")
+    @GET("search/movie?api_key=${Const.TMDB_API_KEY}&language=en-US&include_adult=false")
     suspend fun searchMoviesByTitle(@Query("query") title: String): SearchResponse
 
 }
