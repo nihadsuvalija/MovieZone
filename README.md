@@ -14,6 +14,12 @@ Completed:
     - Sign Up screen design and basic functionality
     - Welcome screen design and basic functionality
     - Splash screen
+    - Home screen displaying categories of movies
+    - Detailed movie screen which appears when you click on a movie
+    - Displaying cast of movie on the detailed movie screen
+    - Displaying the rating and reviews of the movie on the detailed movie screen
+    - Button to watch a trailer leading to a YouTube player activity
+    - Basic sign out functionality and profile page setup
 
 Things used for the project:
     - Data Binding
