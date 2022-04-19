@@ -25,7 +25,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId))
     }
 
-    fun getUpcomingMovies() {
+    private fun getUpcomingMovies() {
         viewModelScope.launch {
             movieRepository.getUpcomingMovies().collect {
                 viewInteractor?.setMovies(listOf())
@@ -34,7 +34,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         }
     }
 
-    fun getNowPlayingMovies() {
+    private fun getNowPlayingMovies() {
         viewModelScope.launch {
             movieRepository.getNowPlayingMovies().collect {
                 viewInteractor?.setMovies(listOf())
@@ -43,7 +43,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         }
     }
 
-    fun getFavoriteMovies() {
+    private fun getFavoriteMovies() {
         viewInteractor?.setMovies(listOf())
     }
 
@@ -57,5 +57,9 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
 
     override fun showFavoriteMovies() {
         getFavoriteMovies()
+    }
+
+    override fun showMovieDetails(movieId: Int) {
+        onMovieClick(movieId)
     }
 }

@@ -43,7 +43,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         }
 
         binding?.btnWatchTrailer?.setOnClickListener {
-            // TO DO: Implement play the youtube video
+            // TO DO: Make sure to handle YouTube screen orientation
             viewModel?.launchYouTubeActivity(requireContext())
         }
 

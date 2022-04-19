@@ -4,7 +4,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_m"
-        android:background="@drawable/back_button_background">
+        android:background="@drawable/back_button_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/iv_poster_searchitem"

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -17,9 +18,13 @@ import com.example.moviezone.utils.MovieDiffUtil
 class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private lateinit var binding: MovieItemBinding
-    private lateinit var viewModel: HomeViewModel
+    private var viewModelInteractor: HomeViewModelInteractor? = null
 
     private var movies: List<Movie> = listOf()
+
+    fun setViewModelInteractor(viewModelInteractor: HomeViewModelInteractor?) {
+        this.viewModelInteractor = viewModelInteractor
+    }
 
     fun setMovies(movies: List<Movie>) {
         val diffUtil = MovieDiffUtil(this.movies, movies)
@@ -34,7 +39,6 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapter.ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.movie_item, parent, false)
-        viewModel = ViewModelProvider(parent.findFragment())[HomeViewModel::class.java]
 
         return ViewHolder(binding)
     }
@@ -45,7 +49,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
             .into(holder.poster)
 
         holder.itemView.setOnClickListener {
-            viewModel.onMovieClick(movies[position].id)
+            viewModelInteractor?.showMovieDetails(movies[position].id)
         }
     }
 

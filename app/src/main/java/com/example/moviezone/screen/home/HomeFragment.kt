@@ -39,6 +39,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         binding = DataBindingUtil.inflate(inflater, R.layout.home, container, false)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         viewModel?.setViewInteractor(this)
+        movieAdapter.setViewModelInteractor(this.viewModel)
 
         binding?.root?.setOnClickListener {
             if(binding?.root?.isFocused == false) {
@@ -84,7 +85,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
         setupMovies()
         setupCategories(listOf("Now Playing", "Upcoming", "Favorites"))
-        viewModel?.getNowPlayingMovies()
+        viewModel?.showNowPlayingMovies()
 
         return binding?.root
     }

@@ -11,11 +11,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SearchBinding
 import com.example.moviezone.model.SearchedMovie
+import com.example.moviezone.screen.home.HomeFragment
+import com.example.moviezone.screen.home.HomeViewModel
 
 class SearchFragment: Fragment(), SearchViewInteractor {
 
@@ -32,6 +35,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
         binding = DataBindingUtil.inflate(inflater, R.layout.search, container, false)
         viewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         viewModel?.setViewInteractor(this)
+        searchItemAdapter.setViewModelInteractor(ViewModelProvider(parentFragmentManager.fragments[0])[HomeViewModel::class.java])
 
         binding.root.setOnClickListener {
             if(!binding.root.isFocused) {

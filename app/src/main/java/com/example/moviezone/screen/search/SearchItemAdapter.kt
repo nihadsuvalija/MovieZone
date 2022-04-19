@@ -1,5 +1,6 @@
 package com.example.moviezone.screen.search
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SearchItemBinding
 import com.example.moviezone.model.SearchedMovie
+import com.example.moviezone.screen.home.HomeViewModel
+import com.example.moviezone.screen.home.HomeViewModelInteractor
 import com.example.moviezone.utils.Const
 import com.example.moviezone.utils.SearchedMovieDiffUtil
 
@@ -17,6 +20,11 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
     private lateinit var binding: SearchItemBinding
     private var movies: List<SearchedMovie> = listOf()
+    private var viewModelInteractor: HomeViewModelInteractor? = null
+
+    fun setViewModelInteractor(viewModelInteractor: HomeViewModelInteractor?) {
+        this.viewModelInteractor = viewModelInteractor
+    }
 
     fun setMovies(movies: List<SearchedMovie>) {
         val diffUtil = SearchedMovieDiffUtil(this.movies, movies)
@@ -63,6 +71,11 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
             holder.rating.text = movies[position].voteAverage.toString()
         } catch (e: Exception) {
             println(e.message)
+        }
+
+        holder.itemView.setOnClickListener {
+            Log.i("TAG", "onBindViewHolder: called")
+            viewModelInteractor?.showMovieDetails(movies[position].id)
         }
 
     }
