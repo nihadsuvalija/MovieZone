@@ -38,6 +38,12 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
         viewModel?.getMovieById(args.movieId)
 
+        // Setting initial visibility for Cast and Reviews:
+        binding?.rvCastMoviedetails?.visibility = View.GONE
+        binding?.tvCastTitleMoviedetails?.visibility = View.GONE
+        binding?.rvReviewsMoviedetails?.visibility = View.GONE
+        binding?.tvReviewsTitleMoviedetails?.visibility = View.GONE
+
         binding?.ivBackButton?.setOnClickListener {
             viewModel?.navigateBack(args.fromPage)
         }
@@ -116,20 +122,18 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setReviews(reviews: List<Review>) {
-        if(reviews.isEmpty()) {
-            binding?.rvReviewsMoviedetails?.visibility = View.GONE
-            binding?.tvReviewsTitleMoviedetails?.visibility = View.GONE
-        } else {
+        if(reviews.isNotEmpty()) {
+            binding?.rvReviewsMoviedetails?.visibility = View.VISIBLE
+            binding?.tvReviewsTitleMoviedetails?.visibility = View.VISIBLE
             reviewAdapter.setReviews(reviews)
         }
     }
 
     override fun setCast(cast: List<Cast>) {
-        if (cast.isEmpty()) {
-            binding?.rvCastMoviedetails?.visibility = View.GONE
-            binding?.tvCastTitleMoviedetails?.visibility = View.GONE
-        } else {
+        if (cast.isNotEmpty()) {
             castAdapter.setCast(cast)
+            binding?.tvCastTitleMoviedetails?.visibility = View.VISIBLE
+            binding?.rvCastMoviedetails?.visibility = View.VISIBLE
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.moviezone.screen.search
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
+import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
@@ -28,11 +29,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
     private var viewModel: SearchViewModel? = null
 
     private var searchItemAdapter = SearchItemAdapter()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.i("TAG", "onCreate: called")
-    }
+    private var savedSearchString = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,6 +50,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
             }
         }
 
+
         // TO DO: Fix the bug which occurs when you delete text using a long click!
         binding.etSearchSearch.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -65,6 +63,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
                     setNoResults()
                 } else {
                     viewModel?.searchByTitle(p0.toString())
+                    savedSearchString = p0.toString()
                 }
             }
 
@@ -78,8 +77,18 @@ class SearchFragment: Fragment(), SearchViewInteractor {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel?.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
+        if (savedInstanceState != null) {
+            savedSearchString = savedInstanceState.getString("savedSearchString").toString()
+            // SpannableStringBuilder creates editable from string
+            binding.etSearchSearch.text = SpannableStringBuilder(savedSearchString)
+            Log.i("TAG", "onCreate: called")
+        }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("savedSearchString", savedSearchString)
+    }
     private fun setupMovies() {
         binding.rvSearchedItemsSearch.layoutManager = LinearLayoutManager(context)
         binding.rvSearchedItemsSearch.adapter = searchItemAdapter
