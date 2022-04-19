@@ -14,4 +14,5 @@ interface MovieDetailsViewInteractor {
     fun setStoryLine(storyLine: String)
     fun setReviews(reviews: List<Review>)
     fun setCast(cast: List<Cast>)
+    fun setTrailer(exists: Boolean)
 }

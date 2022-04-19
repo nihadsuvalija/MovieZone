@@ -132,4 +132,8 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
             castAdapter.setCast(cast)
         }
     }
+
+    override fun setTrailer(exists: Boolean) {
+        binding?.btnWatchTrailer?.isEnabled = exists
+    }
 }

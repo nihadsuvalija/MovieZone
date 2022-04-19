@@ -25,7 +25,8 @@ interface TMDBApi {
     @GET("movie/{movie_id}/reviews?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getReviewsById(@Path("movie_id") movieId: Int): ReviewResponse
 
-    @GET("search/movie?api_key=${Const.TMDB_API_KEY}&language=en-US&include_adult=false")
+    // Set include_adult to true and check the new movies *devil*.
+    @GET("search/movie?api_key=${Const.TMDB_API_KEY}&language=en-US&include_adult=true")
     suspend fun searchMoviesByTitle(@Query("query") title: String): SearchResponse
 
 }
