@@ -15,9 +15,16 @@ class YoutubeActivity: YouTubeBaseActivity() {
 
     private var binding: YoutubeVideoBinding? = null
     private var player: YouTubePlayer? = null
+    private var savedTime = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            savedTime = savedInstanceState.getInt("currentTime")
+            println(savedTime)
+        }
+
         binding = DataBindingUtil.setContentView(this, R.layout.youtube_video)
 
         binding?.wvTrailerYoutube?.initialize(Const.YOUTUBE_API_KEY, object: YouTubePlayer.OnInitializedListener {
@@ -29,6 +36,7 @@ class YoutubeActivity: YouTubeBaseActivity() {
 
                 if (p1 != null) {
                     player = p1
+                    player?.seekToMillis(savedTime)
                     player?.loadVideo(intent.getStringExtra("Trailer"))
                 }
             }
@@ -42,5 +50,11 @@ class YoutubeActivity: YouTubeBaseActivity() {
             }
 
         })
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        player?.let { outState.putInt("currentTime", it.currentTimeMillis) }
+        println("Saved: " + outState.getInt("currentTime"))
     }
 }

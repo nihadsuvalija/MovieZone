@@ -45,7 +45,6 @@ class BaseFragment: Fragment(), BaseViewInteractor {
             true
         }
 
-
         binding?.vpBase?.setCurrentItem(args.savedPage, false)
 
         binding?.vpBase?.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {

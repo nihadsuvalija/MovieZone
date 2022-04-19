@@ -5,4 +5,5 @@ import com.example.moviezone.model.SearchedMovie
 interface SearchViewInteractor {
     fun setMovies(movies: List<SearchedMovie>)
     fun setNoResults()
+
 }

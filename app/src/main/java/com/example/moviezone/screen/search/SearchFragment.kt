@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviezone.R
 import com.example.moviezone.databinding.SearchBinding
@@ -27,15 +29,21 @@ class SearchFragment: Fragment(), SearchViewInteractor {
 
     private var searchItemAdapter = SearchItemAdapter()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("TAG", "onCreate: called")
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.i("TAG", "onCreateView: called")
         binding = DataBindingUtil.inflate(inflater, R.layout.search, container, false)
         viewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         viewModel?.setViewInteractor(this)
-        searchItemAdapter.setViewModelInteractor(ViewModelProvider(parentFragmentManager.fragments[0])[HomeViewModel::class.java])
+        searchItemAdapter.setViewModelInteractor(this.viewModel)
 
         binding.root.setOnClickListener {
             if(!binding.root.isFocused) {
@@ -53,7 +61,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
 
             override fun afterTextChanged(p0: Editable?) {
                 println(p0.toString())
-                if (p0.isNullOrBlank()) {
+                if (p0.toString() == "") {
                     setNoResults()
                 } else {
                     viewModel?.searchByTitle(p0.toString())
@@ -67,6 +75,11 @@ class SearchFragment: Fragment(), SearchViewInteractor {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel?.setNavController(Navigation.findNavController(requireParentFragment().requireView()))
+    }
+
     private fun setupMovies() {
         binding.rvSearchedItemsSearch.layoutManager = LinearLayoutManager(context)
         binding.rvSearchedItemsSearch.adapter = searchItemAdapter
@@ -77,6 +90,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
         binding.ivNoResultsSearch.visibility = View.GONE
         binding.tvNoResultsSearch.visibility = View.GONE
         searchItemAdapter.setMovies(movies)
+        if (movies.isEmpty()) setNoResults()
     }
 
     override fun setNoResults() {

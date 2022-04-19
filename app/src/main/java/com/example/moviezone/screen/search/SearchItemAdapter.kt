@@ -20,9 +20,10 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
     private lateinit var binding: SearchItemBinding
     private var movies: List<SearchedMovie> = listOf()
-    private var viewModelInteractor: HomeViewModelInteractor? = null
 
-    fun setViewModelInteractor(viewModelInteractor: HomeViewModelInteractor?) {
+    private var viewModelInteractor: SearchViewModelInteractor? = null
+
+    fun setViewModelInteractor(viewModelInteractor: SearchViewModelInteractor?) {
         this.viewModelInteractor = viewModelInteractor
     }
 
@@ -74,7 +75,7 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
         }
 
         holder.itemView.setOnClickListener {
-            Log.i("TAG", "onBindViewHolder: called")
+            Log.i("TAG", "onBindViewHolder: called" + viewModelInteractor)
             viewModelInteractor?.showMovieDetails(movies[position].id, Const.SEARCH_PAGE_INDEX)
         }
 

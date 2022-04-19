@@ -3,11 +3,13 @@ package com.example.moviezone.screen.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import com.example.moviezone.model.SearchedMovie
 import com.example.moviezone.repository.MovieRepository
+import com.example.moviezone.screen.base.BaseFragmentDirections
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class SearchViewModel: ViewModel() {
+class SearchViewModel: ViewModel(), SearchViewModelInteractor{
     private var navController: NavController? = null
     private var viewInteractor: SearchViewInteractor? = null
     private var movieRepository = MovieRepository()
@@ -26,5 +28,13 @@ class SearchViewModel: ViewModel() {
                 viewInteractor?.setMovies(it.movies)
             }
         }
+    }
+
+    private fun onMovieClick(movieId: Int, fromPage: Int) {
+        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId, fromPage))
+    }
+
+    override fun showMovieDetails(movieId: Int, fromPage: Int) {
+        onMovieClick(movieId, fromPage)
     }
 }
