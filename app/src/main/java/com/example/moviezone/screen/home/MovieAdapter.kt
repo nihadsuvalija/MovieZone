@@ -49,7 +49,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
             .into(holder.poster)
 
         holder.itemView.setOnClickListener {
-            viewModelInteractor?.showMovieDetails(movies[position].id)
+            viewModelInteractor?.showMovieDetails(movies[position].id, Const.HOME_PAGE_INDEX)
         }
     }
 

@@ -114,6 +114,10 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="savedPage"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -127,6 +131,10 @@
             app:destination="@id/baseFragment"
             app:popUpTo="@id/main_nav_graph"
             app:popUpToInclusive="true"/>
+        <argument
+            android:name="fromPage"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/privacyPolicyFragment"

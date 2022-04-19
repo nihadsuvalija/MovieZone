@@ -18,5 +18,10 @@ class Const {
         const val PASSWORD_LENGTH_ERROR = "Password must be 6 or more characters."
         const val USER_DOESNT_EXIST_ERROR = "User doesn't exist."
         const val FULL_NAME_EMPTY_ERROR = "Full name field can't be empty."
+
+        // PAGE INDEXES:
+        const val HOME_PAGE_INDEX = 0
+        const val SEARCH_PAGE_INDEX = 1
+        const val PROFILE_PAGE_INDEX = 2
     }
 }

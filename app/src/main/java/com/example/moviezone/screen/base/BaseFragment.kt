@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
+import androidx.navigation.navArgument
 import androidx.viewpager2.widget.ViewPager2
 import com.example.moviezone.R
 import com.example.moviezone.databinding.BaseBinding
@@ -21,6 +23,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
     private var viewModel: BaseViewModel? = null
     private var fragments = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
+    private val args: BaseFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +44,9 @@ class BaseFragment: Fragment(), BaseViewInteractor {
             }
             true
         }
+
+
+        binding?.vpBase?.currentItem = args.savedPage
 
         binding?.vpBase?.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

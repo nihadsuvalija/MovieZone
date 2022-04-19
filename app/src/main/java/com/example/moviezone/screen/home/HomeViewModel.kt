@@ -23,8 +23,8 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         this.navController = navController
     }
 
-    fun onMovieClick(movieId: Int) {
-        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId))
+    private fun onMovieClick(movieId: Int, fromPage: Int) {
+        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId, fromPage))
     }
 
     private fun getUpcomingMovies() {
@@ -65,7 +65,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         getFavoriteMovies()
     }
 
-    override fun showMovieDetails(movieId: Int) {
-        onMovieClick(movieId)
+    override fun showMovieDetails(movieId: Int, fromPage: Int) {
+        onMovieClick(movieId, fromPage)
     }
 }

@@ -2,6 +2,7 @@ package com.example.moviezone.screen.privacypolicy
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.moviezone.utils.Const
 
 class PrivacyPolicyViewModel: ViewModel() {
     private var navController: NavController? = null
@@ -11,6 +12,7 @@ class PrivacyPolicyViewModel: ViewModel() {
     }
 
     fun onBackPressed() {
-        navController?.navigate(PrivacyPolicyFragmentDirections.navigateFromPrivacyPolicyToBase())
+        navController?.navigate(PrivacyPolicyFragmentDirections.navigateFromPrivacyPolicyToBase(
+            Const.PROFILE_PAGE_INDEX))
     }
 }

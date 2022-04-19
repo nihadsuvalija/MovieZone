@@ -39,7 +39,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         viewModel?.getMovieById(args.movieId)
 
         binding?.ivBackButton?.setOnClickListener {
-            viewModel?.navigateBack()
+            viewModel?.navigateBack(args.fromPage)
         }
 
         binding?.btnWatchTrailer?.setOnClickListener {
@@ -125,6 +125,11 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setCast(cast: List<Cast>) {
-        castAdapter.setCast(cast)
+        if (cast.isEmpty()) {
+            binding?.rvCastMoviedetails?.visibility = View.GONE
+            binding?.tvCastTitleMoviedetails?.visibility = View.GONE
+        } else {
+            castAdapter.setCast(cast)
+        }
     }
 }

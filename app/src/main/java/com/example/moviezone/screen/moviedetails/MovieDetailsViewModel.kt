@@ -2,6 +2,7 @@ package com.example.moviezone.screen.moviedetails
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
@@ -32,33 +33,37 @@ class MovieDetailsViewModel: ViewModel() {
         context.startActivity(intent)
     }
 
-    fun navigateBack(){
-        navController?.navigate(MovieDetailsFragmentDirections.navigateFromMovieDetailsToBase())
+    fun navigateBack(fromPage: Int){
+        navController?.navigate(MovieDetailsFragmentDirections.navigateFromMovieDetailsToBase(fromPage))
     }
 
     fun getMovieById(movieId: Int) {
         viewModelScope.launch {
-            movieRepository.getMovieById(movieId).collect {
-                viewInteractor?.setMoviePoster(Const.TMDB_IMAGE_URL + it.posterPath)
-                viewInteractor?.setMovieTitle(it.title)
-                viewInteractor?.setBackdrop(Const.TMDB_IMAGE_URL + it.backdropPath)
-                viewInteractor?.setStoryLine(it.overview)
-                viewInteractor?.setGenre(it.genres[0].name)
-                viewInteractor?.setRuntime(it.runtime.toString() + " minutes")
-                viewInteractor?.setRating(it.voteAverage.toString())
-                viewInteractor?.setReleaseDate(it.releaseDate)
-            }
+            try {
+                movieRepository.getMovieById(movieId).collect {
+                    viewInteractor?.setMoviePoster(Const.TMDB_IMAGE_URL + it.posterPath)
+                    viewInteractor?.setMovieTitle(it.title)
+                    viewInteractor?.setBackdrop(Const.TMDB_IMAGE_URL + it.backdropPath)
+                    viewInteractor?.setStoryLine(it.overview)
+                    viewInteractor?.setGenre(it.genres[0].name)
+                    viewInteractor?.setRuntime(it.runtime.toString() + " minutes")
+                    viewInteractor?.setRating(it.voteAverage.toString())
+                    viewInteractor?.setReleaseDate(it.releaseDate)
+                }
 
-            movieRepository.getMovieTrailerById(movieId).collect {
-                trailer = it.results[0].key
-            }
+                movieRepository.getMovieTrailerById(movieId).collect {
+                    trailer = it.results[0].key
+                }
 
-            movieRepository.getCreditsByMovieId(movieId).collect {
-                viewInteractor?.setCast(it.cast)
-            }
+                movieRepository.getCreditsByMovieId(movieId).collect {
+                    viewInteractor?.setCast(it.cast)
+                }
 
-            movieRepository.getReviewsById(movieId).collect {
-                viewInteractor?.setReviews(it.reviews)
+                movieRepository.getReviewsById(movieId).collect {
+                    viewInteractor?.setReviews(it.reviews)
+                }
+            } catch (e: Exception) {
+                Log.i("Error", e.message.toString())
             }
         }
     }
