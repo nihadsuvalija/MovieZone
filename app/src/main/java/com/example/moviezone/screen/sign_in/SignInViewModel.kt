@@ -7,6 +7,7 @@ import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.utils.Const
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class SignInViewModel: ViewModel() {
 
@@ -14,18 +15,19 @@ class SignInViewModel: ViewModel() {
     private var viewInteractor: SignInViewInteractor? = null
     private var navController: NavController? = null
     private lateinit var googleSignInClient: GoogleSignInClient
+    private var mAuth = FirebaseAuth.getInstance()
 
     fun signInWithEmailAndPassword(email: String, password: String) {
         if (isEmailValid(email) && isPasswordValid(password)) {
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            mAuth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     // TO DO: Navigate to the next screen
                     viewInteractor?.clearInputFields()
                     CurrentUser.update(
-                        FirebaseAuth.getInstance().currentUser?.uid.toString(),
-                        FirebaseAuth.getInstance().currentUser?.displayName.toString(),
+                        mAuth.currentUser?.uid.toString(),
+                        mAuth.currentUser?.displayName.toString(),
                         email,
-                        FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+                        mAuth.currentUser?.photoUrl.toString()
                     )
                     navController?.navigate(SignInFragmentDirections.navigateFromSignInToBase())
                 }.addOnFailureListener {

@@ -6,10 +6,12 @@ import androidx.navigation.NavController
 import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.screen.base.BaseFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class ProfileViewModel: ViewModel() {
     private var navController: NavController? = null
     private var viewInteractor: ProfileViewInteractor? = null
+    private var mAuth = FirebaseAuth.getInstance()
 
     fun setNavController(navController: NavController) {
         this.navController = navController
@@ -20,12 +22,13 @@ class ProfileViewModel: ViewModel() {
     }
 
     fun signOut() {
-        FirebaseAuth.getInstance().signOut()
+        mAuth.signOut()
+        CurrentUser.signedIn = false
         navController?.navigate(BaseFragmentDirections.navigateFromBaseToWelcome())
     }
 
     fun setProfileData() {
-        viewInteractor?.setProfilePicture(FirebaseAuth.getInstance().currentUser?.photoUrl.toString())
+        viewInteractor?.setProfilePicture(mAuth.currentUser?.photoUrl.toString())
         viewInteractor?.setEmail(CurrentUser.email)
         viewInteractor?.setFullName(CurrentUser.fullName)
     }

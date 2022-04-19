@@ -1,6 +1,7 @@
 package com.example.moviezone.screen.home
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -67,21 +68,10 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
 
-        binding?.tvHelloHome?.text = "Hello, " + CurrentUser.fullName
+        viewModel?.setProfilePhoto()
 
-        if (FirebaseAuth.getInstance().currentUser?.photoUrl != null) {
-            binding?.ivProfileImageHome?.let {
-                Glide.with(requireContext())
-                    .load(FirebaseAuth.getInstance().currentUser?.photoUrl)
-                    .into(it)
-            }
-        } else {
-            binding?.ivProfileImageHome?.let {
-                Glide.with(requireContext())
-                    .load(R.drawable.ic_person)
-                    .into(it)
-            }
-        }
+        var helloText = "Hello, " + CurrentUser.fullName
+        binding?.tvHelloHome?.text = helloText
 
         setupMovies()
         setupCategories(listOf("Now Playing", "Upcoming", "Favorites"))
@@ -112,5 +102,21 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
     override fun setMovies(movies: List<Movie>) {
         movieAdapter.setMovies(movies)
+    }
+
+    override fun setProfilePhoto(photoUri: Uri?) {
+        if (photoUri != null) {
+            binding?.ivProfileImageHome?.let {
+                Glide.with(requireContext())
+                    .load(photoUri)
+                    .into(it)
+            }
+        } else {
+            binding?.ivProfileImageHome?.let {
+                Glide.with(requireContext())
+                    .load(R.drawable.ic_person)
+                    .into(it)
+            }
+        }
     }
 }

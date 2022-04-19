@@ -16,7 +16,6 @@ class WelcomeViewModel: ViewModel() {
 
     private var navController: NavController? = null
     private var viewInteractor: WelcomeViewInteractor? = null
-    val TAG = "STATUS"
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var googleSignInOptions: GoogleSignInOptions
@@ -56,6 +55,7 @@ class WelcomeViewModel: ViewModel() {
                 account.email.toString(),
                 account.photoUrl.toString()
             )
+            CurrentUser.signedIn == true
             navController?.navigate(WelcomeFragmentDirections.navigateFromWelcomeToBase())
         } catch (e: ApiException) {
             viewInteractor?.displayPopUp(e.message.toString())

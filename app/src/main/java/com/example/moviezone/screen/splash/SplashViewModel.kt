@@ -5,8 +5,9 @@ import androidx.navigation.NavController
 import com.example.moviezone.model.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
 
-class SplashViewModel: ViewModel(){
+class SplashViewModel: ViewModel() {
     private var navController: NavController? = null
+    private var mAuth = FirebaseAuth.getInstance()
 
     fun setNavController(navController: NavController) {
         this.navController = navController
@@ -23,12 +24,17 @@ class SplashViewModel: ViewModel(){
     fun updateCurrentUser() {
         if (FirebaseAuth.getInstance().currentUser != null) {
             CurrentUser.update(
-                FirebaseAuth.getInstance().currentUser?.uid.toString(),
-                FirebaseAuth.getInstance().currentUser?.displayName.toString(),
-                FirebaseAuth.getInstance().currentUser?.email.toString(),
-                FirebaseAuth.getInstance().currentUser?.photoUrl.toString()
+                mAuth.currentUser?.uid.toString(),
+                mAuth.currentUser?.displayName.toString(),
+                mAuth.currentUser?.email.toString(),
+                mAuth.currentUser?.photoUrl.toString()
             )
         }
     }
 
+    fun isLogged(): Boolean {
+        if (mAuth.currentUser != null) return true
+        return false
+    }
 }
+

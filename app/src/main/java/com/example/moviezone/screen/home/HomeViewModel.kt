@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.base.BaseFragmentDirections
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -12,6 +13,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
     private var viewInteractor: HomeViewInteractor? = null
     private var navController: NavController? = null
     private var movieRepository = MovieRepository()
+    private var mAuth = FirebaseAuth.getInstance()
 
     fun setViewInteractor(viewInteractor: HomeViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -41,6 +43,10 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
                 viewInteractor?.setMovies(it.movies)
             }
         }
+    }
+
+    fun setProfilePhoto() {
+        viewInteractor?.setProfilePhoto(mAuth.currentUser?.photoUrl)
     }
 
     private fun getFavoriteMovies() {

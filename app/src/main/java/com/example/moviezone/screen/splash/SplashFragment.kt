@@ -26,16 +26,19 @@ class SplashFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.splash, container, false)
         viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
 
-        viewModel?.updateCurrentUser()
+
 
         // TO DO: Fix deprecated handler.
         Handler().postDelayed({
-            if (CurrentUser.signedIn()) {
+            if (viewModel?.isLogged() == true) {
                 viewModel?.navigateToBase()
             } else {
                 viewModel?.navigateToWelcome()
             }
         }, 2000)
+
+        viewModel?.updateCurrentUser()
+
         return binding?.root
     }
 

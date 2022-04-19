@@ -6,18 +6,19 @@ import androidx.navigation.NavController
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.ktx.Firebase
 
 class SignUpViewModel: ViewModel() {
 
-    val TAG = "SignUpViewModel"
     private var viewInteractor: SignUpViewInteractor? = null
     private var navController: NavController? = null
+    private var mAuth = FirebaseAuth.getInstance()
 
     fun registerUser(fullName: String, email: String, password: String) {
         if (isFullNameValid(fullName) && isEmailValid(email) && isPasswordValid(password)) {
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+            mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
-                    FirebaseAuth.getInstance().currentUser?.updateProfile(
+                    mAuth.currentUser?.updateProfile(
                         userProfileChangeRequest {
                             displayName = fullName
                         }
