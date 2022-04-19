@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.model.CurrentUser
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class SplashViewModel: ViewModel() {
     private var navController: NavController? = null
@@ -33,7 +35,7 @@ class SplashViewModel: ViewModel() {
     }
 
     fun isLogged(): Boolean {
-        if (mAuth.currentUser != null) return true
+        if (Firebase.auth.currentUser?.uid != null) return true
         return false
     }
 }
