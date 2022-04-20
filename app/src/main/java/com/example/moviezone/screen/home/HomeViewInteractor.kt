@@ -6,4 +6,5 @@ import com.example.moviezone.model.Movie
 interface HomeViewInteractor {
     fun setMovies(movies: List<Movie>)
     fun setProfilePhoto(photoUri: Uri?)
+    fun setDiscoverMovies(movies: List<Movie>)
 }

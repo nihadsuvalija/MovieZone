@@ -56,4 +56,11 @@ class MovieRepository {
             emit(response)
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun getDiscoverMovies(): Flow<DiscoverResponse> {
+        return flow {
+            val response = RetrofitInstance.tmdbApi.getDiscoverMovies()
+            emit(response)
+        }.flowOn(Dispatchers.IO)
+    }
 }

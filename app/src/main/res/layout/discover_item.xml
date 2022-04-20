@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="50sp"
+        app:cardBackgroundColor="@color/default_elements_background"
+        android:layout_margin="@dimen/margin_m"
+        app:cardElevation="20sp">
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="300sp"
+            android:layout_height="150sp">
+
+            <ImageView
+                android:id="@+id/iv_backdrop_discoveritem"
+                android:src="@drawable/movie_collage"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_title_discoveritem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textSize="@dimen/h2_text_size"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:layout_marginStart="@dimen/margin_xl"
+                android:layout_marginBottom="@dimen/margin_l"
+                app:layout_constraintBottom_toBottomOf="@id/iv_backdrop_discoveritem"
+                app:layout_constraintStart_toStartOf="@id/iv_backdrop_discoveritem"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

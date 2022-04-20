@@ -31,6 +31,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
     private var viewModel: HomeViewModel? = null
 
     private val movieAdapter = MovieAdapter()
+    private val discoverAdapter = DiscoverAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,8 +40,13 @@ class HomeFragment: Fragment(), HomeViewInteractor {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.home, container, false)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        // ViewInteractors:
         viewModel?.setViewInteractor(this)
+
+        // ViewModelInteractors:
         movieAdapter.setViewModelInteractor(this.viewModel)
+        discoverAdapter.setViewModelInteractor(this.viewModel)
 
         binding?.root?.setOnClickListener {
             if(binding?.root?.isFocused == false) {
@@ -68,14 +74,25 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
 
+        binding?.rvDiscoverHome?.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                binding?.rvDiscoverHome?.parent?.requestDisallowInterceptTouchEvent(true)
+                return false
+            }
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
+
         viewModel?.setProfilePhoto()
 
-        var helloText = "Hello, " + CurrentUser.fullName
+        val helloText = "Hello, " + CurrentUser.fullName
         binding?.tvHelloHome?.text = helloText
 
         setupMovies()
         setupCategories(listOf("Now Playing", "Upcoming", "Favorites", "Category", "Category", "Category"))
+        setupDiscover()
         viewModel?.showNowPlayingMovies()
+        viewModel?.showDiscoverMovies()
 
         return binding?.root
     }
@@ -100,6 +117,11 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         binding?.rvCategoriesHome?.adapter = categoriesAdapter
     }
 
+    private fun setupDiscover() {
+        binding?.rvDiscoverHome?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding?.rvDiscoverHome?.adapter = discoverAdapter
+    }
+
     override fun setMovies(movies: List<Movie>) {
         movieAdapter.setMovies(movies)
     }
@@ -118,5 +140,9 @@ class HomeFragment: Fragment(), HomeViewInteractor {
                     .into(it)
             }
         }
+    }
+
+    override fun setDiscoverMovies(movies: List<Movie>) {
+        discoverAdapter.setMovies(movies)
     }
 }

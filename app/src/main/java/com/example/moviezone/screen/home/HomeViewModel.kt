@@ -45,6 +45,14 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         }
     }
 
+    private fun getDiscoverMovies() {
+        viewModelScope.launch {
+            movieRepository.getDiscoverMovies().collect {
+                viewInteractor?.setDiscoverMovies(it.movies)
+            }
+        }
+    }
+
     fun setProfilePhoto() {
         viewInteractor?.setProfilePhoto(mAuth.currentUser?.photoUrl)
     }
@@ -67,5 +75,9 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
 
     override fun showMovieDetails(movieId: Int, fromPage: Int) {
         onMovieClick(movieId, fromPage)
+    }
+
+    override fun showDiscoverMovies() {
+        getDiscoverMovies()
     }
 }
