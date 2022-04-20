@@ -32,6 +32,7 @@ class DiscoverAdapter: RecyclerView.Adapter<DiscoverAdapter.ViewHolder>() {
     class ViewHolder(binding: DiscoverItemBinding): RecyclerView.ViewHolder(binding.root) {
         val backdrop = binding.ivBackdropDiscoveritem
         val title = binding.tvTitleDiscoveritem
+        val rating = binding.tvRatingDiscoveritem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiscoverAdapter.ViewHolder {
@@ -54,6 +55,8 @@ class DiscoverAdapter: RecyclerView.Adapter<DiscoverAdapter.ViewHolder>() {
         holder.itemView.setOnClickListener {
             viewModelInteractor?.showMovieDetails(movies[position].id, Const.HOME_PAGE_INDEX)
         }
+
+        holder.rating.text = movies[position].voteAverage.toString()
     }
 
     override fun getItemCount(): Int {
