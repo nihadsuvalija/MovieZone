@@ -76,7 +76,6 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
             }
 
             holder.itemView.setOnClickListener {
-                Log.i("TAG", "onBindViewHolder: called" + viewModelInteractor)
                 viewModelInteractor?.showMovieDetails(movies[position].id, Const.SEARCH_PAGE_INDEX)
             }
         }

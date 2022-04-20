@@ -45,7 +45,6 @@ class YoutubeActivity: YouTubeBaseActivity() {
                 p0: YouTubePlayer.Provider?,
                 p1: YouTubeInitializationResult?
             ) {
-                Log.e("YOUTUBE", "onInitializationFailure ${p1?.name}")
                 finish()
             }
 
