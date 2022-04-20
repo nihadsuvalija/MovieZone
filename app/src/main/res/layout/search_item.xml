@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/margin_xl"
         android:layout_margin="@dimen/margin_m"
-        android:background="@drawable/profile_element_background"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackground">
+        app:cardBackgroundColor="@color/default_elements_background"
+        android:elevation="4sp">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_poster_searchitem"
-            android:layout_width="120sp"
-            android:layout_height="0dp"
+            android:layout_width="130sp"
+            android:layout_height="200dp"
             android:src="@drawable/movie_collage"
-            android:layout_margin="@dimen/margin_l"
+            android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -85,8 +91,7 @@
             android:alpha="0.5"
             android:layout_marginBottom="@dimen/margin_xl"
             app:layout_constraintTop_toBottomOf="@id/iv_runtime_searchitem"
-            app:layout_constraintStart_toStartOf="@id/iv_runtime_searchitem"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/iv_runtime_searchitem"/>
 
         <TextView
             android:id="@+id/tv_genre_searchitem"
@@ -106,6 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_s"
             android:src="@drawable/ic_star"
+            android:layout_marginStart="@dimen/margin_xl"
             app:layout_constraintTop_toTopOf="@id/tv_title_searchitem"
             app:layout_constraintEnd_toStartOf="@id/tv_rating_searchitem"
             app:layout_constraintBottom_toBottomOf="@id/tv_title_searchitem"/>
@@ -124,4 +130,5 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>
