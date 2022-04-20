@@ -63,4 +63,11 @@ class MovieRepository {
             emit(response)
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun getTopRatedMovies(): Flow<TopRatedResponse> {
+        return flow {
+            val response = RetrofitInstance.tmdbApi.getTopRatedMovies()
+            emit(response)
+        }.flowOn(Dispatchers.IO)
+    }
 }

@@ -57,8 +57,13 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         viewInteractor?.setProfilePhoto(mAuth.currentUser?.photoUrl)
     }
 
-    private fun getFavoriteMovies() {
-        viewInteractor?.setMovies(listOf())
+    private fun getTopRatedMovies() {
+        viewModelScope.launch {
+            movieRepository.getTopRatedMovies().collect {
+                viewInteractor?.setMovies(listOf())
+                viewInteractor?.setMovies(it.movies)
+            }
+        }
     }
 
     override fun showNowPlayingMovies() {
@@ -69,8 +74,8 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         getUpcomingMovies()
     }
 
-    override fun showFavoriteMovies() {
-        getFavoriteMovies()
+    override fun showTopRatedMovies() {
+        getTopRatedMovies()
     }
 
     override fun showMovieDetails(movieId: Int, fromPage: Int) {

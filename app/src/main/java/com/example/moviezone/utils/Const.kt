@@ -23,5 +23,9 @@ class Const {
         const val HOME_PAGE_INDEX = 0
         const val SEARCH_PAGE_INDEX = 1
         const val PROFILE_PAGE_INDEX = 2
+
+        // COLORS:
+        const val THEME_BLUE_COLOR = "#12CDD9"
+        const val WHITE_COLOR = "#FFFFFF"
     }
 }

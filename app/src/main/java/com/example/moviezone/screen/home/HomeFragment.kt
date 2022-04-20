@@ -1,6 +1,7 @@
 package com.example.moviezone.screen.home
 
 import android.content.Context
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +21,7 @@ import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
 import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.model.Movie
+import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
 
 /*
@@ -65,15 +68,6 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
 
-        binding?.rvCategoriesHome?.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                binding?.rvCategoriesHome?.parent?.requestDisallowInterceptTouchEvent(true)
-                return false
-            }
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
-        })
-
         binding?.rvDiscoverHome?.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
             override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                 binding?.rvDiscoverHome?.parent?.requestDisallowInterceptTouchEvent(true)
@@ -83,13 +77,34 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
 
+        binding?.btnNowPlayingHome?.setOnClickListener {
+            viewModel?.showNowPlayingMovies()
+            binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
+            binding?.btnUpcoming?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+            binding?.btnTopRated?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+        }
+
+        binding?.btnUpcoming?.setOnClickListener {
+            viewModel?.showUpcomingMovies()
+            binding?.btnUpcoming?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
+            binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+            binding?.btnTopRated?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+        }
+
+        binding?.btnTopRated?.setOnClickListener {
+            viewModel?.showTopRatedMovies()
+            binding?.btnTopRated?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
+            binding?.btnUpcoming?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+            binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+        }
+
+
         viewModel?.setProfilePhoto()
 
         val helloText = "Hello, " + CurrentUser.fullName
         binding?.tvHelloHome?.text = helloText
 
         setupMovies()
-        setupCategories(listOf("Now Playing", "Upcoming", "Favorites", "Category", "Category", "Category"))
         setupDiscover()
         viewModel?.showNowPlayingMovies()
         viewModel?.showDiscoverMovies()
@@ -106,15 +121,6 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding?.rvMoviesHome?.layoutManager = layoutManager
         binding?.rvMoviesHome?.adapter = movieAdapter
-    }
-
-    private fun setupCategories(categories: List<String>) {
-        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val categoriesAdapter = CategoriesAdapter()
-        categoriesAdapter.setCategories(categories)
-        viewModel?.let { categoriesAdapter.setViewModelInteractor(it) }
-        binding?.rvCategoriesHome?.layoutManager = layoutManager
-        binding?.rvCategoriesHome?.adapter = categoriesAdapter
     }
 
     private fun setupDiscover() {

@@ -32,4 +32,8 @@ interface TMDBApi {
     // https://api.themoviedb.org/3/discover/movie?api_key=dea192f1a4b8334963672850dcddf227&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate
     @GET("discover/movie?api_key=${Const.TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate")
     suspend fun getDiscoverMovies(): DiscoverResponse
+
+    // https://api.themoviedb.org/3/movie/top_rated?api_key=dea192f1a4b8334963672850dcddf227&language=en-US&page=1
+    @GET("movie/top_rated?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    suspend fun getTopRatedMovies(): TopRatedResponse
 }
