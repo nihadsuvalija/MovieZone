@@ -32,6 +32,7 @@
                 app:layout_constraintStart_toStartOf="@id/iv_backdrop_discoveritem"/>
 
             <View
+                android:id="@+id/v_rating_background_discoveritem"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/back_button_background"
@@ -65,6 +66,15 @@
                 app:layout_constraintTop_toTopOf="@id/iv_rating_discoveritem"
                 app:layout_constraintBottom_toBottomOf="@id/iv_rating_discoveritem"
                 app:layout_constraintStart_toEndOf="@id/iv_rating_discoveritem"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar_discoveritem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
