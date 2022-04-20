@@ -13,7 +13,7 @@
             android:id="@+id/iv_movie_poster_movieitem"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/movie_collage"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
