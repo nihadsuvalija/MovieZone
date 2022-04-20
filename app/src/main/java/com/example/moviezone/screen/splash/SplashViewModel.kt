@@ -1,5 +1,7 @@
 package com.example.moviezone.screen.splash
 
+import android.media.metrics.LogSessionId
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.model.CurrentUser
@@ -9,10 +11,15 @@ import com.google.firebase.ktx.Firebase
 
 class SplashViewModel: ViewModel() {
     private var navController: NavController? = null
+    private var viewInteractor: SplashViewInteractor? = null
     private var mAuth = FirebaseAuth.getInstance()
 
     fun setNavController(navController: NavController) {
         this.navController = navController
+    }
+
+    fun setViewInteractor(viewInteractor: SplashViewInteractor) {
+        this.viewInteractor = viewInteractor
     }
 
     fun navigateToWelcome() {
@@ -21,6 +28,10 @@ class SplashViewModel: ViewModel() {
 
     fun navigateToBase() {
         navController?.navigate(SplashFragmentDirections.navigateFromSplashToBase())
+    }
+
+    fun displayNoConnectionError() {
+        viewInteractor?.displayMessage("Oops... there must be something wrong with the connection")
     }
 
     fun updateCurrentUser() {
