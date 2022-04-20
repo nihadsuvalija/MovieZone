@@ -16,6 +16,7 @@ import com.example.moviezone.databinding.BaseBinding
 import com.example.moviezone.screen.home.HomeFragment
 import com.example.moviezone.screen.profile.ProfileFragment
 import com.example.moviezone.screen.search.SearchFragment
+import com.example.moviezone.utils.Const
 
 class BaseFragment: Fragment(), BaseViewInteractor {
 
@@ -36,23 +37,29 @@ class BaseFragment: Fragment(), BaseViewInteractor {
 
         setupViewPager()
 
+        binding?.vpBase?.setCurrentItem(args.savedPage, false)
+
+        when(args.savedPage) {
+            Const.HOME_PAGE_INDEX -> binding?.bnvBase?.selectedItemId = R.id.home_menu_item
+            Const.SEARCH_PAGE_INDEX -> binding?.bnvBase?.selectedItemId = R.id.search_menu_item
+            Const.PROFILE_PAGE_INDEX -> binding?.bnvBase?.selectedItemId = R.id.profile_menu_item
+        }
+
         binding?.bnvBase?.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home_menu_item -> binding?.vpBase?.currentItem = 0
-                R.id.search_menu_item -> binding?.vpBase?.currentItem = 1
-                R.id.profile_menu_item -> binding?.vpBase?.currentItem = 2
+                R.id.home_menu_item -> binding?.vpBase?.currentItem = Const.HOME_PAGE_INDEX
+                R.id.search_menu_item -> binding?.vpBase?.currentItem = Const.SEARCH_PAGE_INDEX
+                R.id.profile_menu_item -> binding?.vpBase?.currentItem = Const.PROFILE_PAGE_INDEX
             }
             true
         }
 
-        binding?.vpBase?.setCurrentItem(args.savedPage, false)
-
         binding?.vpBase?.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 when(position) {
-                    0 -> binding?.bnvBase?.selectedItemId = R.id.home_menu_item
-                    1 -> binding?.bnvBase?.selectedItemId = R.id.search_menu_item
-                    2 -> binding?.bnvBase?.selectedItemId = R.id.profile_menu_item
+                    Const.HOME_PAGE_INDEX -> binding?.bnvBase?.selectedItemId = R.id.home_menu_item
+                    Const.SEARCH_PAGE_INDEX -> binding?.bnvBase?.selectedItemId = R.id.search_menu_item
+                    Const.PROFILE_PAGE_INDEX -> binding?.bnvBase?.selectedItemId = R.id.profile_menu_item
                 }
             }
         })

@@ -33,8 +33,8 @@
     <dimen name="search_bar_height">40sp</dimen>
     <dimen name="rv_latest_movies_height">200sp</dimen>
 
-    <dimen name="movie_item_height">190sp</dimen>
-    <dimen name="movie_item_width">120sp</dimen>
+    <dimen name="movie_item_height">520sp</dimen>
+    <dimen name="movie_item_width">350sp</dimen>
     <dimen name="movie_item_poster_height">130sp</dimen>
     <dimen name="bottom_navigation_view_height">70sp</dimen>
 

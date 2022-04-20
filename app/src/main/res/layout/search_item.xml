@@ -4,15 +4,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_m"
-        android:background="@drawable/back_button_background"
+        android:background="@drawable/profile_element_background"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/iv_poster_searchitem"
-            android:layout_width="@dimen/movie_item_width"
-            android:layout_height="@dimen/movie_item_height"
+            android:layout_width="120sp"
+            android:layout_height="0dp"
             android:src="@drawable/movie_collage"
             android:layout_margin="@dimen/margin_l"
             app:layout_constraintTop_toTopOf="parent"
@@ -33,9 +33,9 @@
 
         <ImageView
             android:id="@+id/iv_release_date_searchitem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_l"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
+            android:layout_marginTop="@dimen/margin_m"
             android:src="@drawable/ic_calendar"
             android:alpha="0.5"
             app:layout_constraintTop_toBottomOf="@id/tv_title_searchitem"
@@ -46,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_s"
+            android:textSize="10sp"
             android:text="1982"
             android:textAlignment="center"
             android:alpha="0.5"
@@ -55,8 +56,8 @@
 
         <ImageView
             android:id="@+id/iv_runtime_searchitem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
             android:layout_marginTop="@dimen/margin_m"
             android:src="@drawable/ic_clock"
             android:alpha="0.5"
@@ -68,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_s"
+            android:textSize="10sp"
             android:text="142 minutes"
             android:alpha="0.5"
             app:layout_constraintTop_toTopOf="@id/iv_runtime_searchitem"
@@ -76,8 +78,8 @@
 
         <ImageView
             android:id="@+id/iv_genre_searchitem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
             android:layout_marginTop="@dimen/margin_m"
             android:src="@drawable/ic_film"
             android:alpha="0.5"
@@ -91,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_s"
+            android:textSize="10sp"
             android:text="Action"
             android:alpha="0.5"
             app:layout_constraintTop_toTopOf="@id/iv_genre_searchitem"
@@ -111,10 +114,11 @@
             android:id="@+id/tv_rating_searchitem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:text="5.0"
             android:textColor="@color/rating_color"
             android:layout_marginStart="@dimen/margin_m"
-            android:layout_marginEnd="@dimen/margin_l"
+            android:layout_marginEnd="@dimen/margin_xl"
             app:layout_constraintTop_toTopOf="@id/iv_rating_searchitem"
             app:layout_constraintBottom_toBottomOf="@id/iv_rating_searchitem"
             app:layout_constraintEnd_toEndOf="parent"/>

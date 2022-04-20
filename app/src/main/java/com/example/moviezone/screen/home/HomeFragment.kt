@@ -74,7 +74,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         binding?.tvHelloHome?.text = helloText
 
         setupMovies()
-        setupCategories(listOf("Now Playing", "Upcoming", "Favorites"))
+        setupCategories(listOf("Now Playing", "Upcoming", "Favorites", "Category", "Category", "Category"))
         viewModel?.showNowPlayingMovies()
 
         return binding?.root

@@ -61,8 +61,8 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
                     .into(holder.poster)
             }
 
-            if (movies[position].title.length > 13)  {
-                val newTitle = movies[position].title.subSequence(0,10).toString() + "..."
+            if (movies[position].title.length > 10)  {
+                val newTitle = movies[position].title.subSequence(0,8).toString() + "..."
                 holder.title.text = newTitle
             } else {
                 holder.title.text = movies[position].title
