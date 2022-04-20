@@ -6,20 +6,43 @@ Architecture used for this project is MVVM.
 Design of the application has been found on Figma (www.figma.com).
 https://www.figma.com/community/file/1088719884686291024
 
-Basic functionality:
-    - soon to be updated.
-
-Completed:
-    - Sign In screen design and basic functionality
-    - Sign Up screen design and basic functionality
-    - Welcome screen design and basic functionality
-    - Splash screen
-    - Home screen displaying categories of movies
-    - Detailed movie screen which appears when you click on a movie
-    - Displaying cast of movie on the detailed movie screen
-    - Displaying the rating and reviews of the movie on the detailed movie screen
-    - Button to watch a trailer leading to a YouTube player activity
-    - Basic sign out functionality and profile page setup
+Implemented so far (20.4.2022 update):
+    Splash screen:
+        - Logo, timer and navigation.
+    Sign in screen:
+        - Sign in button functionality.
+        - Authorization over Firebase.
+    Sign up screen:
+        - Design.
+        - Email sign up functionality.
+        - Google sign up functionality.
+        - Navigation.
+    Movie details screen:
+        - Movie poster display.
+        - Movie details display.
+        - Movie rating display.
+        - Movie release year, runtime and primary genre display.
+        - Watch trailer button functionality.
+        - Movie storyline display.
+        - Movie cast display.
+        - Movie reviews display.
+    Home screen:
+        - Discover section.
+        - Now playing category.
+        - Upcoming category.
+        - Top rated category.
+        - Clickable movies.
+        - No internet connection issue of loading the movies.
+    Search screen:
+        - Search implementation.
+        - Search string persistency after leaving the screen.
+        - No results display.
+        - Search items design.
+        - Clickable items.
+    Profile screen:
+        - Sign out button functionality.
+        - Legal and privacy functionality.
+    
 
 Things used for the project:
     - Data Binding
@@ -28,4 +51,4 @@ Things used for the project:
     - TMDB API
     - YouTube API
     - Retrofit (for API calls)
-    - Coroutines
+    - Coroutines and flows
