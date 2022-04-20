@@ -52,31 +52,33 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SearchItemAdapter.ViewHolder, position: Int) {
-        try {
-            if (movies[position].posterPath.isEmpty()) {
-                holder.poster.visibility = View.GONE
-            } else {
-                Glide.with(holder.itemView.context)
-                    .load(Const.TMDB_IMAGE_URL + movies[position].posterPath)
-                    .into(holder.poster)
+        if (movies[position].title != "") {
+            try {
+                if (movies[position].posterPath.isEmpty()) {
+                    holder.poster.visibility = View.GONE
+                } else {
+                    Glide.with(holder.itemView.context)
+                        .load(Const.TMDB_IMAGE_URL + movies[position].posterPath)
+                        .into(holder.poster)
+                }
+
+                if (movies[position].title.length > 10) {
+                    val newTitle = movies[position].title.subSequence(0, 8).toString() + "..."
+                    holder.title.text = newTitle
+                } else {
+                    holder.title.text = movies[position].title
+                }
+
+                holder.releaseDate.text = movies[position].releaseDate
+                holder.rating.text = movies[position].voteAverage.toString()
+            } catch (e: Exception) {
+                println(e.message)
             }
 
-            if (movies[position].title.length > 10)  {
-                val newTitle = movies[position].title.subSequence(0,8).toString() + "..."
-                holder.title.text = newTitle
-            } else {
-                holder.title.text = movies[position].title
+            holder.itemView.setOnClickListener {
+                Log.i("TAG", "onBindViewHolder: called" + viewModelInteractor)
+                viewModelInteractor?.showMovieDetails(movies[position].id, Const.SEARCH_PAGE_INDEX)
             }
-
-            holder.releaseDate.text = movies[position].releaseDate
-            holder.rating.text = movies[position].voteAverage.toString()
-        } catch (e: Exception) {
-            println(e.message)
-        }
-
-        holder.itemView.setOnClickListener {
-            Log.i("TAG", "onBindViewHolder: called" + viewModelInteractor)
-            viewModelInteractor?.showMovieDetails(movies[position].id, Const.SEARCH_PAGE_INDEX)
         }
 
     }
