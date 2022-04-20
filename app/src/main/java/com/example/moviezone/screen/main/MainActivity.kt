@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (savedInstanceState != null) {
+            fragmentState?.getBundle("state")
+        }
+        
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
@@ -49,5 +53,12 @@ class MainActivity : AppCompatActivity() {
 
     fun getFragmentState(): Bundle? {
         return this.fragmentState
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (fragmentState != null) {
+            outState.putBundle("state", fragmentState)
+        }
     }
 }
