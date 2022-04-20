@@ -35,6 +35,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     class ViewHolder(binding: MovieItemBinding): RecyclerView.ViewHolder(binding.root) {
         val poster = binding.ivMoviePosterMovieitem
+        val rating = binding.tvRatingMovieitem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapter.ViewHolder {
@@ -47,6 +48,8 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         Glide.with(holder.itemView.context)
             .load(Const.TMDB_IMAGE_URL + movies[position].posterPath)
             .into(holder.poster)
+
+        holder.rating.text = movies[position].voteAverage.toString()
 
         holder.itemView.setOnClickListener {
             viewModelInteractor?.showMovieDetails(movies[position].id, Const.HOME_PAGE_INDEX)
