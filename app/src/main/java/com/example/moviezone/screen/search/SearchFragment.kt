@@ -22,6 +22,7 @@ import com.example.moviezone.databinding.SearchBinding
 import com.example.moviezone.model.SearchedMovie
 import com.example.moviezone.screen.home.HomeFragment
 import com.example.moviezone.screen.home.HomeViewModel
+import com.example.moviezone.screen.main.MainActivity
 
 class SearchFragment: Fragment(), SearchViewInteractor {
 
@@ -31,12 +32,19 @@ class SearchFragment: Fragment(), SearchViewInteractor {
     private var searchItemAdapter = SearchItemAdapter()
     private var savedSearchString = ""
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val activity = parentFragment?.activity as MainActivity
+        val fragmentState = activity.getFragmentState()
+        if (fragmentState?.isEmpty == false) {
+            savedSearchString = fragmentState?.getString("lastSearch").toString()
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.i("TAG", "onCreateView: called")
         binding = DataBindingUtil.inflate(inflater, R.layout.search, container, false)
         viewModel = ViewModelProvider(this)[SearchViewModel::class.java]
         viewModel?.setViewInteractor(this)
@@ -55,10 +63,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
         binding.etSearchSearch.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(p0: Editable?) {
-                println(p0.toString())
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (p0.toString() == "") {
                     setNoResults()
                 } else {
@@ -66,8 +71,11 @@ class SearchFragment: Fragment(), SearchViewInteractor {
                     savedSearchString = p0.toString()
                 }
             }
+            override fun afterTextChanged(p0: Editable?) {}
 
         })
+
+        binding.etSearchSearch.text = SpannableStringBuilder(savedSearchString)
 
         setupMovies()
 
@@ -81,14 +89,18 @@ class SearchFragment: Fragment(), SearchViewInteractor {
             savedSearchString = savedInstanceState.getString("savedSearchString").toString()
             // SpannableStringBuilder creates editable from string
             binding.etSearchSearch.text = SpannableStringBuilder(savedSearchString)
-            Log.i("TAG", "onCreate: called")
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("savedSearchString", savedSearchString)
+    override fun onDestroy() {
+        super.onDestroy()
+        val activity = parentFragment?.activity as MainActivity
+        savedSearchString = binding.etSearchSearch.text.toString()
+        val fragmentState = Bundle()
+        fragmentState.putString("lastSearch", savedSearchString)
+        activity.saveFragmentState(fragmentState)
     }
+
     private fun setupMovies() {
         binding.rvSearchedItemsSearch.layoutManager = LinearLayoutManager(context)
         binding.rvSearchedItemsSearch.adapter = searchItemAdapter

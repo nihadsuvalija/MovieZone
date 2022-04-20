@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
     private var viewModel: MainActivityViewModel? = null
 
+    private var fragmentState: Bundle? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -39,5 +41,13 @@ class MainActivity : AppCompatActivity() {
             controller.hide(WindowInsetsCompat.Type.systemBars())
             controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
+    }
+
+    fun saveFragmentState(fragmentState: Bundle?) {
+        this.fragmentState = fragmentState
+    }
+
+    fun getFragmentState(): Bundle? {
+        return this.fragmentState
     }
 }
