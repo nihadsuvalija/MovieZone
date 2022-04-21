@@ -33,7 +33,7 @@
                 android:layout_width="@dimen/back_button_size"
                 android:layout_height="@dimen/back_button_size"
                 android:layout_margin="@dimen/button_margin_side"
-                android:background="@drawable/back_button_background"
+                android:background="@drawable/default_background"
                 android:scaleType="center"
                 android:src="@drawable/ic_back"
                 android:clickable="true"
@@ -214,7 +214,7 @@
                 android:paddingBottom="@dimen/padding_s"
                 android:layout_marginStart="@dimen/margin_m"
                 android:layout_marginTop="@dimen/margin_xl"
-                android:background="@drawable/back_button_background"
+                android:background="@drawable/default_background"
                 app:layout_constraintTop_toBottomOf="@id/btn_watch_video"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -246,7 +246,7 @@
                 android:paddingBottom="@dimen/padding_s"
                 android:layout_marginStart="@dimen/margin_m"
                 android:layout_marginTop="@dimen/margin_l"
-                android:background="@drawable/back_button_background"
+                android:background="@drawable/default_background"
                 app:layout_constraintTop_toBottomOf="@id/tv_story_line_moviedetails"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -272,7 +272,7 @@
                 android:paddingBottom="@dimen/padding_s"
                 android:layout_marginStart="@dimen/margin_m"
                 android:layout_marginTop="@dimen/margin_l"
-                android:background="@drawable/back_button_background"
+                android:background="@drawable/default_background"
                 app:layout_constraintTop_toBottomOf="@id/rv_cast_moviedetails"
                 app:layout_constraintStart_toStartOf="parent"/>
 

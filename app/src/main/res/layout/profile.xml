@@ -134,13 +134,15 @@
                 app:layout_constraintEnd_toEndOf="@id/v_more_container_profile"
                 app:layout_constraintBottom_toBottomOf="@id/v_more_container_profile"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_out_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_xl"
                 android:text="@string/sign_out_txt"
-                android:background="@drawable/custom_edit_text"
+                android:textColor="@color/secondary_theme_color"
+                android:textAllCaps="false"
+                android:background="@drawable/default_button_design"
                 app:layout_constraintTop_toBottomOf="@id/v_more_container_profile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

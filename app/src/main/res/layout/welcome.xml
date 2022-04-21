@@ -41,8 +41,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_logo_welcome" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_up_welcome"
+            android:background="@drawable/default_button_design"
             android:layout_width="0dp"
             android:layout_height="@dimen/button_default_height"
             android:layout_marginTop="@dimen/margin_l"
@@ -51,6 +52,7 @@
             android:layout_marginRight="@dimen/margin_xl"
             android:text="@string/sign_up_txt"
             android:textSize="@dimen/h2_text_size"
+            android:textColor="@color/secondary_theme_color"
             android:textAllCaps="false"
             android:padding="@dimen/padding_s"
             app:layout_constraintBottom_toTopOf="@id/tv_already_txt_welcome"

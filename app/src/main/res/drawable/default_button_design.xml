@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/secondary_theme_color"></solid>
-            <corners android:radius="30sp"></corners>
-        </shape>
-    </item>
-</selector>
+<shape android:shape="rectangle"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:color="@color/secondary_theme_color" android:width="2dp"/>
+    <solid android:color="@color/primary_theme_color" />
+    <corners android:radius="30sp" />
+</shape>
