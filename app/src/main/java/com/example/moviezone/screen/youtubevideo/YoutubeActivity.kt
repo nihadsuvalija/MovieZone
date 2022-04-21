@@ -3,6 +3,9 @@ package com.example.moviezone.screen.youtubevideo
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.databinding.DataBindingUtil
 import com.example.moviezone.R
 import com.example.moviezone.databinding.YoutubeVideoBinding
@@ -21,6 +24,8 @@ class YoutubeActivity: YouTubeBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        hideSystemUI()
+
         if (savedInstanceState != null) {
             savedTime = savedInstanceState.getInt("currentTime")
         }
@@ -35,9 +40,7 @@ class YoutubeActivity: YouTubeBaseActivity() {
             ) {
                 if (p1 != null) {
                     player = p1
-
                     p1.loadVideo(intent.getStringExtra("Trailer"), savedTime)
-                    Log.i("TAG", "onInitializationSuccess: ${savedTime}")
                 }
             }
 
@@ -54,5 +57,13 @@ class YoutubeActivity: YouTubeBaseActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         player?.let { outState.putInt("currentTime", it.currentTimeMillis) }
         super.onSaveInstanceState(outState)
+    }
+
+    private fun hideSystemUI() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, window.decorView).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 }
