@@ -10,6 +10,7 @@ import com.example.moviezone.utils.Const
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
+import javax.security.auth.login.LoginException
 
 class YoutubeActivity: YouTubeBaseActivity() {
 
@@ -22,7 +23,6 @@ class YoutubeActivity: YouTubeBaseActivity() {
 
         if (savedInstanceState != null) {
             savedTime = savedInstanceState.getInt("currentTime")
-            println(savedTime)
         }
 
         binding = DataBindingUtil.setContentView(this, R.layout.youtube_video)
@@ -33,11 +33,11 @@ class YoutubeActivity: YouTubeBaseActivity() {
                 p1: YouTubePlayer?,
                 p2: Boolean
             ) {
-
                 if (p1 != null) {
                     player = p1
-                    player?.seekToMillis(savedTime)
-                    player?.loadVideo(intent.getStringExtra("Trailer"))
+
+                    p1.loadVideo(intent.getStringExtra("Trailer"), savedTime)
+                    Log.i("TAG", "onInitializationSuccess: ${savedTime}")
                 }
             }
 
@@ -51,9 +51,8 @@ class YoutubeActivity: YouTubeBaseActivity() {
         })
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
+    override fun onSaveInstanceState(outState: Bundle) {
         player?.let { outState.putInt("currentTime", it.currentTimeMillis) }
-        println("Saved: " + outState.getInt("currentTime"))
+        super.onSaveInstanceState(outState)
     }
 }
