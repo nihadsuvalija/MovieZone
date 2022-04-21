@@ -24,7 +24,7 @@ class CentralFragment: Fragment(), CentralViewInteractor {
     private var viewModel: CentralViewModel? = null
     private var fragments: List<Fragment> = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
-    private val args: BaseFragmentArgs by navArgs()
+    private val args: CentralFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
