@@ -3,6 +3,8 @@ package com.example.moviezone.screen.sign_up
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.moviezone.dao.DatabaseDAO
+import com.example.moviezone.model.User
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
@@ -13,6 +15,7 @@ class SignUpViewModel: ViewModel() {
     private var viewInteractor: SignUpViewInteractor? = null
     private var navController: NavController? = null
     private var mAuth = FirebaseAuth.getInstance()
+    private var dbDao = DatabaseDAO()
 
     fun registerUser(fullName: String, email: String, password: String) {
         if (isFullNameValid(fullName) && isEmailValid(email) && isPasswordValid(password)) {
@@ -23,7 +26,20 @@ class SignUpViewModel: ViewModel() {
                             displayName = fullName
                         }
                     )
+
                     viewInteractor?.clearInputFields()
+
+                    val user = User (
+                        id = mAuth.currentUser?.uid.toString(),
+                        email = email,
+                        password = password,
+                        fullName = fullName
+                            )
+                    dbDao.addUser(user)
+
+                    // For some reason it treats the user as if he's logged in, so we log him out.
+                    mAuth.signOut()
+
                     navController?.navigate(SignUpFragmentDirections.navigateFromSignUpToSignIn())
                 }.addOnFailureListener {
                     viewInteractor?.setFullNameError(it.message.toString())
@@ -44,6 +60,7 @@ class SignUpViewModel: ViewModel() {
     /* SETTER METHODS: */
     fun setViewInteractor(viewInteractor: SignUpViewInteractor) {
         this.viewInteractor = viewInteractor
+        dbDao.setViewInteractor(viewInteractor)
     }
 
     fun setNavController(navController: NavController) {

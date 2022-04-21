@@ -2,9 +2,12 @@ package com.example.moviezone.screen.welcome
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.example.moviezone.dao.DatabaseDAO
 import com.example.moviezone.model.CurrentUser
+import com.example.moviezone.model.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -16,6 +19,7 @@ class WelcomeViewModel: ViewModel() {
 
     private var navController: NavController? = null
     private var viewInteractor: WelcomeViewInteractor? = null
+    private var dbDao = DatabaseDAO()
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var googleSignInOptions: GoogleSignInOptions
@@ -55,7 +59,13 @@ class WelcomeViewModel: ViewModel() {
                 account.email.toString(),
                 account.photoUrl.toString()
             )
-            CurrentUser.signedIn == true
+            val user = User (
+                id = account.id.toString(),
+                email = account.email.toString(),
+                fullName =  account.displayName.toString(),
+                photoUri = account.photoUrl,
+                    )
+            dbDao.addUser(user)
             navController?.navigate(WelcomeFragmentDirections.navigateFromWelcomeToBase())
         } catch (e: ApiException) {
             viewInteractor?.displayMessage(e.message.toString())
