@@ -13,7 +13,7 @@ class AccountSettingsAdapter: RecyclerView.Adapter<AccountSettingsAdapter.Settin
 
     private lateinit var binding: OptionItemBinding
 
-    private var options = listOf("Change Password", "Option 2")
+    private var options = listOf("Change Password", "Change Profile Picture")
     private var icons = listOf(R.drawable.ic_padlock_1, R.drawable.ic_person)
 
     class SettingsViewHolder(binding: OptionItemBinding): RecyclerView.ViewHolder(binding.root) {

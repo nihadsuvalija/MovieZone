@@ -60,7 +60,6 @@ class SignUpViewModel: ViewModel() {
     /* SETTER METHODS: */
     fun setViewInteractor(viewInteractor: SignUpViewInteractor) {
         this.viewInteractor = viewInteractor
-        dbDao.setViewInteractor(viewInteractor)
     }
 
     fun setNavController(navController: NavController) {

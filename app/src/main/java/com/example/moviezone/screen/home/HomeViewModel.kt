@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.repository.MovieRepository
-import com.example.moviezone.screen.base.BaseFragmentDirections
+import com.example.moviezone.screen.central.BaseFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

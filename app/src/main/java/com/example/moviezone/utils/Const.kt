@@ -3,6 +3,7 @@ package com.example.moviezone.utils
 class Const {
     companion object {
         // DATABASE:
+        const val FIREBASE_DATABASE_URL = "https://moviezone-3a43b-default-rtdb.europe-west1.firebasedatabase.app/"
         const val USERS_DB_KEY = "Users"
 
         // TMDB:

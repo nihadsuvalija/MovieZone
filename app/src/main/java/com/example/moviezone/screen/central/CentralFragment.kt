@@ -1,4 +1,4 @@
-package com.example.moviezone.screen.base
+package com.example.moviezone.screen.central
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.navArgument
 import androidx.viewpager2.widget.ViewPager2
 import com.example.moviezone.R
 import com.example.moviezone.databinding.BaseBinding
@@ -19,10 +18,10 @@ import com.example.moviezone.screen.profile.ProfileFragment
 import com.example.moviezone.screen.search.SearchFragment
 import com.example.moviezone.utils.Const
 
-class BaseFragment: Fragment(), BaseViewInteractor {
+class CentralFragment: Fragment(), CentralViewInteractor {
 
     private var binding: BaseBinding? = null
-    private var viewModel: BaseViewModel? = null
+    private var viewModel: CentralViewModel? = null
     private var fragments: List<Fragment> = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
     private val args: BaseFragmentArgs by navArgs()
@@ -33,7 +32,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.base, container, false)
-        viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[CentralViewModel::class.java]
         viewModel?.setViewInteractor(this)
 
         setupViewPager()

@@ -2,6 +2,7 @@ package com.example.moviezone.screen.main
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviezone.R
 import com.example.moviezone.databinding.ActivityMainBinding
+import com.example.moviezone.model.CurrentUser
 
 
 class MainActivity : AppCompatActivity() {

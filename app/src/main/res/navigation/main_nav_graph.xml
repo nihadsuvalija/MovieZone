@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/baseFragment"
-        android:name="com.example.moviezone.screen.base.BaseFragment"
+        android:name="com.example.moviezone.screen.central.CentralFragment"
         android:label="BaseFragment" >
         <action
             android:id="@+id/navigateFromBaseToMovieDetails"

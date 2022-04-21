@@ -1,6 +1,6 @@
 package com.example.moviezone.screen.splash
 
-import com.example.moviezone.screen.ViewInteractor
+import com.example.moviezone.screen.base.BaseViewInteractor
 
-interface SplashViewInteractor: ViewInteractor {
+interface SplashViewInteractor: BaseViewInteractor {
 }

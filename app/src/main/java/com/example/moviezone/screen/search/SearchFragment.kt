@@ -76,7 +76,7 @@ class SearchFragment: Fragment(), SearchViewInteractor {
 
         })
 
-        binding.etSearchSearch.text = SpannableStringBuilder(savedSearchString)
+        binding.etSearchSearch.setText(savedSearchString)
 
         setupMovies()
 

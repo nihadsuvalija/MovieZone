@@ -2,9 +2,9 @@ package com.example.moviezone.screen.moviedetails
 
 import com.example.moviezone.model.Cast
 import com.example.moviezone.model.Review
-import com.example.moviezone.screen.ViewInteractor
+import com.example.moviezone.screen.base.BaseViewInteractor
 
-interface MovieDetailsViewInteractor: ViewInteractor {
+interface MovieDetailsViewInteractor: BaseViewInteractor {
     fun setMoviePoster(path: String)
     fun setMovieTitle(title: String)
     fun setReleaseDate(date: String)

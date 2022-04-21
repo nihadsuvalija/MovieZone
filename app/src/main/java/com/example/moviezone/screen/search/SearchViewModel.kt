@@ -3,9 +3,8 @@ package com.example.moviezone.screen.search
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.example.moviezone.model.SearchedMovie
 import com.example.moviezone.repository.MovieRepository
-import com.example.moviezone.screen.base.BaseFragmentDirections
+import com.example.moviezone.screen.central.BaseFragmentDirections
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 

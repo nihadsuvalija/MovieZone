@@ -4,9 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.model.CurrentUser
-import com.example.moviezone.screen.base.BaseFragmentDirections
+import com.example.moviezone.screen.central.BaseFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 
 class ProfileViewModel: ViewModel() {
     private var navController: NavController? = null
