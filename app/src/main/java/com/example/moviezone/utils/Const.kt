@@ -3,7 +3,7 @@ package com.example.moviezone.utils
 class Const {
     companion object {
         // DATABASE:
-        const val USER_DB_KEY = "users"
+        const val USERS_DB_KEY = "Users"
 
         // TMDB:
         const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"

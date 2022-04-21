@@ -65,7 +65,7 @@ class SignInFragment: Fragment(), SignInViewInteractor{
         binding?.etPasswordSignin?.text?.clear()
     }
 
-    override fun displayPopUp(message: String) {
+    override fun displayMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

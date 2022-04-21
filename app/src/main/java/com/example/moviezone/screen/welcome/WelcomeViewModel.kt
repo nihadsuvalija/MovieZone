@@ -58,7 +58,7 @@ class WelcomeViewModel: ViewModel() {
             CurrentUser.signedIn == true
             navController?.navigate(WelcomeFragmentDirections.navigateFromWelcomeToBase())
         } catch (e: ApiException) {
-            viewInteractor?.displayPopUp(e.message.toString())
+            viewInteractor?.displayMessage(e.message.toString())
         }
     }
 }

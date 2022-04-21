@@ -69,7 +69,7 @@ class WelcomeFragment: Fragment(), WelcomeViewInteractor{
             ?.let { viewModel?.setNavController(it) }
     }
 
-    override fun displayPopUp(message: String) {
+    override fun displayMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

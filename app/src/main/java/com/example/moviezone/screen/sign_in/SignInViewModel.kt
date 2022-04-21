@@ -11,7 +11,6 @@ import com.google.firebase.ktx.Firebase
 
 class SignInViewModel: ViewModel() {
 
-    val TAG = "SignInViewModel"
     private var viewInteractor: SignInViewInteractor? = null
     private var navController: NavController? = null
     private lateinit var googleSignInClient: GoogleSignInClient

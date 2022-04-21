@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -62,5 +63,9 @@ class SignUpFragment: Fragment(), SignUpViewInteractor {
         binding?.etFullNameSignup?.text?.clear()
         binding?.etEmailSignup?.text?.clear()
         binding?.etPasswordSignup?.text?.clear()
+    }
+
+    override fun displayMessage(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -1,4 +1,6 @@
 package com.example.moviezone.screen.base
 
-interface BaseViewInteractor {
+import com.example.moviezone.screen.ViewInteractor
+
+interface BaseViewInteractor: ViewInteractor {
 }

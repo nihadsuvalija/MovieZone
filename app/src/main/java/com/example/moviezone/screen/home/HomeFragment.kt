@@ -9,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -151,5 +152,9 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
     override fun setDiscoverMovies(movies: List<Movie>) {
         discoverAdapter.setMovies(movies)
+    }
+
+    override fun displayMessage(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

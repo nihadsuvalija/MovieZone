@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -73,6 +74,10 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
 
     override fun setEmail(email: String) {
         binding.tvEmailProfile.text = email
+    }
+
+    override fun displayMessage(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     // SETUP METHODS:

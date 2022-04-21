@@ -1,5 +1,6 @@
 package com.example.moviezone.screen.welcome
 
-interface WelcomeViewInteractor {
-    fun displayPopUp(message: String)
+import com.example.moviezone.screen.ViewInteractor
+
+interface WelcomeViewInteractor: ViewInteractor {
 }

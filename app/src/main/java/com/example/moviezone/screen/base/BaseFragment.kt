@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -22,7 +23,7 @@ class BaseFragment: Fragment(), BaseViewInteractor {
 
     private var binding: BaseBinding? = null
     private var viewModel: BaseViewModel? = null
-    private var fragments = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
+    private var fragments: List<Fragment> = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
     private val args: BaseFragmentArgs by navArgs()
 
@@ -78,5 +79,9 @@ class BaseFragment: Fragment(), BaseViewInteractor {
         adapter.setFragments(fragments)
         binding?.vpBase?.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding?.vpBase?.adapter = adapter
+    }
+
+    override fun displayMessage(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

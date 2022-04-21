@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -118,6 +119,10 @@ class SearchFragment: Fragment(), SearchViewInteractor {
         binding.rvSearchedItemsSearch.visibility = View.GONE
         binding.ivNoResultsSearch.visibility = View.VISIBLE
         binding.tvNoResultsSearch.visibility = View.VISIBLE
+    }
+
+    override fun displayMessage(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
 }
