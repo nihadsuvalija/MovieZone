@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             fragmentState?.getBundle("state")
         }
-        
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 

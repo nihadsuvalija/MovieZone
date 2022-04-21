@@ -43,8 +43,34 @@
     <string name="menu_search_title">Search</string>
     <string name="menu_profile_title">Profile</string>
 
+    <!-- PLACEHOLDERS -->
+    <string name="placeholder_category">Category</string>
+    <string name="placeholder_categories">Categories</string>
+    <string name="placeholer_title">Title</string>
+    <string name="placeholder_rating">4.6</string>
+    <string name="placeholder_hello">Hello, Name Surname</string>
+    <string name="placeholder_home_description">Let us show you what we got for you.</string>
+    <string name="placeholder_discover">Discover</string>
+    <string name="placeholder_now_playing">Now Playing</string>
+    <string name="placeholder_upcoming">Upcoming</string>
+    <string name="placeholder_top_rated">Top Rated</string>
+    <string name="placeholder_movie_title">Movie Title</string>
+    <string name="placeholder_year">1999</string>
+    <string name="placeholder_runtime">128 minutes</string>
+    <string name="placeholder_genre">Action</string>
+    <string name="placeholder_watch_video">Watch Video</string>
+    <string name="placeholder_story_line_title">Story Line</string>
+    <string name="placeholder_lorem_ipsum">Lorem ipsum i sve ostale suplje sto idu uz tekst</string>
+    <string name="placeholder_reviews_title">Reviews</string>
+    <string name="placeholder_cast_title">Cast</string>
+    <string name="placeholder_credits_name">Firstname\nLastname</string>
+    <string name="placeholder_privacy_policy">Privacy policy</string>
+    <string name="placeholder_date">10.10.2021</string>
+    <string name="placeholder_search">Search a title</string>
+    <string name="placeholder_no_results">No Results</string>
+    <string name="placeholder_already_have_acc">Already have an account?</string>
+
     <!-- GENERAL TITLES -->
-    <string name="cast_text">Cast</string>
     <string name="crew_text">Crew</string>
 
     <!-- WEB CLIENT -->

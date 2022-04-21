@@ -48,7 +48,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
             viewModel?.navigateBack(args.fromPage)
         }
 
-        binding?.btnWatchTrailer?.setOnClickListener {
+        binding?.btnWatchVideo?.setOnClickListener {
             // TO DO: Make sure to handle YouTube screen orientation
             viewModel?.launchYouTubeActivity(requireContext())
         }
@@ -138,6 +138,6 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     }
 
     override fun setTrailer(exists: Boolean) {
-        binding?.btnWatchTrailer?.isEnabled = exists
+        binding?.btnWatchVideo?.isEnabled = exists
     }
 }

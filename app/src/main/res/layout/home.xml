@@ -24,9 +24,9 @@
                 android:id="@+id/tv_hello_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20sp"
-                android:layout_marginEnd="100sp"
-                android:text="Hello, Name Surname"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_xxxl"
+                android:text="@string/placeholder_hello"
                 android:textSize="@dimen/h3_text_size"
                 app:layout_constraintStart_toEndOf="@id/iv_profile_image_home"
                 app:layout_constraintTop_toTopOf="@id/iv_profile_image_home" />
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.5"
-                android:text="Let us show you what we got for you."
+                android:text="@string/placeholder_home_description"
                 app:layout_constraintStart_toStartOf="@id/tv_hello_home"
                 app:layout_constraintTop_toBottomOf="@id/tv_hello_home" />
 
@@ -49,7 +49,7 @@
                 android:layout_marginTop="@dimen/margin_l"
                 android:alpha="0.7"
                 android:fontFamily="@font/sf_pro_display_bold"
-                android:text="Discover"
+                android:text="@string/placeholder_discover"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_lets_see_home" />
 
@@ -72,7 +72,7 @@
                 android:layout_marginTop="@dimen/margin_m"
                 android:alpha="0.7"
                 android:fontFamily="@font/sf_pro_display_bold"
-                android:text="Categories"
+                android:text="@string/placeholder_categories"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rv_discover_home" />
 
@@ -84,7 +84,7 @@
                 android:layout_marginTop="@dimen/margin_m"
                 android:layout_marginBottom="@dimen/margin_m"
                 android:backgroundTint="@color/default_elements_background"
-                android:text="Now Playing"
+                android:text="@string/placeholder_now_playing"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toTopOf="@id/rv_movies_home"
                 app:layout_constraintEnd_toStartOf="@+id/btn_upcoming"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_m"
                 android:backgroundTint="@color/default_elements_background"
-                android:text="Upcoming"
+                android:text="@string/placeholder_upcoming"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="@id/btn_now_playing_home"
                 app:layout_constraintEnd_toStartOf="@+id/btn_top_rated"
@@ -114,7 +114,7 @@
                 android:layout_marginStart="@dimen/margin_m"
                 android:layout_marginEnd="@dimen/margin_l"
                 android:backgroundTint="@color/default_elements_background"
-                android:text="Top Rated"
+                android:text="@string/placeholder_top_rated"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="@id/btn_now_playing_home"
                 app:layout_constraintEnd_toEndOf="parent"

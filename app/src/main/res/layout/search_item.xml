@@ -10,15 +10,15 @@
         app:cardCornerRadius="@dimen/margin_xl"
         android:layout_margin="@dimen/margin_m"
         app:cardBackgroundColor="@color/default_elements_background"
-        android:elevation="4sp">
+        android:elevation="@dimen/elevation_s">
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_poster_searchitem"
-            android:layout_width="130sp"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/search_item_poster_width"
+            android:layout_height="@dimen/search_item_poster_height"
             android:src="@drawable/movie_collage"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
             android:id="@+id/tv_title_searchitem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="@string/placeholer_title"
             android:textSize="@dimen/h2_text_size"
             android:fontFamily="@font/sf_pro_display_bold"
             android:layout_marginStart="@dimen/margin_l"
@@ -39,8 +39,8 @@
 
         <ImageView
             android:id="@+id/iv_release_date_searchitem"
-            android:layout_width="16sp"
-            android:layout_height="16sp"
+            android:layout_width="@dimen/option_icon_height"
+            android:layout_height="@dimen/option_icon_width"
             android:layout_marginTop="@dimen/margin_m"
             android:src="@drawable/ic_calendar"
             android:alpha="0.5"
@@ -52,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_s"
-            android:textSize="10sp"
-            android:text="1982"
+            android:textSize="@dimen/text_size_s"
+            android:text="@string/placeholder_year"
             android:textAlignment="center"
             android:alpha="0.5"
             app:layout_constraintTop_toTopOf="@id/iv_release_date_searchitem"
@@ -62,8 +62,8 @@
 
         <ImageView
             android:id="@+id/iv_runtime_searchitem"
-            android:layout_width="16sp"
-            android:layout_height="16sp"
+            android:layout_width="@dimen/option_icon_width"
+            android:layout_height="@dimen/option_icon_height"
             android:layout_marginTop="@dimen/margin_m"
             android:src="@drawable/ic_clock"
             android:alpha="0.5"
@@ -75,8 +75,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_s"
-            android:textSize="10sp"
-            android:text="142 minutes"
+            android:textSize="@dimen/text_size_s"
+            android:text="@string/placeholder_runtime"
             android:alpha="0.5"
             app:layout_constraintTop_toTopOf="@id/iv_runtime_searchitem"
             app:layout_constraintBottom_toBottomOf="@id/iv_runtime_searchitem"
@@ -84,8 +84,8 @@
 
         <ImageView
             android:id="@+id/iv_genre_searchitem"
-            android:layout_width="16sp"
-            android:layout_height="16sp"
+            android:layout_width="@dimen/option_icon_width"
+            android:layout_height="@dimen/option_icon_height"
             android:layout_marginTop="@dimen/margin_m"
             android:src="@drawable/ic_film"
             android:alpha="0.5"
@@ -98,8 +98,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_s"
-            android:textSize="10sp"
-            android:text="Action"
+            android:textSize="@dimen/text_size_s"
+            android:text="@string/placeholder_genre"
             android:alpha="0.5"
             app:layout_constraintTop_toTopOf="@id/iv_genre_searchitem"
             app:layout_constraintStart_toEndOf="@id/iv_genre_searchitem"
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:text="5.0"
+            android:text="@string/placeholder_rating"
             android:textColor="@color/rating_color"
             android:layout_marginStart="@dimen/margin_m"
             android:layout_marginEnd="@dimen/margin_xl"

@@ -3,12 +3,28 @@
     <dimen name="h1_text_size">38sp</dimen>
     <dimen name="h2_text_size">24sp</dimen>
     <dimen name="h3_text_size">20sp</dimen>
+    <dimen name="text_size_l">16sp</dimen>
+    <dimen name="text_size_m">14sp</dimen>
+    <dimen name="text_size_s">10sp</dimen>
+
+    <dimen name="padding_s">6sp</dimen>
+    <dimen name="padding_m">10sp</dimen>
+    <dimen name="padding_l">16sp</dimen>
+    <dimen name="padding_xl">24sp</dimen>
+    <dimen name="padding_xxl">32sp</dimen>
 
     <dimen name="margin_s">4sp</dimen>
     <dimen name="margin_m">10sp</dimen>
     <dimen name="margin_l">20sp</dimen>
     <dimen name="margin_xl">40sp</dimen>
     <dimen name="margin_xxl">60sp</dimen>
+    <dimen name="margin_xxxl">100sp</dimen>
+
+    <dimen name="element_height_s">50sp</dimen>
+    <dimen name="element_height_m">80sp</dimen>
+    <dimen name="element_height_l">120sp</dimen>
+    <dimen name="element_height_xl">150sp</dimen>
+    <dimen name="element_height_xxl">200sp</dimen>
 
     <dimen name="button_margin_top">20sp</dimen>
     <dimen name="button_margin_side">40sp</dimen>
@@ -22,8 +38,34 @@
     <dimen name="forgot_password_margin_side">40sp</dimen>
     <dimen name="forgot_password_margin_top">10sp</dimen>
 
+    <dimen name="movie_details_background_height">600sp</dimen>
+    <dimen name="movie_poster_movie_details_height">350sp</dimen>
+    <dimen name="vertical_divider_thickness">3dp</dimen>
+    <dimen name="horizontal_divicer_thickness">1dp</dimen>
+
+    <dimen name="option_icon_width">20sp</dimen>
+    <dimen name="option_icon_height">20sp</dimen>
+
+    <dimen name="search_item_poster_width">130sp</dimen>
+    <dimen name="search_item_poster_height">200sp</dimen>
+
+    <dimen name="splash_logo_size">200sp</dimen>
+
+    <dimen name="radius_s">20sp</dimen>
+    <dimen name="radius_m">30sp</dimen>
+    <dimen name="radius_l">40sp</dimen>
+    <dimen name="radius_xl">50sp</dimen>
+    <dimen name="radius_xxl">60sp</dimen>
+
+    <dimen name="elevation_s">10sp</dimen>
+    <dimen name="elevation_m">20sp</dimen>
+    <dimen name="elevation_l">30sp</dimen>
+
     <dimen name="video_height">250sp</dimen>
     <dimen name="video_width">400sp</dimen>
+
+    <dimen name="discover_item_width">300sp</dimen>
+    <dimen name="discover_item_height">150sp</dimen>
 
     <dimen name="back_button_size">50sp</dimen>
 
@@ -36,6 +78,7 @@
     <dimen name="movie_item_height">410sp</dimen>
     <dimen name="movie_item_width">260sp</dimen>
     <dimen name="movie_item_poster_height">130sp</dimen>
+
     <dimen name="bottom_navigation_view_height">70sp</dimen>
 
     <dimen name="divider_s">1dp</dimen>

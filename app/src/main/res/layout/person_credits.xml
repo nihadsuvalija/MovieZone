@@ -3,7 +3,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10sp"
+        android:padding="@dimen/padding_m"
         android:background="@drawable/back_button_background"
         android:layout_margin="@dimen/margin_s">
 
@@ -20,8 +20,8 @@
             android:id="@+id/tv_name_personcredits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Firstname\nLastname"
-            android:layout_marginTop="10sp"
+            android:text="@string/placeholder_credits_name"
+            android:layout_marginTop="@dimen/margin_m"
             app:layout_constraintTop_toBottomOf="@id/iv_profile_image_personcredits"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

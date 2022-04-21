@@ -9,8 +9,8 @@
 
         <ImageView
             android:id="@+id/iv_option_icon_optionitem"
-            android:layout_width="20sp"
-            android:layout_height="20sp"
+            android:layout_width="@dimen/option_icon_width"
+            android:layout_height="@dimen/option_icon_height"
             android:src="@drawable/ic_clock"
             android:layout_margin="@dimen/margin_l"
             app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/option_txt"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_l"
             android:layout_marginStart="@dimen/margin_l"
             app:layout_constraintTop_toTopOf="@id/iv_option_icon_optionitem"
             app:layout_constraintStart_toEndOf="@id/iv_option_icon_optionitem"
@@ -32,7 +32,7 @@
         <View
             android:id="@+id/divider_optionitem"
             android:layout_width="match_parent"
-            android:layout_height="1sp"
+            android:layout_height="@dimen/horizontal_divicer_thickness"
             android:background="@color/default_elements_background"
             android:layout_marginStart="@dimen/margin_xl"
             android:layout_marginEnd="@dimen/margin_xl"

@@ -23,7 +23,7 @@
             <View
                 android:id="@+id/v_profile_info_container_profile"
                 android:layout_width="match_parent"
-                android:layout_height="80sp"
+                android:layout_height="@dimen/element_height_m"
                 android:background="@drawable/profile_element_background"
                 app:layout_constraintTop_toBottomOf="@id/tv_profile_heading_profile"
                 android:layout_margin="@dimen/margin_l"

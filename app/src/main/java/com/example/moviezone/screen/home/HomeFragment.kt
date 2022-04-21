@@ -107,6 +107,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         setupMovies()
         setupDiscover()
         viewModel?.showNowPlayingMovies()
+        binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
         viewModel?.showDiscoverMovies()
 
         return binding?.root
