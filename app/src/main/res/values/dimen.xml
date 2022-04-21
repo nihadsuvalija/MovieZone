@@ -32,7 +32,7 @@
     <dimen name="button_text_size">20sp</dimen>
     <dimen name="button_default_height">70sp</dimen>
     <dimen name="login_custom_button_size">72sp</dimen>
-    <dimen name="edit_text_height">70sp</dimen>
+    <dimen name="edit_text_height">56sp</dimen>
     <dimen name="edit_text_padding">20sp</dimen>
     <dimen name="edit_text_margin">40sp</dimen>
     <dimen name="forgot_password_margin_side">40sp</dimen>

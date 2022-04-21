@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/drawable/back_button_background.xml" value="0.2455" />
         <entry key="app/src/main/res/drawable/bottom_bar_background.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/custom_edit_text.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/default_background.xml" value="0.2685" />
         <entry key="app/src/main/res/drawable/default_button_design.xml" value="0.2455" />
         <entry key="app/src/main/res/drawable/default_profile_image.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/default_profile_image_background.xml" value="0.2685" />
@@ -54,12 +55,12 @@
         <entry key="app/src/main/res/layout/privacy_policy.xml" value="0.2954253954681488" />
         <entry key="app/src/main/res/layout/profile.xml" value="0.35989583333333336" />
         <entry key="app/src/main/res/layout/review.xml" value="0.6448326055312955" />
-        <entry key="app/src/main/res/layout/search.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/search.xml" value="0.4250159540523293" />
         <entry key="app/src/main/res/layout/search_item.xml" value="0.67" />
         <entry key="app/src/main/res/layout/sign_in.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sign_up.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.2930253623188406" />
-        <entry key="app/src/main/res/layout/welcome.xml" value="0.2930253623188406" />
+        <entry key="app/src/main/res/layout/welcome.xml" value="0.5" />
         <entry key="app/src/main/res/layout/youtube_video.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_base.xml" value="0.35989583333333336" />
       </map>
