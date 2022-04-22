@@ -12,7 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.moviezone.R
-import com.example.moviezone.databinding.BaseBinding
+import com.example.moviezone.databinding.CentralBinding
 import com.example.moviezone.screen.home.HomeFragment
 import com.example.moviezone.screen.profile.ProfileFragment
 import com.example.moviezone.screen.search.SearchFragment
@@ -20,7 +20,7 @@ import com.example.moviezone.utils.Const
 
 class CentralFragment: Fragment(), CentralViewInteractor {
 
-    private var binding: BaseBinding? = null
+    private var binding: CentralBinding? = null
     private var viewModel: CentralViewModel? = null
     private var fragments: List<Fragment> = listOf(HomeFragment(), SearchFragment(), ProfileFragment())
 
