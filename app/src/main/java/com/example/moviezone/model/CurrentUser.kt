@@ -13,4 +13,8 @@ object CurrentUser {
         this.email = email
         this.image = image
     }
+
+    fun sayHello(): String {
+        return "Hello, " + this.fullName
+    }
 }

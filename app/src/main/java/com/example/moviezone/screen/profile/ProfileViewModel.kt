@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.model.CurrentUser
-import com.example.moviezone.screen.central.BaseFragmentDirections
+import com.example.moviezone.screen.central.CentralFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileViewModel: ViewModel() {
@@ -23,7 +23,7 @@ class ProfileViewModel: ViewModel() {
     fun signOut() {
         mAuth.signOut()
         CurrentUser.signedIn = false
-        navController?.navigate(BaseFragmentDirections.navigateFromBaseToWelcome())
+        navController?.navigate(CentralFragmentDirections.navigateFromBaseToWelcome())
     }
 
     fun setProfileData() {
@@ -34,6 +34,6 @@ class ProfileViewModel: ViewModel() {
 
     fun privacyClick() {
         Log.i("TAG", navController.toString())
-        navController?.navigate(BaseFragmentDirections.navigateFromBaseToPrivacyPolicy())
+        navController?.navigate(CentralFragmentDirections.navigateFromBaseToPrivacyPolicy())
     }
 }

@@ -80,30 +80,23 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
         binding?.btnNowPlayingHome?.setOnClickListener {
             viewModel?.showNowPlayingMovies()
-            binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
-            binding?.btnUpcoming?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
-            binding?.btnTopRated?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+            setCategoryButtonsColors(Const.THEME_BLUE_COLOR, Const.WHITE_COLOR, Const.WHITE_COLOR)
         }
 
         binding?.btnUpcoming?.setOnClickListener {
             viewModel?.showUpcomingMovies()
-            binding?.btnUpcoming?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
-            binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
-            binding?.btnTopRated?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+            setCategoryButtonsColors(Const.WHITE_COLOR, Const.THEME_BLUE_COLOR, Const.WHITE_COLOR)
         }
 
         binding?.btnTopRated?.setOnClickListener {
             viewModel?.showTopRatedMovies()
-            binding?.btnTopRated?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
-            binding?.btnUpcoming?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
-            binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.WHITE_COLOR))
+            setCategoryButtonsColors(Const.WHITE_COLOR, Const.WHITE_COLOR, Const.THEME_BLUE_COLOR)
         }
 
 
         viewModel?.setProfilePhoto()
 
-        val helloText = "Hello, " + CurrentUser.fullName
-        binding?.tvHelloHome?.text = helloText
+        binding?.tvHelloHome?.text = CurrentUser.sayHello()
 
         setupMovies()
         setupDiscover()
@@ -135,18 +128,10 @@ class HomeFragment: Fragment(), HomeViewInteractor {
     }
 
     override fun setProfilePhoto(photoUri: Uri?) {
-        if (photoUri != null) {
-            binding?.ivProfileImageHome?.let {
-                Glide.with(requireContext())
-                    .load(photoUri)
-                    .into(it)
-            }
-        } else {
-            binding?.ivProfileImageHome?.let {
-                Glide.with(requireContext())
-                    .load(R.drawable.ic_person)
-                    .into(it)
-            }
+        binding?.ivProfileImageHome?.let {
+            Glide.with(requireContext())
+                .load(photoUri ?: R.drawable.ic_person)
+                .into(it)
         }
     }
 
@@ -156,5 +141,11 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
     override fun displayMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setCategoryButtonsColors(nowPlayingColor: String, upcomingColor: String, topRatedColor: String) {
+        binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(nowPlayingColor))
+        binding?.btnUpcoming?.setTextColor(Color.parseColor(upcomingColor))
+        binding?.btnTopRated?.setTextColor(Color.parseColor(topRatedColor))
     }
 }

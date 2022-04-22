@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.repository.MovieRepository
-import com.example.moviezone.screen.central.BaseFragmentDirections
+import com.example.moviezone.screen.central.CentralFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
     }
 
     private fun onMovieClick(movieId: Int, fromPage: Int) {
-        navController?.navigate(BaseFragmentDirections.navigateFromBaseToMovieDetails(movieId, fromPage))
+        navController?.navigate(CentralFragmentDirections.navigateFromBaseToMovieDetails(movieId, fromPage))
     }
 
     private fun getUpcomingMovies() {
