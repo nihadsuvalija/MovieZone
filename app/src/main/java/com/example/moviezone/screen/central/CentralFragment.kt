@@ -31,7 +31,7 @@ class CentralFragment: Fragment(), CentralViewInteractor {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.base, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.central, container, false)
         viewModel = ViewModelProvider(this)[CentralViewModel::class.java]
         viewModel?.setViewInteractor(this)
 

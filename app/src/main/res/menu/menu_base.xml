@@ -5,16 +5,15 @@
         android:id="@+id/home_menu_item"
         android:icon="@drawable/home_indicator"
         android:title=""
-        app:showAsAction="always"
-        />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/search_menu_item"
-        android:title=""
         android:icon="@drawable/search_indicator"
-        app:showAsAction="always"/>
+        android:title=""
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/profile_menu_item"
-        android:title=""
         android:icon="@drawable/profile_indicator"
-        app:showAsAction="always"/>
+        android:title=""
+        app:showAsAction="ifRoom" />
 </menu>
