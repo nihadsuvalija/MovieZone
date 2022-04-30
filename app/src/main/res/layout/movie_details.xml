@@ -49,6 +49,8 @@
                 android:id="@+id/tv_movie_title_moviedetails"
                 android:layout_width="0dp"
                 android:layout_height="50sp"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_l"
                 android:autoSizeMaxTextSize="@dimen/h1_text_size"
                 android:autoSizeMinTextSize="20sp"
                 android:autoSizeTextType="uniform"
