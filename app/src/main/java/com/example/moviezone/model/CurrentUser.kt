@@ -8,6 +8,7 @@ object CurrentUser {
     var email = ""
     var image = ""
     var signedIn = false
+    var favorites: List<String> = listOf()
 
     fun update(id: String, fullName: String, email: String, image: String) {
         this.id = id

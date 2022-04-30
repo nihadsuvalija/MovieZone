@@ -3,6 +3,7 @@ package com.example.moviezone.screen.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import com.example.moviezone.dao.DatabaseDAO
 import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.central.CentralFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
@@ -14,6 +15,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
     private var navController: NavController? = null
     private var movieRepository = MovieRepository()
     private var mAuth = FirebaseAuth.getInstance()
+    private var dao = DatabaseDAO()
 
     fun setViewInteractor(viewInteractor: HomeViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -66,6 +68,9 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         }
     }
 
+    fun getFavorites() {
+        mAuth.currentUser?.uid?.let { dao.getFavorites(it) }
+    }
     override fun showNowPlayingMovies() {
         getNowPlayingMovies()
     }

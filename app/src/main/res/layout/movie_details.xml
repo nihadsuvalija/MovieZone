@@ -67,7 +67,7 @@
                 android:layout_height="@dimen/back_button_size"
                 android:layout_marginEnd="@dimen/margin_l"
                 android:background="@drawable/outline_background"
-                android:src="@drawable/ic_library_add"
+                android:src="@drawable/favorites_indicator"
                 android:scaleType="center"
                 android:elevation="100sp"
                 android:clickable="true"

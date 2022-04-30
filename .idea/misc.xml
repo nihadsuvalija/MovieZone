@@ -29,10 +29,12 @@
         <entry key="app/src/main/res/drawable/default_button_design.xml" value="0.2455" />
         <entry key="app/src/main/res/drawable/default_profile_image.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/default_profile_image_background.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/favorites_indicator.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/home_indicator.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_home_selected.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_library_add.xml" value="0.1535" />
+        <entry key="app/src/main/res/drawable/ic_library_added.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_person_selected.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1925" />

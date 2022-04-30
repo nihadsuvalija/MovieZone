@@ -1,6 +1,7 @@
 package com.example.moviezone.dao
 
 import android.util.Log
+import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.model.User
 import com.example.moviezone.utils.Const
 import com.google.firebase.database.FirebaseDatabase
@@ -50,6 +51,11 @@ class DatabaseDAO {
     fun getFavorites(userId: String) {
         usersReference.child(userId).child(Const.FAVORITES_KEY).get().addOnSuccessListener {
             // TO DO: Implement logic for on success of getting favorite movies of user.
+            val favorites = mutableListOf("")
+            for (snap in it.children) {
+                favorites.add(snap.value.toString())
+            }
+            CurrentUser.favorites = favorites
         }.addOnFailureListener {
             // TO DO: Implement logic for on failure of getting favorite movies of user.
             Log.i(TAG, "getFavorites: ${it.message.toString()}")

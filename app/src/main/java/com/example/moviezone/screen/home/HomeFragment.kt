@@ -95,6 +95,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
 
         viewModel?.setProfilePhoto()
+        viewModel?.getFavorites()
 
         binding?.tvHelloHome?.text = "Hello, " + CurrentUser.fullName
 

@@ -1,6 +1,7 @@
 package com.example.moviezone.screen.moviedetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieDetailsBinding
 import com.example.moviezone.model.Cast
+import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.model.Review
 
 
@@ -56,6 +58,13 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
         binding?.ivAddToFavoritesMoviedetails?.setOnClickListener {
             viewModel?.addToFavorites(args.movieId)
+        }
+
+        binding?.ivAddToFavoritesMoviedetails?.isActivated = false
+        for (favorite in CurrentUser.favorites) {
+            if (favorite == args.movieId.toString()) {
+                binding?.ivAddToFavoritesMoviedetails?.isActivated = true
+            }
         }
 
         setupCast()
