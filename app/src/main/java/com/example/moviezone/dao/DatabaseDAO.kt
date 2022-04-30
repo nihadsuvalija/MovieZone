@@ -9,12 +9,14 @@ class DatabaseDAO {
 
     private var usersReference = FirebaseDatabase.getInstance(Const.FIREBASE_DATABASE_URL).getReference(Const.USERS_DB_KEY)
 
+    private val TAG = "ERROR"
+
     fun getUserById(userId: String) {
         usersReference.child(userId).get().addOnSuccessListener {
             // TO DO: Do something with this user
             val user = it.getValue(User::class.java) as User
         }.addOnFailureListener {
-            Log.i("ERROR", "getUserById: ${it.message.toString()}")
+            Log.i(TAG, "getUserById: ${it.message.toString()}")
         }
     }
 
@@ -26,17 +28,17 @@ class DatabaseDAO {
                     // TO DO: Implement logic for on success of addition of user
                 }.addOnFailureListener {
                     // TO DO: Implement logic for on failure of addition of user.
-                    Log.i("ERROR", "addUser: ${it.message.toString()}")
+                    Log.i(TAG, "addUser: ${it.message.toString()}")
                 }
             }.addOnFailureListener {
-                Log.i("ERROR", "addUser: ${it.message.toString()}")
+                Log.i(TAG, "addUser: ${it.message.toString()}")
             }
         } else {
             usersReference.child(user.id).setValue(user).addOnSuccessListener {
                 // TO DO: Implement logic for on success of addition of user
             }.addOnFailureListener {
                 // TO DO: Implement logic for on failure of addition of user.
-                Log.i("ERROR", "addUser: ${it.message.toString()}")
+                Log.i(TAG, "addUser: ${it.message.toString()}")
             }
         }
     }
@@ -45,7 +47,23 @@ class DatabaseDAO {
         addUser(user)
     }
 
-    fun getLikedMovies(userId: Int) {
+    fun getFavorites(userId: String) {
+        usersReference.child(userId).child(Const.FAVORITES_KEY).get().addOnSuccessListener {
+            // TO DO: Implement logic for on success of getting favorite movies of user.
+        }.addOnFailureListener {
+            // TO DO: Implement logic for on failure of getting favorite movies of user.
+            Log.i(TAG, "getFavorites: ${it.message.toString()}")
+        }
+    }
 
+    // MOVIES:
+
+    fun addFavorite(movieId: String, userId: String) {
+        usersReference.child(userId).child(Const.FAVORITES_KEY).child(movieId).setValue(movieId).addOnSuccessListener {
+        // TO DO: Implement logic for on success of adding a favorite movie.
+        }.addOnFailureListener {
+            // TO DO: Implement logic for on failure of adding a favorite movie.
+            Log.i(TAG, "addFavorite: ${it.message.toString()}")
+        }
     }
 }

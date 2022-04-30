@@ -1,5 +1,7 @@
 package com.example.moviezone.model
 
+import android.net.Uri
+
 object CurrentUser {
     var id = ""
     var fullName = ""
@@ -14,7 +16,4 @@ object CurrentUser {
         this.image = image
     }
 
-    fun sayHello(): String {
-        return "Hello, " + this.fullName
-    }
 }

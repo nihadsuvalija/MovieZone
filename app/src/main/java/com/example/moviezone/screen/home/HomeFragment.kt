@@ -96,7 +96,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
         viewModel?.setProfilePhoto()
 
-        binding?.tvHelloHome?.text = CurrentUser.sayHello()
+        binding?.tvHelloHome?.text = "Hello, " + CurrentUser.fullName
 
         setupMovies()
         setupDiscover()

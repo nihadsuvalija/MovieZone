@@ -4,6 +4,7 @@ import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.moviezone.dao.DatabaseDAO
+import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.model.User
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth

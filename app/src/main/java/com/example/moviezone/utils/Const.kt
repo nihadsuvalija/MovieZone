@@ -5,6 +5,7 @@ class Const {
         // DATABASE:
         const val FIREBASE_DATABASE_URL = "https://moviezone-3a43b-default-rtdb.europe-west1.firebasedatabase.app/"
         const val USERS_DB_KEY = "Users"
+        const val FAVORITES_KEY = "favorites"
 
         // TMDB:
         const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"

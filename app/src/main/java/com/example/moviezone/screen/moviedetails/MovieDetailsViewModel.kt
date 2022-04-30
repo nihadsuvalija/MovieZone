@@ -6,9 +6,11 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import com.example.moviezone.dao.DatabaseDAO
 import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.youtubevideo.YoutubeActivity
 import com.example.moviezone.utils.Const
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -17,6 +19,8 @@ class MovieDetailsViewModel: ViewModel() {
     private var navController: NavController? = null
     private var trailer: String = ""
     private var movieRepository = MovieRepository()
+    private var dao = DatabaseDAO()
+    private var mAuth = FirebaseAuth.getInstance()
 
     fun setViewInteractor(viewInteractor: MovieDetailsViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -35,6 +39,10 @@ class MovieDetailsViewModel: ViewModel() {
 
     fun navigateBack(fromPage: Int){
         navController?.navigate(MovieDetailsFragmentDirections.navigateFromMovieDetailsToBase(fromPage))
+    }
+
+    fun addToFavorites(movieId: Int) {
+        dao.addFavorite(movieId.toString(), mAuth.currentUser?.uid.toString())
     }
 
     fun getMovieById(movieId: Int) {

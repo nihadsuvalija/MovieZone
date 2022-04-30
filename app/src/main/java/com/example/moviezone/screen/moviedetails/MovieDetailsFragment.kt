@@ -54,6 +54,10 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
             viewModel?.launchYouTubeActivity(requireContext())
         }
 
+        binding?.ivAddToFavoritesMoviedetails?.setOnClickListener {
+            viewModel?.addToFavorites(args.movieId)
+        }
+
         setupCast()
         setupReviews()
 
