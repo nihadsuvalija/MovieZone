@@ -57,10 +57,11 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         }
 
         binding?.ivAddToFavoritesMoviedetails?.setOnClickListener {
+            binding?.ivAddToFavoritesMoviedetails?.isActivated =
+                binding?.ivAddToFavoritesMoviedetails?.isActivated != true
             viewModel?.addToFavorites(args.movieId)
         }
 
-        binding?.ivAddToFavoritesMoviedetails?.isActivated = false
         for (favorite in CurrentUser.favorites) {
             if (favorite == args.movieId.toString()) {
                 binding?.ivAddToFavoritesMoviedetails?.isActivated = true
