@@ -34,15 +34,15 @@
         <action
             android:id="@+id/navigateFromWelcomeToSignUp"
             app:destination="@id/signUpFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/navigateFromWelcomeToSignIn"
             app:destination="@id/signInFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
@@ -50,8 +50,8 @@
             app:destination="@id/baseFragment"
             app:popUpTo="@id/main_nav_graph"
             app:popUpToInclusive="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
@@ -77,13 +77,15 @@
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/main_nav_graph"
             app:popUpToInclusive="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
             android:id="@+id/navigateFromSignInToBase"
             app:destination="@id/baseFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/main_nav_graph"
             app:popUpToInclusive="true"/>
     </fragment>
@@ -103,8 +105,8 @@
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/main_nav_graph"
             app:popUpToInclusive="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
