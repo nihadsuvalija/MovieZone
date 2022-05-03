@@ -1,6 +1,7 @@
 package com.example.moviezone.screen.moviedetails
 
 import com.example.moviezone.model.Cast
+import com.example.moviezone.model.Movie
 import com.example.moviezone.model.Review
 import com.example.moviezone.screen.base.BaseViewInteractor
 
@@ -16,4 +17,5 @@ interface MovieDetailsViewInteractor: BaseViewInteractor {
     fun setReviews(reviews: List<Review>)
     fun setCast(cast: List<Cast>)
     fun setTrailer(exists: Boolean)
+    fun setSimilarMovies(movies: List<Movie>)
 }

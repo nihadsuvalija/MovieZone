@@ -17,6 +17,7 @@ import com.example.moviezone.R
 import com.example.moviezone.databinding.MovieDetailsBinding
 import com.example.moviezone.model.Cast
 import com.example.moviezone.model.CurrentUser
+import com.example.moviezone.model.Movie
 import com.example.moviezone.model.Review
 
 
@@ -27,8 +28,11 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
     private val args: MovieDetailsFragmentArgs by navArgs()
 
+    private val previousMovies: MutableList<Int> = mutableListOf()
+
     private val castAdapter = CastAdapter()
     private val reviewAdapter = ReviewAdapter()
+    private val similarMoviesAdapter = SimilarMoviesAdapter();
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +44,10 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         viewModel?.setViewInteractor(this)
 
         viewModel?.getMovieById(args.movieId)
+        viewModel?.addMovieToBackStack(args.movieId)
+        viewModel?.getSimilarMovies(args.movieId)
+
+        similarMoviesAdapter.setViewModelInteractor(this.viewModel)
 
         // Setting initial visibility for Cast and Reviews:
         binding?.rvCastMoviedetails?.visibility = View.GONE
@@ -48,7 +56,10 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         binding?.tvReviewsTitleMoviedetails?.visibility = View.GONE
 
         binding?.ivBackButton?.setOnClickListener {
-            viewModel?.navigateBack(args.fromPage)
+            viewModel?.removeMovieFromBackStack()
+            if (viewModel?.loadLastMovie() == false) {
+                viewModel?.navigateBack(args.fromPage)
+            }
         }
 
         binding?.btnWatchVideo?.setOnClickListener {
@@ -70,6 +81,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
         setupCast()
         setupReviews()
+        setupSimilarMovies()
 
         return binding?.root
     }
@@ -88,6 +100,11 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
     private fun setupReviews() {
         binding?.rvReviewsMoviedetails?.layoutManager = LinearLayoutManager(requireContext())
         binding?.rvReviewsMoviedetails?.adapter = reviewAdapter
+    }
+
+    private fun setupSimilarMovies() {
+        binding?.rvSimilarMoviesMoviedetails?.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding?.rvSimilarMoviesMoviedetails?.adapter = similarMoviesAdapter
     }
 
     override fun setMoviePoster(path: String) {
@@ -154,6 +171,10 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
     override fun setTrailer(exists: Boolean) {
         binding?.btnWatchVideo?.isEnabled = exists
+    }
+
+    override fun setSimilarMovies(movies: List<Movie>) {
+        similarMoviesAdapter.setMovies(movies)
     }
 
     override fun displayMessage(message: String) {

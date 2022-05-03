@@ -306,6 +306,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+            <TextView
+                android:id="@+id/tv_similar_movies_moviedetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_similar_movies_title"
+                android:textSize="@dimen/h2_text_size"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:paddingStart="@dimen/padding_m"
+                android:paddingEnd="@dimen/padding_m"
+                android:paddingTop="@dimen/padding_s"
+                android:paddingBottom="@dimen/padding_s"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_l"
+                android:background="@drawable/default_background"
+                app:layout_constraintTop_toBottomOf="@id/rv_reviews_moviedetails"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_similar_movies_moviedetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_s"
+                app:layout_constraintTop_toBottomOf="@id/tv_similar_movies_moviedetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

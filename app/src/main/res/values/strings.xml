@@ -62,6 +62,7 @@
     <string name="placeholder_story_line_title">Story Line</string>
     <string name="placeholder_lorem_ipsum">Lorem ipsum i sve ostale suplje sto idu uz tekst</string>
     <string name="placeholder_reviews_title">Reviews</string>
+    <string name="placeholder_similar_movies_title">Similar Movies</string>
     <string name="placeholder_cast_title">Cast</string>
     <string name="placeholder_credits_name">Firstname\nLastname</string>
     <string name="placeholder_privacy_policy">Privacy policy</string>

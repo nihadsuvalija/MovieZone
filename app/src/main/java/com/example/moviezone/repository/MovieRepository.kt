@@ -70,4 +70,11 @@ class MovieRepository {
             emit(response)
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun getSimilarMovies(movieId: Int): Flow<SimilarResponse> {
+        return flow {
+            val response = RetrofitInstance.tmdbApi.getSimilarMovies(movieId)
+            emit(response)
+        }.flowOn(Dispatchers.IO)
+    }
 }

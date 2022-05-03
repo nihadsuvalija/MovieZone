@@ -19,13 +19,16 @@ interface TMDBApi {
     @GET("movie/{movie_id}/videos?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getMovieTrailerById(@Path("movie_id") movieId: Int): TrailerResponse
 
-    @GET("movie/{movie_id}}/credits?api_key=${Const.TMDB_API_KEY}&language=en-US")
+    @GET("movie/{movie_id}/credits?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getCreditsByMovieId(@Path("movie_id") movieId: Int): CreditsResponse
 
     @GET("movie/{movie_id}/reviews?api_key=${Const.TMDB_API_KEY}&language=en-US")
     suspend fun getReviewsById(@Path("movie_id") movieId: Int): ReviewResponse
 
-    // Set include_adult to true and check the new movies *devil*.
+    @GET("movie/{movie_id}/similar?api_key=${Const.TMDB_API_KEY}&language=en-US&page=1")
+    suspend fun getSimilarMovies(@Path("movie_id") movieId: Int): SimilarResponse
+
+    // Set include_adult to true and check the movies *devil*.
     @GET("search/movie?api_key=${Const.TMDB_API_KEY}&language=en-US&include_adult=true")
     suspend fun searchMoviesByTitle(@Query("query") title: String): SearchResponse
 

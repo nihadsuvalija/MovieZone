@@ -14,13 +14,15 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class MovieDetailsViewModel: ViewModel() {
+class MovieDetailsViewModel: ViewModel(), MovieDetailsViewModelInteractor {
     private var viewInteractor: MovieDetailsViewInteractor? = null
     private var navController: NavController? = null
     private var trailer: String = ""
     private var movieRepository = MovieRepository()
     private var dao = DatabaseDAO()
     private var mAuth = FirebaseAuth.getInstance()
+
+    val previousMovies: MutableList<Int> = mutableListOf()
 
     fun setViewInteractor(viewInteractor: MovieDetailsViewInteractor) {
         this.viewInteractor = viewInteractor
@@ -31,7 +33,7 @@ class MovieDetailsViewModel: ViewModel() {
     }
 
     fun launchYouTubeActivity(context: Context) {
-        var intent = Intent(context, YoutubeActivity::class.java).apply {
+        val intent = Intent(context, YoutubeActivity::class.java).apply {
             putExtra("Trailer", trailer)
         }
         context.startActivity(intent)
@@ -46,6 +48,7 @@ class MovieDetailsViewModel: ViewModel() {
     }
 
     fun getMovieById(movieId: Int) {
+        Log.i("TEST", "getMovieById: ${previousMovies}")
         viewModelScope.launch {
             try {
                 movieRepository.getMovieById(movieId).collect {
@@ -74,6 +77,40 @@ class MovieDetailsViewModel: ViewModel() {
                 Log.i("Error", e.message.toString())
             }
         }
+    }
+
+    fun getSimilarMovies(movieId: Int) {
+        viewModelScope.launch {
+            movieRepository.getSimilarMovies(movieId).collect {
+                // TO DO: Update the similar movies adapter.
+                viewInteractor?.setSimilarMovies(it.movies)
+            }
+        }
+    }
+
+    fun addMovieToBackStack(movieId: Int) {
+        previousMovies.add(movieId)
+    }
+
+    fun removeMovieFromBackStack() {
+        if (previousMovies.isNotEmpty()) {
+            previousMovies.removeAt(previousMovies.size - 1);
+        }
+    }
+
+    fun loadLastMovie(): Boolean {
+        if (previousMovies.isNotEmpty()) {
+            getMovieById(previousMovies[previousMovies.size - 1])
+            getSimilarMovies(previousMovies[previousMovies.size - 1])
+        }
+
+        return previousMovies.isNotEmpty()
+    }
+
+    override fun showMovieDetails(movieId: Int) {
+        addMovieToBackStack(movieId)
+        getMovieById(movieId)
+        getSimilarMovies(movieId)
     }
 
 }
