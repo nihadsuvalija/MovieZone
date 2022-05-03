@@ -96,7 +96,7 @@ class SimilarMoviesAdapter: RecyclerView.Adapter<SimilarMoviesAdapter.ViewHolder
             viewModelInteractor?.showMovieDetails(movies[position].id)
         }
 
-        holder.rating.text = movies[position].voteAverage.toString()
+        holder.rating.text = String.format("%.1f", movies[position].voteAverage)
     }
 
     override fun getItemCount(): Int {
