@@ -48,7 +48,9 @@ class MovieDetailsViewModel: ViewModel(), MovieDetailsViewModelInteractor {
     }
 
     fun getMovieById(movieId: Int) {
-        Log.i("TEST", "getMovieById: ${previousMovies}")
+        
+        viewInteractor?.scrollToTop()
+
         viewModelScope.launch {
             try {
                 movieRepository.getMovieById(movieId).collect {

@@ -18,4 +18,5 @@ interface MovieDetailsViewInteractor: BaseViewInteractor {
     fun setCast(cast: List<Cast>)
     fun setTrailer(exists: Boolean)
     fun setSimilarMovies(movies: List<Movie>)
+    fun scrollToTop()
 }
