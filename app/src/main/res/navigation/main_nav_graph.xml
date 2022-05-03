@@ -11,12 +11,12 @@
         <action
             android:id="@+id/navigateFromSplashToWelcome"
             app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/main_nav_graph"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
-            app:popExitAnim="@anim/nav_default_exit_anim" />
+            app:popExitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/navigateFromSplashToBase"
             app:destination="@id/baseFragment"
@@ -94,8 +94,8 @@
         <action
             android:id="@+id/navigateFromBaseToMovieDetails"
             app:destination="@id/movieDetailsFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
         <action
@@ -110,8 +110,8 @@
         <action
             android:id="@+id/navigateFromBaseToPrivacyPolicy"
             app:destination="@id/privacyPolicyFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
         <argument
@@ -143,8 +143,8 @@
         <action
             android:id="@+id/navigateFromPrivacyPolicyToBase"
             app:destination="@id/baseFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
