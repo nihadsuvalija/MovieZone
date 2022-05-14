@@ -66,7 +66,11 @@
             app:popUpToInclusive="true"/>
         <action
             android:id="@+id/navigateFromSignUpToSignIn"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -122,7 +126,18 @@
             android:defaultValue="0" />
         <action
             android:id="@+id/navigateFromBaseToHelpAndFeedback"
-            app:destination="@id/helpAndFeedbackFragment" />
+            app:destination="@id/helpAndFeedbackFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/navigatefromBaseToAboutUs"
+            app:destination="@id/aboutUsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
@@ -159,6 +174,22 @@
         android:label="HelpAndFeedbackFragment" >
         <action
             android:id="@+id/navigateFromHelpAndFeedbackToBase"
-            app:destination="@id/baseFragment" />
+            app:destination="@id/baseFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.moviezone.screen.aboutus.AboutUsFragment"
+        android:label="AboutUsFragment" >
+        <action
+            android:id="@+id/navigateFromAboutUsToBase"
+            app:destination="@id/baseFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 </navigation>

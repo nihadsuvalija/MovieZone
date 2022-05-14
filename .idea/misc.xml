@@ -45,6 +45,7 @@
         <entry key="app/src/main/res/drawable/profile_element_background.xml" value="0.2455" />
         <entry key="app/src/main/res/drawable/profile_indicator.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/search_indicator.xml" value="0.1925" />
+        <entry key="app/src/main/res/layout/about_us.xml" value="0.26876737720111216" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/base.xml" value="0.2930253623188406" />
         <entry key="app/src/main/res/layout/category_item.xml" value="1.0" />

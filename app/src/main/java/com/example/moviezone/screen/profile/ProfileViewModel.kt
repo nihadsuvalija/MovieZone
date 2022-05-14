@@ -46,6 +46,10 @@ class ProfileViewModel: ViewModel(), ProfileViewModelInteractor {
         navController?.navigate(CentralFragmentDirections.navigateFromBaseToHelpAndFeedback())
     }
 
+    fun aboutUsClick() {
+        navController?.navigate(CentralFragmentDirections.navigatefromBaseToAboutUs())
+    }
+
     // ACCOUNT SETTINGS:
     override fun changePasswordClick() {
         mAuth.sendPasswordResetEmail(mAuth.currentUser?.email.toString())

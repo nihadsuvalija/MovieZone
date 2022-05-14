@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_back_button"
+                android:layout_width="@dimen/back_button_size"
+                android:layout_height="@dimen/back_button_size"
+                android:layout_margin="@dimen/margin_xl"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:background="@drawable/default_background"
+                android:src="@drawable/ic_back"
+                android:scaleType="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_about_us_title_aboutus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_about_us"
+                android:textSize="@dimen/h2_text_size"
+                app:layout_constraintTop_toTopOf="@id/iv_back_button"
+                app:layout_constraintBottom_toBottomOf="@id/iv_back_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_about_us_content_title_aboutus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/who_are_we_txt"
+                android:textSize="@dimen/h3_text_size"
+                android:layout_marginTop="@dimen/margin_xl"
+                android:fontFamily="@font/sf_pro_display_bold"
+                app:layout_constraintTop_toBottomOf="@id/iv_back_button"
+                app:layout_constraintStart_toStartOf="@id/iv_back_button"/>
+
+            <TextView
+                android:id="@+id/tv_about_us_content_helpandfeedback"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_m"
+                android:layout_marginEnd="@dimen/margin_xl"
+                android:layout_marginBottom="@dimen/margin_xl"
+                android:text="@string/terms_placeholder_txt"
+                android:textSize="@dimen/text_size_l"
+                android:alpha="0.5"
+                app:layout_constraintTop_toBottomOf="@id/tv_about_us_content_title_aboutus"
+                app:layout_constraintStart_toStartOf="@id/tv_about_us_content_title_aboutus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
