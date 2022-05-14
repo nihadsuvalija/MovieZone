@@ -37,9 +37,27 @@ class ProfileViewModel: ViewModel(), ProfileViewModelInteractor {
         viewInteractor?.setFullName(CurrentUser.fullName)
     }
 
+    // MORE SETTINGS:
     fun privacyClick() {
-        Log.i("TAG", navController.toString())
         navController?.navigate(CentralFragmentDirections.navigateFromBaseToPrivacyPolicy())
+    }
+
+    fun helpAndFeedbackClick() {
+        navController?.navigate(CentralFragmentDirections.navigateFromBaseToHelpAndFeedback())
+    }
+
+    // ACCOUNT SETTINGS:
+    override fun changePasswordClick() {
+        mAuth.sendPasswordResetEmail(mAuth.currentUser?.email.toString())
+        viewInteractor?.displayMessage("Password reset email sent.")
+    }
+
+    override fun changeProfilePhotoClick() {
+        val galleryIntent = Intent()
+        galleryIntent.type = "image/*";
+        galleryIntent.action = Intent.ACTION_GET_CONTENT;
+
+        viewInteractor?.changeProfilePhoto(galleryIntent)
     }
 
     fun updateProfilePhoto(photoPath: String) {
@@ -51,16 +69,4 @@ class ProfileViewModel: ViewModel(), ProfileViewModelInteractor {
         dao.setProfilePhoto(mAuth.currentUser?.uid.toString())
     }
 
-    override fun changeProfilePhotoClick() {
-        val galleryIntent = Intent()
-        galleryIntent.type = "image/*";
-        galleryIntent.action = Intent.ACTION_GET_CONTENT;
-
-        viewInteractor?.changeProfilePhoto(galleryIntent)
-    }
-
-    override fun changePasswordClick() {
-        mAuth.sendPasswordResetEmail(mAuth.currentUser?.email.toString())
-        viewInteractor?.displayMessage("Password reset email sent.")
-    }
 }

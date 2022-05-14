@@ -48,6 +48,7 @@ class MoreSettingsAdapter: RecyclerView.Adapter<MoreSettingsAdapter.MoreViewHold
 
         holder.itemView.setOnClickListener {
             if (position == 0) viewModel.privacyClick()
+            if (position == 1) viewModel.helpAndFeedbackClick()
         }
     }
 
