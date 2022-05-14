@@ -19,4 +19,8 @@ interface MovieDetailsViewInteractor: BaseViewInteractor {
     fun setTrailer(exists: Boolean)
     fun setSimilarMovies(movies: List<Movie>)
     fun scrollToTop()
+    fun showAddToFavorites()
+    fun showRemoveFromFavorites()
+
+    fun setMovieId(movieId: Int)
 }

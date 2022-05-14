@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.dao.DatabaseDAO
+import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.youtubevideo.YoutubeActivity
 import com.example.moviezone.utils.Const
@@ -44,6 +45,7 @@ class MovieDetailsViewModel: ViewModel(), MovieDetailsViewModelInteractor {
     }
 
     fun addToFavorites(movieId: Int) {
+        Log.i("TAG", "addToFavorites: ${movieId}")
         viewModelScope.launch {
             movieRepository.getMovieById(movieId).collect {
                 dao.addToFavorites(it, mAuth.currentUser?.uid.toString())
@@ -70,6 +72,13 @@ class MovieDetailsViewModel: ViewModel(), MovieDetailsViewModelInteractor {
                     viewInteractor?.setRuntime(it.runtime.toString() + " minutes")
                     viewInteractor?.setRating(it.voteAverage.toString())
                     viewInteractor?.setReleaseDate(it.releaseDate)
+                    viewInteractor?.showAddToFavorites()
+                    for (movie in CurrentUser.favorites) {
+                        if (movie.id == it.id) {
+                            viewInteractor?.showRemoveFromFavorites()
+                            break
+                        }
+                    }
                 }
 
                 movieRepository.getMovieTrailerById(movieId).collect {
@@ -121,6 +130,7 @@ class MovieDetailsViewModel: ViewModel(), MovieDetailsViewModelInteractor {
         addMovieToBackStack(movieId)
         getMovieById(movieId)
         getSimilarMovies(movieId)
+        viewInteractor?.setMovieId(movieId)
     }
 
 }

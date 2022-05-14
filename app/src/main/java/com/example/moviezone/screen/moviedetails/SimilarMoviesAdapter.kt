@@ -18,7 +18,7 @@ import com.example.moviezone.model.Movie
 import com.example.moviezone.utils.Const
 import com.example.moviezone.utils.MovieDiffUtil
 
-class SimilarMoviesAdapter: RecyclerView.Adapter<SimilarMoviesAdapter.ViewHolder>() {
+class SimilarMoviesAdapter(): RecyclerView.Adapter<SimilarMoviesAdapter.ViewHolder>() {
 
     private var movies: List<Movie> = listOf()
     private lateinit var binding: MovieItemBinding

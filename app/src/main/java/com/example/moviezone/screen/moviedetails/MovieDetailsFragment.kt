@@ -1,5 +1,6 @@
 package com.example.moviezone.screen.moviedetails
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,11 +31,16 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
     private val args: MovieDetailsFragmentArgs by navArgs()
 
-    private val previousMovies: MutableList<Int> = mutableListOf()
+    private var movieId = -1
 
     private val castAdapter = CastAdapter()
     private val reviewAdapter = ReviewAdapter()
     private val similarMoviesAdapter = SimilarMoviesAdapter();
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        movieId = args.movieId
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,9 +51,9 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         viewModel = ViewModelProvider(this)[MovieDetailsViewModel::class.java]
         viewModel?.setViewInteractor(this)
 
-        viewModel?.getMovieById(args.movieId)
-        viewModel?.addMovieToBackStack(args.movieId)
-        viewModel?.getSimilarMovies(args.movieId)
+        viewModel?.getMovieById(movieId)
+        viewModel?.addMovieToBackStack(movieId)
+        viewModel?.getSimilarMovies(movieId)
 
         similarMoviesAdapter.setViewModelInteractor(this.viewModel)
 
@@ -70,14 +76,18 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         }
 
         binding?.ivAddToFavoritesMoviedetails?.setOnClickListener {
+            Log.i("TAG", "onCreateView: clicked")
+            Log.i("TAG", "onCreateView: ${CurrentUser.favorites}")
             binding?.ivAddToFavoritesMoviedetails?.isActivated =
                 binding?.ivAddToFavoritesMoviedetails?.isActivated != true
 
+            Log.i("TAG", "onCreateView: ${binding?.ivAddToFavoritesMoviedetails?.isActivated}")
+
             with(binding?.ivAddToFavoritesMoviedetails) {
                 if (this?.isActivated == false) {
-                    viewModel?.removeFromFavorites(args.movieId)
+                    viewModel?.removeFromFavorites(movieId)
                 } else {
-                    viewModel?.addToFavorites(args.movieId)
+                    viewModel?.addToFavorites(movieId)
                 }
             }
 
@@ -189,6 +199,18 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
 
     override fun scrollToTop() {
         binding?.svMoviedetails?.fullScroll(ScrollView.FOCUS_UP);
+    }
+
+    override fun showAddToFavorites() {
+        binding?.ivAddToFavoritesMoviedetails?.isActivated = false
+    }
+
+    override fun showRemoveFromFavorites() {
+        binding?.ivAddToFavoritesMoviedetails?.isActivated = true
+    }
+
+    override fun setMovieId(movieId: Int) {
+        this.movieId = movieId
     }
 
     override fun displayMessage(message: String) {
