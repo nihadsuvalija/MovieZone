@@ -58,4 +58,9 @@ class ProfileViewModel: ViewModel(), ProfileViewModelInteractor {
 
         viewInteractor?.changeProfilePhoto(galleryIntent)
     }
+
+    override fun changePasswordClick() {
+        mAuth.sendPasswordResetEmail(mAuth.currentUser?.email.toString())
+        viewInteractor?.displayMessage("Password reset email sent.")
+    }
 }

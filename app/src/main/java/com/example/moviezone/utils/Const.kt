@@ -32,5 +32,6 @@ class Const {
 
         // SETTINGS OPTIONS
         const val CHANGE_PROFILE_PHOTO = "Change Profile Picture"
+        const val CHANGE_PASSWORD = "Change Password"
     }
 }
