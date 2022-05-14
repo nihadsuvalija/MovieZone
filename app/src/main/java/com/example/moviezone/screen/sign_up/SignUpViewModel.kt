@@ -1,5 +1,6 @@
 package com.example.moviezone.screen.sign_up
 
+import android.net.Uri
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
@@ -34,8 +35,11 @@ class SignUpViewModel: ViewModel() {
                         id = mAuth.currentUser?.uid.toString(),
                         email = email,
                         password = password,
-                        fullName = fullName
-                            )
+                        fullName = fullName,
+                        username = null,
+                        photoPath = null
+                    )
+
                     dbDao.addUser(user)
 
                     // For some reason it treats the user as if he's logged in, so we log him out.

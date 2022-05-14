@@ -2,11 +2,13 @@ package com.example.moviezone.model
 
 import android.net.Uri
 
-data class User (
+class User (
     val id: String? = null,
-    val email: String? = null,
-    val password: String? = null,
-    val photoUri: Uri? = null,
-    val fullName: String? = null,
-    val username: String? = null
-    )
+    var email: String? = null,
+    var password: String? = null,
+    var photoPath: String? = null,
+    var fullName: String? = null,
+    var username: String? = null
+) {
+    constructor() : this(null, null, null, null, null, null)
+}

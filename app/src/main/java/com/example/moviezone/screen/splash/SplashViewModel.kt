@@ -46,8 +46,7 @@ class SplashViewModel: ViewModel() {
     }
 
     fun isLogged(): Boolean {
-        if (FirebaseAuth.getInstance().currentUser != null) return true
-        return false
+        return mAuth.currentUser?.uid != null
     }
 }
 

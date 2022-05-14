@@ -1,29 +1,33 @@
 package com.example.moviezone.dao
 
+import android.net.Uri
 import android.util.Log
 import com.example.moviezone.model.*
 import com.example.moviezone.screen.home.HomeViewInteractor
+import com.example.moviezone.screen.profile.ProfileViewInteractor
 import com.example.moviezone.utils.Const
+import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 
 class DatabaseDAO {
 
     private var usersReference = FirebaseDatabase.getInstance(Const.FIREBASE_DATABASE_URL).getReference(Const.USERS_DB_KEY)
-    private var viewInteractor: HomeViewInteractor? = null
+    private var homeViewInteractor: HomeViewInteractor? = null
+    private var profileViewInteractor: ProfileViewInteractor? = null
 
     private val TAG = "ERROR"
 
-    fun setViewInteractor(viewInteractor: HomeViewInteractor) {
-        this.viewInteractor = viewInteractor
+    fun setHomeViewInteractor(homeViewInteractor: HomeViewInteractor) {
+        this.homeViewInteractor = homeViewInteractor
     }
 
-    fun getUserById(userId: String) {
-        usersReference.child(userId).get().addOnSuccessListener {
-            // TO DO: Do something with this user
-            val user = it.getValue(User::class.java) as User
-        }.addOnFailureListener {
-            Log.i(TAG, "getUserById: ${it.message.toString()}")
-        }
+    fun setProfileViewInteractor(profileViewInteractor: ProfileViewInteractor) {
+        this.profileViewInteractor = profileViewInteractor
+    }
+
+    fun getUserById(userId: String): Task<DataSnapshot> {
+        return usersReference.child(userId).get()
     }
 
     fun addUser(user: User) {
@@ -53,6 +57,22 @@ class DatabaseDAO {
         addUser(user)
     }
 
+    fun setProfilePhoto(userId: String) {
+        getUserById(userId).addOnSuccessListener {
+            val user = it.getValue(User::class.java) as User
+            homeViewInteractor?.setProfilePhoto(user.photoPath.toString())
+            profileViewInteractor?.setProfilePhoto(user.photoPath.toString())
+        }
+    }
+
+    fun updateUserProfileImage(photoPath: String, userId: String) {
+        getUserById(userId).addOnSuccessListener {
+            val user = it.getValue(User::class.java) as User
+            user.photoPath = photoPath
+            updateUser(user)
+        }
+    }
+
     fun getFavorites(userId: String) {
         usersReference.child(userId).child(Const.FAVORITES_KEY).get().addOnSuccessListener {
             // TO DO: Implement logic for on success of getting favorite movies of user.
@@ -64,7 +84,7 @@ class DatabaseDAO {
             }
             CurrentUser.favorites = favorites
 
-            viewInteractor?.setFavoriteMovies(favorites)
+            homeViewInteractor?.setFavoriteMovies(favorites)
         }.addOnFailureListener {
             // TO DO: Implement logic for on failure of getting favorite movies of user.
             Log.e(TAG, it.message.toString())

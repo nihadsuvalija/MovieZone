@@ -63,8 +63,8 @@ class WelcomeViewModel: ViewModel() {
                 id = account.id.toString(),
                 email = account.email.toString(),
                 fullName =  account.displayName.toString(),
-                photoUri = account.photoUrl,
-                    )
+                photoPath = account.photoUrl.toString(),
+            )
             dbDao.addUser(user)
             navController?.navigate(WelcomeFragmentDirections.navigateFromWelcomeToBase())
         } catch (e: ApiException) {

@@ -20,7 +20,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
 
     fun setViewInteractor(viewInteractor: HomeViewInteractor) {
         this.viewInteractor = viewInteractor
-        dao.setViewInteractor(viewInteractor)
+        dao.setHomeViewInteractor(viewInteractor)
     }
 
     fun setNavController(navController: NavController) {
@@ -62,7 +62,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
     }
 
     fun setProfilePhoto() {
-        viewInteractor?.setProfilePhoto(mAuth.currentUser?.photoUrl)
+        dao.setProfilePhoto(mAuth.currentUser?.uid.toString())
     }
 
     private fun getTopRatedMovies() {

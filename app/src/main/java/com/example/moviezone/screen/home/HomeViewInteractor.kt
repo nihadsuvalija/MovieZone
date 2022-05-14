@@ -7,7 +7,7 @@ import com.example.moviezone.screen.base.BaseViewInteractor
 
 interface HomeViewInteractor: BaseViewInteractor {
     fun setMovies(movies: List<Movie>)
-    fun setProfilePhoto(photoUri: Uri?)
+    fun setProfilePhoto(photoPath: String)
     fun setDiscoverMovies(movies: List<Movie>)
     fun setFavoriteMovies(movies: List<FavoriteMovie>)
 }
