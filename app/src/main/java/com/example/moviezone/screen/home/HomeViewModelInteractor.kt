@@ -6,4 +6,5 @@ interface HomeViewModelInteractor {
     fun showTopRatedMovies()
     fun showMovieDetails(movieId: Int, fromPage: Int)
     fun showDiscoverMovies()
+    fun showFavoriteMovies()
 }

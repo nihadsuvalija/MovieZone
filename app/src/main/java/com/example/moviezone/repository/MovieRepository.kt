@@ -1,13 +1,16 @@
 package com.example.moviezone.repository
 
 import com.example.moviezone.api.RetrofitInstance
+import com.example.moviezone.dao.DatabaseDAO
 import com.example.moviezone.model.*
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class MovieRepository {
+    private val dao = DatabaseDAO()
     suspend fun getUpcomingMovies(): Flow<UpcomingResponse> {
         return flow {
             val response = RetrofitInstance.tmdbApi.getUpcomingMovies()

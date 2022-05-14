@@ -46,6 +46,7 @@
     <!-- PLACEHOLDERS -->
     <string name="placeholder_category">Category</string>
     <string name="placeholder_categories">Categories</string>
+    <string name="placeholder_favorites">Favorites</string>
     <string name="placeholer_title">Title</string>
     <string name="placeholder_rating">4.6</string>
     <string name="placeholder_hello">Hello, Name Surname</string>

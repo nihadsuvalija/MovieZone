@@ -21,7 +21,9 @@ import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.HomeBinding
 import com.example.moviezone.model.CurrentUser
+import com.example.moviezone.model.FavoriteMovie
 import com.example.moviezone.model.Movie
+import com.example.moviezone.model.MovieDetails
 import com.example.moviezone.utils.Const
 import com.google.firebase.auth.FirebaseAuth
 
@@ -36,6 +38,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
     private val movieAdapter = MovieAdapter()
     private val discoverAdapter = DiscoverAdapter()
+    private val favoritesAdapter = FavoritesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +54,7 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         // ViewModelInteractors:
         movieAdapter.setViewModelInteractor(this.viewModel)
         discoverAdapter.setViewModelInteractor(this.viewModel)
+        favoritesAdapter.setViewModelInteractor(this.viewModel)
 
         binding?.root?.setOnClickListener {
             if(binding?.root?.isFocused == false) {
@@ -78,6 +82,15 @@ class HomeFragment: Fragment(), HomeViewInteractor {
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
         })
 
+        binding?.rvFavoritesHome?.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                binding?.rvFavoritesHome?.parent?.requestDisallowInterceptTouchEvent(true)
+                return false
+            }
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+        })
+
         binding?.btnNowPlayingHome?.setOnClickListener {
             viewModel?.showNowPlayingMovies()
             setCategoryButtonsColors(Const.THEME_BLUE_COLOR, Const.WHITE_COLOR, Const.WHITE_COLOR)
@@ -95,15 +108,17 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
 
         viewModel?.setProfilePhoto()
-        viewModel?.getFavorites()
 
         binding?.tvHelloHome?.text = "Hello, " + CurrentUser.fullName
 
         setupMovies()
         setupDiscover()
+        setupFavorites()
+
         viewModel?.showNowPlayingMovies()
         binding?.btnNowPlayingHome?.setTextColor(Color.parseColor(Const.THEME_BLUE_COLOR))
         viewModel?.showDiscoverMovies()
+        viewModel?.showFavoriteMovies()
 
         return binding?.root
     }
@@ -124,6 +139,11 @@ class HomeFragment: Fragment(), HomeViewInteractor {
         binding?.rvDiscoverHome?.adapter = discoverAdapter
     }
 
+    private fun setupFavorites() {
+        binding?.rvFavoritesHome?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding?.rvFavoritesHome?.adapter = favoritesAdapter
+    }
+
     override fun setMovies(movies: List<Movie>) {
         movieAdapter.setMovies(movies)
     }
@@ -138,6 +158,15 @@ class HomeFragment: Fragment(), HomeViewInteractor {
 
     override fun setDiscoverMovies(movies: List<Movie>) {
         discoverAdapter.setMovies(movies)
+    }
+
+    override fun setFavoriteMovies(movies: List<FavoriteMovie>) {
+        if (movies.isEmpty()) {
+            binding?.rvFavoritesHome?.visibility = View.GONE
+            binding?.tvFavoritesHome?.visibility = View.GONE
+        } else {
+            favoritesAdapter.setFavorites(movies)
+        }
     }
 
     override fun displayMessage(message: String) {

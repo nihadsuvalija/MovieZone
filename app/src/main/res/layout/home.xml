@@ -126,10 +126,34 @@
                 android:id="@+id/rv_movies_home"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/movie_item_height"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_favorites_home"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btn_now_playing_home"
+                tools:itemCount="1"
+                tools:listitem="@layout/movie_item" />
+
+            <TextView
+                android:id="@+id/tv_favorites_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_l"
+                android:alpha="0.7"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:text="@string/placeholder_favorites"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_movies_home" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_favorites_home"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/movie_item_height"
+                android:layout_marginTop="@dimen/margin_m"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_favorites_home"
                 tools:itemCount="1"
                 tools:listitem="@layout/movie_item" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
 
     fun setViewInteractor(viewInteractor: HomeViewInteractor) {
         this.viewInteractor = viewInteractor
+        dao.setViewInteractor(viewInteractor)
     }
 
     fun setNavController(navController: NavController) {
@@ -56,6 +57,10 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
         }
     }
 
+    private fun getFavoriteMovies() {
+        dao.getFavorites(mAuth.currentUser?.uid.toString())
+    }
+
     fun setProfilePhoto() {
         viewInteractor?.setProfilePhoto(mAuth.currentUser?.photoUrl)
     }
@@ -67,10 +72,6 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
                 viewInteractor?.setMovies(it.movies)
             }
         }
-    }
-
-    fun getFavorites() {
-        mAuth.currentUser?.uid?.let { dao.getFavorites(it) }
     }
 
     override fun showNowPlayingMovies() {
@@ -91,5 +92,9 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
 
     override fun showDiscoverMovies() {
         getDiscoverMovies()
+    }
+
+    override fun showFavoriteMovies() {
+        getFavoriteMovies()
     }
 }

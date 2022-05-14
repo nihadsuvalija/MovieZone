@@ -84,7 +84,7 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         }
 
         for (favorite in CurrentUser.favorites) {
-            if (favorite == args.movieId.toString()) {
+            if (favorite.id.toString() == args.movieId.toString()) {
                 binding?.ivAddToFavoritesMoviedetails?.isActivated = true
             }
         }
