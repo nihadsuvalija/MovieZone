@@ -42,17 +42,16 @@ class ProfileViewModel: ViewModel(), ProfileViewModelInteractor {
         navController?.navigate(CentralFragmentDirections.navigateFromBaseToPrivacyPolicy())
     }
 
-    fun updateProfilePicture(imageUrl: String) {
-        dao.updateUserProfileImage(imageUrl, mAuth.currentUser?.uid.toString())
-        Log.i("TAG", "setProfilePhoto: $imageUrl")
-        viewInteractor?.setProfilePhoto(imageUrl)
+    fun updateProfilePhoto(photoPath: String) {
+        dao.updateUserProfileImage(photoPath, mAuth.currentUser?.uid.toString())
+        viewInteractor?.setProfilePhoto(photoPath)
     }
 
     fun setProfilePhoto() {
         dao.setProfilePhoto(mAuth.currentUser?.uid.toString())
     }
 
-    override fun changeProfileImage() {
+    override fun changeProfilePhoto() {
         val galleryIntent = Intent()
         galleryIntent.type = "image/*";
         galleryIntent.action = Intent.ACTION_GET_CONTENT;

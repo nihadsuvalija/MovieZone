@@ -29,5 +29,8 @@ class Const {
         // COLORS:
         const val THEME_BLUE_COLOR = "#12CDD9"
         const val WHITE_COLOR = "#FFFFFF"
+
+        // SETTINGS OPTIONS
+        const val CHANGE_PROFILE_PHOTO = "Change Profile Picture"
     }
 }

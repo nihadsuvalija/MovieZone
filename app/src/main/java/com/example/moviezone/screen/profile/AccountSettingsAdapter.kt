@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moviezone.R
 import com.example.moviezone.databinding.OptionItemBinding
+import com.example.moviezone.utils.Const
 
 class AccountSettingsAdapter: RecyclerView.Adapter<AccountSettingsAdapter.SettingsViewHolder>() {
 
@@ -46,8 +47,8 @@ class AccountSettingsAdapter: RecyclerView.Adapter<AccountSettingsAdapter.Settin
         }
 
         holder.itemView.setOnClickListener {
-            if (holder.name.text == "Change Profile Picture") {
-                viewModelInteractor?.changeProfileImage()
+            if (holder.name.text == Const.CHANGE_PROFILE_PHOTO) {
+                viewModelInteractor?.changeProfilePhoto()
             }
         }
     }

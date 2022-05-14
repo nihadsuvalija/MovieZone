@@ -36,7 +36,7 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
         super.onAttach(context)
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
-                viewModel.updateProfilePicture(it.data?.data.toString())
+                viewModel.updateProfilePhoto(it.data?.data.toString())
             }
         }
     }
