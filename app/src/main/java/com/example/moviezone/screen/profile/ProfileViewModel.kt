@@ -51,7 +51,7 @@ class ProfileViewModel: ViewModel(), ProfileViewModelInteractor {
         dao.setProfilePhoto(mAuth.currentUser?.uid.toString())
     }
 
-    override fun changeProfilePhoto() {
+    override fun changeProfilePhotoClick() {
         val galleryIntent = Intent()
         galleryIntent.type = "image/*";
         galleryIntent.action = Intent.ACTION_GET_CONTENT;

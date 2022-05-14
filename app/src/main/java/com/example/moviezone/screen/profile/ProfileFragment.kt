@@ -89,16 +89,16 @@ class ProfileFragment: Fragment(), ProfileViewInteractor {
         }
     }
 
+    override fun changeProfilePhoto(intent: Intent) {
+        launcher?.launch(intent)
+    }
+
     override fun setFullName(name: String) {
         binding.tvFullNameProfile.text = name
     }
 
     override fun setEmail(email: String) {
         binding.tvEmailProfile.text = email
-    }
-
-    override fun changeProfilePhoto(intent: Intent) {
-        launcher?.launch(intent)
     }
 
     override fun displayMessage(message: String) {

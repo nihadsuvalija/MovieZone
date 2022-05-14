@@ -5,8 +5,7 @@ import com.example.moviezone.screen.base.BaseViewInteractor
 
 interface ProfileViewInteractor: BaseViewInteractor {
     fun setProfilePhoto(imagePath: String)
+    fun changeProfilePhoto(intent: Intent)
     fun setFullName(name: String)
     fun setEmail(email: String)
-
-    fun changeProfilePhoto(intent: Intent)
 }

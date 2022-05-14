@@ -1,5 +1,5 @@
 package com.example.moviezone.screen.profile
 
 interface ProfileViewModelInteractor {
-    fun changeProfilePhoto()
+    fun changeProfilePhotoClick()
 }

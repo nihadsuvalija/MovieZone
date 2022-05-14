@@ -48,7 +48,7 @@ class AccountSettingsAdapter: RecyclerView.Adapter<AccountSettingsAdapter.Settin
 
         holder.itemView.setOnClickListener {
             if (holder.name.text == Const.CHANGE_PROFILE_PHOTO) {
-                viewModelInteractor?.changeProfilePhoto()
+                viewModelInteractor?.changeProfilePhotoClick()
             }
         }
     }
