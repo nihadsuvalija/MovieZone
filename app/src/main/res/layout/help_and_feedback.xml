@@ -23,7 +23,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
-                android:id="@+id/tv_privacy_policy_title_privacypolicy"
+                android:id="@+id/tv_help_and_feedback_title_helpandfeedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder_help_and_feedback"
