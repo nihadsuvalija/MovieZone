@@ -20,6 +20,7 @@ import com.example.moviezone.model.Cast
 import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.model.Movie
 import com.example.moviezone.model.Review
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
@@ -71,7 +72,15 @@ class MovieDetailsFragment: Fragment(), MovieDetailsViewInteractor {
         binding?.ivAddToFavoritesMoviedetails?.setOnClickListener {
             binding?.ivAddToFavoritesMoviedetails?.isActivated =
                 binding?.ivAddToFavoritesMoviedetails?.isActivated != true
-            viewModel?.addToFavorites(args.movieId)
+
+            with(binding?.ivAddToFavoritesMoviedetails) {
+                if (this?.isActivated == false) {
+                    viewModel?.removeFromFavorites(args.movieId)
+                } else {
+                    viewModel?.addToFavorites(args.movieId)
+                }
+            }
+
         }
 
         for (favorite in CurrentUser.favorites) {

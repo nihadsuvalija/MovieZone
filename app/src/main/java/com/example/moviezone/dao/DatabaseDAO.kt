@@ -2,6 +2,8 @@ package com.example.moviezone.dao
 
 import android.util.Log
 import com.example.moviezone.model.CurrentUser
+import com.example.moviezone.model.Movie
+import com.example.moviezone.model.MovieDetails
 import com.example.moviezone.model.User
 import com.example.moviezone.utils.Const
 import com.google.firebase.database.FirebaseDatabase
@@ -51,25 +53,36 @@ class DatabaseDAO {
     fun getFavorites(userId: String) {
         usersReference.child(userId).child(Const.FAVORITES_KEY).get().addOnSuccessListener {
             // TO DO: Implement logic for on success of getting favorite movies of user.
-            val favorites = mutableListOf("")
+            val favorites: MutableList<String> = mutableListOf()
             for (snap in it.children) {
-                favorites.add(snap.value.toString())
+                favorites.add(snap.key.toString())
             }
             CurrentUser.favorites = favorites
         }.addOnFailureListener {
             // TO DO: Implement logic for on failure of getting favorite movies of user.
-            Log.i(TAG, "getFavorites: ${it.message.toString()}")
+            Log.e(TAG, it.message.toString())
         }
     }
 
     // MOVIES:
 
-    fun addFavorite(movieId: String, userId: String) {
-        usersReference.child(userId).child(Const.FAVORITES_KEY).child(movieId).setValue(movieId).addOnSuccessListener {
-        // TO DO: Implement logic for on success of adding a favorite movie.
-        }.addOnFailureListener {
-            // TO DO: Implement logic for on failure of adding a favorite movie.
-            Log.i(TAG, "addFavorite: ${it.message.toString()}")
-        }
+    fun addToFavorites(movie: MovieDetails, userId: String) {
+        usersReference.child(userId).child(Const.FAVORITES_KEY).child(movie.id.toString()).setValue(movie)
+            .addOnSuccessListener {
+                // TO DO: Implement logic for on success of adding a favorite movie.
+            }.addOnFailureListener {
+                // TO DO: Implement logic for on failure of adding a favorite movie.
+                Log.e(TAG, it.message.toString())
+            }
+    }
+
+    fun removeFromFavorites(movieId: String, userId: String) {
+        usersReference.child(userId).child(Const.FAVORITES_KEY).child(movieId).removeValue()
+            .addOnSuccessListener {
+                // TO DO: Implement logic for on success of removing a favorite movie.
+            }
+            .addOnFailureListener {
+                Log.e(TAG, it.message.toString())
+            }
     }
 }

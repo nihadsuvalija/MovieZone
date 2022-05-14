@@ -18,6 +18,9 @@ import com.example.moviezone.utils.SearchedMovieDiffUtil
 
 class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
 
+
+    private var TAG = "SearchItemAdapter"
+
     private lateinit var binding: SearchItemBinding
     private var movies: List<SearchedMovie> = listOf()
 
@@ -72,7 +75,7 @@ class SearchItemAdapter: RecyclerView.Adapter<SearchItemAdapter.ViewHolder>() {
                 holder.releaseDate.text = movies[position].releaseDate
                 holder.rating.text = movies[position].voteAverage.toString()
             } catch (e: Exception) {
-                println(e.message)
+                Log.e(TAG, e.message.toString())
             }
 
             holder.itemView.setOnClickListener {

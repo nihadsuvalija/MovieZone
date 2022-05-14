@@ -44,7 +44,15 @@ class MovieDetailsViewModel: ViewModel(), MovieDetailsViewModelInteractor {
     }
 
     fun addToFavorites(movieId: Int) {
-        dao.addFavorite(movieId.toString(), mAuth.currentUser?.uid.toString())
+        viewModelScope.launch {
+            movieRepository.getMovieById(movieId).collect {
+                dao.addToFavorites(it, mAuth.currentUser?.uid.toString())
+            }
+        }
+    }
+
+    fun removeFromFavorites(movieId: Int) {
+        dao.removeFromFavorites(movieId.toString(), mAuth.currentUser?.uid.toString())
     }
 
     fun getMovieById(movieId: Int) {

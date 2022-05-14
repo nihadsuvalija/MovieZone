@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviezone.dao.DatabaseDAO
+import com.example.moviezone.model.CurrentUser
 import com.example.moviezone.repository.MovieRepository
 import com.example.moviezone.screen.central.CentralFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
@@ -71,6 +72,7 @@ class HomeViewModel: ViewModel(), HomeViewModelInteractor {
     fun getFavorites() {
         mAuth.currentUser?.uid?.let { dao.getFavorites(it) }
     }
+
     override fun showNowPlayingMovies() {
         getNowPlayingMovies()
     }
