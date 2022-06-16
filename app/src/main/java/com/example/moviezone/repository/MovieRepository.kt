@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class MovieRepository {
-    private val dao = DatabaseDAO()
     suspend fun getUpcomingMovies(): Flow<UpcomingResponse> {
         return flow {
             val response = RetrofitInstance.tmdbApi.getUpcomingMovies()
